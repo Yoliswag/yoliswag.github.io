@@ -16,19 +16,16 @@
       background-size: 200px 200px;
       background-position: center;
     }
-
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
       background-color: none;
     }
-
     h1 {
       font-size: 3rem;
       text-shadow: 2px 2px 4px #000;
     }
-
     .button {
       display: inline-block;
       background-color: #ffcc00;
@@ -54,17 +51,14 @@
       text-transform: uppercase;
       box-shadow: 2px 2px 4px #000;
     }
-
     .button:hover {
       background-color: #ffdf4d;
     }
-
     .content-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
     .music-player {
       display: inline-block;
       vertical-align: top;
@@ -78,17 +72,14 @@
       font-family: "Courier New", Courier, monospace;
       color: #000;
     }
-
     .meditation-gif {
       width: 300px;
       height: auto;
       margin-left: 20px;
     }
-
     .image-container {
       margin-top: 50px;
     }
-
     .profile-img {
       float: left;
       width: 300px;
@@ -99,7 +90,6 @@
       image-rendering: pixelated;
       filter: blur(5px);
     }
-
     .usa-img {
       float: left;
       width: 500px;
@@ -108,32 +98,27 @@
       border-radius: 10px;
       box-shadow: 4px 4px 6px #000;
     }
-
     .portfolio-image {
       max-width: 100%;
       border: 5px solid #ffcc00;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
-
     .video-container {
       margin-top: 50px;
       display: flex;
       justify-content: left;
       margin-left: 0px;
-      
     }
     .video-wrapper {
       display: flex;
-     width: 10000px;
+      width: 10000px;
     }
-
     .weed-img {
       justify-content: left;
       width: 300px;
       height: 300px;
     }
-
     iframe {
       width: 100%;
       height: 100%;
@@ -154,7 +139,6 @@
       background-color: #000000;
       color: #ff00b3;
     }
-
     .chat-messages {
       height: 300px;
       overflow-y: scroll;
@@ -163,11 +147,9 @@
       background-color: #000000;
       margin-bottom: 20px;
     }
-
     .chat-input {
       display: flex;
     }
-
     .chat-input input {
       flex: 1;
       padding: 10px;
@@ -177,7 +159,6 @@
       color: #ff00b3;
       font-size: 16px;
     }
-
     .chat-input button {
       padding: 10px;
       border: 1px solid #ff00d9;
@@ -186,7 +167,6 @@
       border-radius: 0 5px 5px 0;
       cursor: pointer;
     }
-
     .chat-input button:hover {
       background-color: #cb0000;
     }
@@ -198,20 +178,8 @@
       background-color: #000000;
       border-radius: 5px;
     }
-
     .message span {
       font-weight: bold;
-    }
-
-    .delete-button {
-      background-color: #ff0000;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .delete-button:hover {
-      background-color: #cc0000;
     }
   </style>
 </head>
@@ -247,110 +215,22 @@
       <div class="video-wrapper">
         <img src="weed.gif" alt="weed" class="weed-img">
         <iframe src="https://www.youtube.com/embed/AI2-GTNTvmo?si=k7XFtt5A3qza9mkE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <img src="debt.gif" alt="debt" class="debt-img"> </div>
+        <img src="debt.gif" alt="debt" class="debt-img"> 
+      </div>
     </div>
-    <div>
+  </div>
+  
   <div class="image-container">
-<img src="family.gif" width="1500" height="100">
-<div class="chat-box">
-  <div class="chat-messages" id="chat-messages">
-    <!-- Messages will be displayed here -->
-  </div>
-  <div class="chat-input">
-    <input type="text" id="name-input" placeholder="Your name (optional)">
-  </div>
-  <div class="chat-input">
-    <input type="text" id="chat-input" placeholder="Type a message...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-</div>
-<script>
-  const chatMessages = document.getElementById('chat-messages');
-  const chatInput = document.getElementById('chat-input');
-  const nameInput = document.getElementById('name-input');
-  const userColors = {}; // Store user colors
-
-  function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-  function saveMessages() {
-    const messages = [];
-    chatMessages.querySelectorAll('.message').forEach(messageElement => {
-      const name = messageElement.querySelector('span').textContent.split(':')[0];
-      const text = messageElement.querySelector('span').textContent.split(': ')[1];
-      const color = messageElement.querySelector('span').style.color;
-      messages.push({ name, text, color });
-    });
-    localStorage.setItem('chatMessages', JSON.stringify(messages));
-  }
-
-  function loadMessages() {
-    const savedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
-    savedMessages.forEach(({ name, text, color }) => {
-      if (!userColors[name]) {
-        userColors[name] = color;
-      }
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message');
-
-      const messageContent = document.createElement('span');
-      messageContent.textContent = `${name}: ${text}`;
-      messageContent.style.color = color;
-      messageElement.appendChild(messageContent);
-
-      chatMessages.appendChild(messageElement);
-    });
-  }
-
-  function sendMessage() {
-    const message = chatInput.value.trim();
-    const name = nameInput.value.trim() || 'Anonymous';
-    if (message !== '') {
-      if (!userColors[name]) {
-        userColors[name] = getRandomColor();
-      }
-
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message');
-
-      const messageContent = document.createElement('span');
-      messageContent.textContent = `${name}: ${message}`;
-      messageContent.style.color = userColors[name];
-      messageElement.appendChild(messageContent);
-
-      chatMessages.appendChild(messageElement);
-      chatInput.value = '';
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      saveMessages(); // Save messages after sending
-    }
-  }
-
-  // Load messages on page load
-  window.onload = function() {
-    loadMessages();
-  };
-
- 
-
-    // Send message when Enter key is pressed
-  chatInput.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-      event.preventDefault(); // Prevent the default action (form submission)
-      sendMessage();
-    }
-  });
-</script>
-
-  </div>
-  <img src="japanesead2.gif" width="800">
-  <img src="banner-gaypornphotos.gif" width="800">
-  <img src="pornnun.gif" width="800">
-</body>
-</html>
-
+    <img src="family.gif" width="1500" height="100">
+    <div class="chat-box">
+      <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be displayed here -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="name-input" placeholder="Your name (optional)">
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
