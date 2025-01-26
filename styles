@@ -1,0 +1,68 @@
+// Shop
+color: #FF00E5;
+ font-size: 12px;
+ font-family: Eater;
+ font-weight: 400;
+ text-transform: uppercase;
+ word-wrap: break-word
+---
+// whats the point
+color: black;
+ font-size: 16px;
+ font-family: Bona Nova SC;
+ font-weight: 700;
+ text-transform: uppercase;
+ word-wrap: break-word
+---
+// Thank You for gathering
+color: black;
+ font-size: 14px;
+ font-family: Inter;
+ font-weight: 700;
+ word-wrap: break-word
+---
+// Wher here for a fun time not a long time.
+color: #BB009C;
+ font-size: 36px;
+ font-family: Lakki Reddy;
+ font-weight: 400;
+ word-wrap: break-word
+---
+// youll do great things in life
+color: #0392FF;
+ font-size: 197px;
+ font-family: Londrina Solid;
+ font-weight: 400;
+ word-wrap: break-word
+---
+// Raviy0li
+color: #FF00EA;
+ font-size: 52px;
+ font-family: Rubik Iso;
+ font-weight: 400;
+ text-decoration: underline;
+ word-wrap: break-word
+---
+// Raviy0li
+color: #FF00EA;
+ font-size: 52px;
+ font-family: Rubik Iso;
+ font-weight: 400;
+ text-decoration: underline;
+ word-wrap: break-word
+---
+// Rostieta
+color: #FF00EA;
+ font-size: 52px;
+ font-family: Rubik Iso;
+ font-weight: 400;
+ text-decoration: underline;
+ word-wrap: break-word
+---
+// Yolitzy.com
+color: #FF00EA;
+ font-size: 52px;
+ font-family: Rubik Iso;
+ font-weight: 400;
+ text-decoration: underline;
+ word-wrap: break-word
