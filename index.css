@@ -1,0 +1,807 @@
+.landing-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+ 
+.landing-landing {
+  width: 100%;
+  height: 2314px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 1);
+}
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: none;
+}
+.landing-background {
+  top: -17px;
+  left: -40px;
+  width: 2060px;
+  height: 2331px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+ 
+.landing-matrix1 {
+  top: 483.71875px;
+  left: 83.90373992919922px;
+  width: 1208px;
+  height: 538px;
+  position: absolute;
+}
+ 
+.landing-k-atheric1 {
+  top: 0px;
+  left: 41px;
+  width: 2019px;
+  height: 2019px;
+  position: absolute;
+}
+ 
+.landing-skindogs1 {
+  top: 1251px;
+  left: 0px;
+  width: 1080px;
+  height: 1080px;
+  position: absolute;
+}
+ 
+.landing-lowtek1 {
+  top: 736px;
+  left: 464px;
+  width: 674px;
+  height: 545px;
+  position: absolute;
+}
+ 
+.landing-nunporn {
+  top: 1319px;
+  left: 256px;
+  width: 720px;
+  height: 300px;
+  position: absolute;
+}
+ 
+.landing-snowstrippers {
+  top: 318px;
+  left: 817px;
+  width: 686px;
+  height: 386px;
+  position: absolute;
+}
+ 
+.landing-iloveyou1 {
+  top: 312px;
+  left: 179px;
+  width: 403px;
+  height: 393px;
+  position: absolute;
+}
+ 
+.landing-image4 {
+  top: 820px;
+  left: 1130px;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+}
+ 
+.landing-text1 {
+  top: 230px;
+  left: 641px;
+  color: rgba(255, 0, 229, 1);
+  width: 185px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Eater;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+ 
+.landing-link {
+  top: 813px;
+  left: 145px;
+  width: 191px;
+  height: 38px;
+  display: flex;
+  position: absolute;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1) ;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background-color: rgba(255, 204, 0, 1);
+}
+.back-button {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 4px #000;
+  margin-top: 20px;
+}
+.back-button:hover {
+  background-color: #ffdf4d;
+}
+
+.music-player {
+  display: inline-block;
+  vertical-align: top;
+  width: 450px;
+  height: 150px;
+  padding: 10px;
+  background: linear-gradient(to bottom, #FF61EB, #f39c12);
+  border: 3px solid #c0392b;
+  border-radius: 10px;
+  box-shadow: 4px 4px 6px #000;
+  font-family: "Courier New", Courier, monospace;
+  color: #000;
+}
+.landing-text2 {
+  top: 10px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  width: 153px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  font-style: Bold;
+  text-align: center;
+  font-family: Bona Nova SC;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+ 
+.landing-background-border-shadow {
+  top: 77px;
+  left: 571px;
+  width: 299px;
+  height: 83px;
+  display: flex;
+  position: absolute;
+  background: linear-gradient(180deg, rgba(255, 97, 235, 1) 0%, rgba(243, 156, 18, 1) 100%);
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 1) ;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: rgba(192, 57, 43, 1);
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10px;
+}
+ 
+.landing-text3 {
+  top: 7px;
+  left: -17px;
+  color: rgba(0, 0, 0, 1);
+  width: 331px;
+  height: auto;
+  position: absolute;
+  font-size: 14px;
+  font-style: Bold;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+ 
+.landing-image2 {
+  top: 1182px;
+  left: 1192px;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+}
+ 
+.landing-debtgif {
+  top: 60px;
+  left: 1056px;
+  width: 175px;
+  height: 676px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-image8 {
+  top: 1284px;
+  left: 1192px;
+  width: 250px;
+  height: 126px;
+  position: absolute;
+}
+ 
+.landing-man {
+  top: 515px;
+  left: 489px;
+  width: 661px;
+  height: 279px;
+  position: absolute;
+}
+ 
+.landing-anim-mlp1 {
+  top: 736px;
+  left: 1174px;
+  width: 234px;
+  height: 69px;
+  position: absolute;
+}
+ 
+.landing-japanesead1 {
+  top: 2109px;
+  left: 761px;
+  width: 143px;
+  height: 60px;
+  position: absolute;
+}
+ 
+.landing-japanesead21 {
+  top: 2197px;
+  left: 60px;
+  width: 468px;
+  height: 60px;
+  position: absolute;
+}
+ 
+.landing-bar {
+  top: 1128px;
+  left: 662px;
+  width: 468px;
+  height: 60px;
+  position: absolute;
+}
+ 
+.landing-image10 {
+  top: 320px;
+  left: 23px;
+  width: 169px;
+  height: 395px;
+  position: absolute;
+}
+ 
+.landing-exbar {
+  top: 1691px;
+  left: 112px;
+  width: 468px;
+  height: 60px;
+  position: absolute;
+}
+ 
+.landing-image12 {
+  top: 1634px;
+  left: 564px;
+  width: 400px;
+  height: 270px;
+  position: absolute;
+}
+ 
+.landing-image15 {
+  top: 67px;
+  left: 15px;
+  width: 200px;
+  height: 35px;
+  position: absolute;
+}
+ 
+.landing-wtcangelfireman1 {
+  top: 741px;
+  left: 482px;
+  width: 494px;
+  height: 416px;
+  position: absolute;
+}
+ 
+.landing-image7 {
+  top: 715px;
+  left: 499px;
+  width: 468px;
+  height: 60px;
+  position: absolute;
+}
+ 
+.landing-image18 {
+  top: 67px;
+  left: 1242px;
+  width: 200px;
+  height: 216px;
+  position: absolute;
+}
+ 
+.landing-image17 {
+  top: 1745px;
+  left: 419px;
+  width: 195px;
+  height: 253px;
+  position: absolute;
+}
+ 
+.landing-oneway1 {
+  top: 979px;
+  left: 240px;
+  width: 349px;
+  height: 141px;
+  position: absolute;
+}
+ 
+.landing-americanmedical {
+  top: 469px;
+  left: 293px;
+  width: 1048px;
+  height: 852px;
+  position: absolute;
+}
+ 
+.landing-weedgif {
+  top: 141px;
+  left: -42px;
+  width: 437px;
+  height: 211px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-familygif {
+  top: 1196px;
+  left: 121px;
+  width: 1191px;
+  height: 82px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-newgif {
+  top: 224px;
+  left: 424px;
+  width: 600px;
+  height: 243px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-image1 {
+  top: 206px;
+  left: 336px;
+  width: 150px;
+  height: 20px;
+  position: absolute;
+}
+ 
+.landing-xboxlive1 {
+  top: 176px;
+  left: 0px;
+  width: 588px;
+  height: 60px;
+  position: absolute;
+}
+ 
+.landing-myhead152 {
+  top: -133px;
+  left: 103px;
+  width: 468px;
+  height: 574px;
+  position: absolute;
+}
+ 
+.landing-welcomegif1 {
+  top: -3px;
+  left: -16px;
+  width: 470px;
+  height: 48px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-welcomegif2 {
+  top: -3px;
+  left: 434px;
+  width: 513px;
+  height: 48px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-welcomegif3 {
+  top: -3px;
+  left: 935px;
+  width: 507px;
+  height: 48px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-money20jumpinggif1 {
+  top: 642px;
+  left: 2px;
+  width: 145px;
+  height: 181px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-money20jumpinggif2 {
+  top: -17px;
+  left: 870px;
+  width: 145px;
+  height: 181px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-text4 {
+  top: 445px;
+  left: 87px;
+  color: rgba(186, 0, 155, 1);
+  width: 1207px;
+  height: auto;
+  position: absolute;
+  font-size: 36px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Lakki Reddy;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+ 
+.landing-eaglecross1 {
+  top: 2167px;
+  left: 1068px;
+  width: 318px;
+  height: 127px;
+  position: absolute;
+}
+ 
+.landing-gun1 {
+  top: 1651px;
+  left: 880px;
+  width: 339px;
+  height: 245px;
+  position: absolute;
+}
+ 
+.landing-politic31 {
+  top: 1440px;
+  left: 1193px;
+  width: 196px;
+  height: 196px;
+  position: absolute;
+}
+ 
+.landing-people1 {
+  top: 1278px;
+  left: 121px;
+  width: 110px;
+  height: 320px;
+  position: absolute;
+}
+ 
+.landing-halo1 {
+  top: 1993px;
+  left: 439px;
+  width: 175px;
+  height: 247px;
+  position: absolute;
+}
+ 
+.landing-halohumpday1 {
+  top: 1459px;
+  left: 976px;
+  width: 208px;
+  height: 232px;
+  position: absolute;
+}
+ 
+.landing-mipenelogo1 {
+  top: 1128px;
+  left: 372px;
+  width: 279px;
+  height: 57px;
+  position: absolute;
+}
+ 
+.landing-mangaporno1 {
+  top: 2272px;
+  left: 684px;
+  width: 366px;
+  height: 47px;
+  position: absolute;
+}
+ 
+.landing-america1 {
+  top: 1293px;
+  left: 964px;
+  width: 204px;
+  height: 153px;
+  position: absolute;
+}
+ 
+.landing-derp1 {
+  top: 1856px;
+  left: 1085px;
+  width: 323px;
+  height: 296px;
+  position: absolute;
+}
+ 
+.landing-download1 {
+  top: 1964px;
+  left: 144px;
+  width: 225px;
+  height: 225px;
+  position: absolute;
+}
+ 
+.landing-ps2banner21 {
+  top: 1598px;
+  left: 318px;
+  width: 479px;
+  height: 62px;
+  position: absolute;
+}
+ 
+.landing-virilitypills41 {
+  top: 1782px;
+  left: 96px;
+  width: 500px;
+  height: 64px;
+  position: absolute;
+}
+ 
+.landing-banernaskoart1 {
+  top: 2242px;
+  left: 318px;
+  width: 673px;
+  height: 65px;
+  position: absolute;
+}
+ 
+.landing-blow1 {
+  top: 2030px;
+  left: 614px;
+  width: 456px;
+  height: 58px;
+  position: absolute;
+}
+ 
+.landing-text5 {
+  top: 1772px;
+  left: 73px;
+  color: rgba(3, 145, 255, 1);
+  width: 1271px;
+  height: auto;
+  position: absolute;
+  font-size: 197px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Londrina Solid;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+ 
+.landing-sociallinks {
+  top: 288px;
+  left: 719px;
+  width: 365px;
+  height: 282px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.landing-rectangle6 {
+  top: 423px;
+  left: 253.67645263671875px;
+  width: 311px;
+  height: 75px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.landing-instagram1 {
+  top: 423px;
+  left: 200px;
+  width: 76px;
+  height: 75px;
+  position: absolute;
+}
+ 
+.landing-text6 {
+  top: 423px;
+  left: 180px;
+  color: rgba(255, 0, 233, 1);
+  width: 335px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+ 
+.landing-rectangle5 {
+  top: 419.4000244140625px;
+  left: -496.32354736328125px;
+  width: 311px;
+  height: 75px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.landing-text7 {
+  top: 419.4000244140625px;
+  left: -570px;
+  color: rgba(255, 0, 233, 1);
+  width: 335px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+ 
+.landing-twitter {
+  top: 419.4000244140625px;
+  left: -550px;
+  width: 75px;
+  height: 75px;
+  position: absolute;
+}
+ 
+.landing-rectangle4 {
+  top: 10px;
+  left: 238.9154052734375px;
+  width: 326px;
+  height: 78px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.landing-text8 {
+  top: 10px;
+  left: 180px;
+  color: rgba(255, 0, 233, 1);
+  width: 344px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+ 
+.landing-instagram2 {
+  top: 10px;
+  left: 200px;
+  width: 76px;
+  height: 78px;
+  position: absolute;
+}
+ 
+.landing-rectangle7 {
+  top: 10px;
+  left: -550px;
+  width: 365px;
+  height: 75px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.landing-text9 {
+  top: 13.31427001953125px;
+  left: -550px;
+  color: rgba(255, 0, 233, 1);
+  width: 365px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+h1 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px #000;
+}
+.button {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 4px #000;
+}
+.button2 {
+  font-size: large;
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #000;
+  padding: 20px 40px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top:30px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 4px #000;
+}
+.button:hover {
+  background-color: #ffdf4d;
+}
