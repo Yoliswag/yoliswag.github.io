@@ -52,6 +52,7 @@
     padding: 10px;
     box-shadow: 5px 5px 10px #000;
     text-align: center; /* Center text within each gallery item */
+    
   }
 
   .gallery-item img {
@@ -67,6 +68,56 @@
     color: #ff00ff;
     text-shadow: 1px 1px 3px #000;
   }
+
+  .hover-effect-container {
+  position: relative;
+  display: inline-block;
+  max-width: 90%;
+  margin: 10px auto;
+}
+
+.hover-effect-container img {
+  display: block;
+  max-width: 100%;
+  margin: 0; /* Reset margin since the container has margin */
+  transition: all 0.3s ease;
+}
+
+/* Overlay that appears on hover */
+.hover-effect-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Gray overlay with 60% opacity */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hover-effect-container:hover::after {
+  opacity: 1;
+}
+
+/* Optional: Add a text indicator for clickable images */
+.hover-effect-container::before {
+  content: 'Get Lost';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 0, 217);
+  font-weight: bold;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-effect-container:hover::before {
+  opacity: 1;
+}
 
   .back-button {
     display: inline-block;
@@ -86,7 +137,15 @@
 </style>
 <body>
   <div class="container">
+    <a href="index.html" class="back-button">Back to Home</a>
     <div class="gallery">
+      <div class="gallery-item">
+        <div class="hover-effect-container">
+        <p>Get Lost</p>
+        <p>Photo Collection</p>
+        <img src="public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
+        </div>
+      </div>
       <div class="gallery-item">
         <img src="public/external/skindogs.png" alt="Art Piece 1">
         <p>Skin Dogs</p>

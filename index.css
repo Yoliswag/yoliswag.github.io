@@ -315,10 +315,13 @@
  
 .landing-wtcangelfireman1 {
   top: 741px;
-  left: 482px;
-  width: 494px;
+  left: 48px;
+  width: 600px;
   height: 416px;
-  position: absolute;
+  position:absolute;
+  padding-right: 200px;
+  padding-bottom: 100px;
+
 }
  
 .landing-image7 {
@@ -805,4 +808,133 @@ h1 {
 }
 .button:hover {
   background-color: #ffdf4d;
+}
+
+.star-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.star-container:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.star-container:active {
+  transform: scale(0.95);
+}
+
+
+.star {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #ff80cb, #ff1493);
+  clip-path: polygon(
+      50% 0%, 
+      61% 35%, 
+      98% 35%, 
+      68% 57%, 
+      79% 91%, 
+      50% 70%, 
+      21% 91%, 
+      32% 57%, 
+      2% 35%, 
+      39% 35%
+  );
+  box-shadow: 0 0 15px #ff1493, 
+              0 0 30px #ff69b4, 
+              inset 0 0 10px white;
+  animation: glow 1.5s infinite alternate;
+  height: 100vh;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.star-border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(
+      50% 0%, 
+      61% 35%, 
+      98% 35%, 
+      68% 57%, 
+      79% 91%, 
+      50% 70%, 
+      21% 91%, 
+      32% 57%, 
+      2% 35%, 
+      39% 35%
+  );
+  background: cyan;
+  z-index: -1;
+  transform: scale(1.05);
+  animation: spin 8s linear infinite;
+}
+
+.button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: yellow;
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 #ff1493, 
+               -2px -2px 0 blue, 
+               2px -2px 0 purple,
+               -2px 2px 0 purple;
+  z-index: 10;
+  text-align: center;
+  line-height: 1;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4, inset 0 0 10px white; }
+  100% { box-shadow: 0 0 25px #ff1493, 0 0 50px #ff69b4, inset 0 0 15px white; }
+}
+
+@keyframes spin {
+  0% { transform: scale(1.05) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(360deg); }
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  animation: sparkle 2s infinite;
+}
+
+.sparkle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+  top: 25%;
+  right: 25%;
+  animation-delay: 0.3s;
+}
+
+.sparkle:nth-child(3) {
+  bottom: 30%;
+  left: 30%;
+  animation-delay: 0.6s;
+}
+
+.sparkle:nth-child(4) {
+  bottom: 20%;
+  right: 20%;
+  animation-delay: 0.9s;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
 }
