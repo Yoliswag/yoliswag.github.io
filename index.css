@@ -1,21 +1,18 @@
 .landing-container {
-  width: 100%;
+  width: 1450px;
   display: flex;
-  overflow: auto;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
 }
  
 .landing-landing {
-  width: 100%;
+  width: 1450px;
   height: 2314px;
+  overflow-x: hidden;
   display: flex;
-  overflow: hidden;
-  position: relative;
   align-items: flex-start;
   flex-shrink: 0;
-  background-color: rgba(0, 0, 0, 1);
 }
 .content-container {
   display: flex;
@@ -26,12 +23,12 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: none;
+  background-color: black;
 }
 .landing-background {
   top: -17px;
   left: -40px;
-  width: 2060px;
+  width: 1450px;
   height: 2331px;
   display: flex;
   position: absolute;
@@ -50,7 +47,7 @@
 .landing-k-atheric1 {
   top: 0px;
   left: 41px;
-  width: 2019px;
+  width: 1500px;
   height: 2019px;
   position: absolute;
 }
@@ -227,7 +224,6 @@
   width: 175px;
   height: 676px;
   display: flex;
-  overflow: hidden;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 0;
@@ -370,7 +366,6 @@
   width: 437px;
   height: 211px;
   display: flex;
-  overflow: hidden;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 0;
@@ -382,7 +377,6 @@
   width: 1191px;
   height: 82px;
   display: flex;
-  overflow: hidden;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 0;
@@ -826,7 +820,6 @@ h1 {
   transform: scale(0.95);
 }
 
-
 .star {
   position: absolute;
   width: 100%;
@@ -938,3 +931,14 @@ h1 {
   0%, 100% { opacity: 0; transform: scale(0); }
   50% { opacity: 1; transform: scale(1); }
 }
+
+.wrapper-main {
+  padding: right 50px;
+  width: 1450px;
+  height: 2331px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+
+
