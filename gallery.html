@@ -39,6 +39,15 @@
     text-shadow: 1px 1px 3px #000;
     margin-bottom: 20px;
   }
+  p2 {
+    padding-top: 30px;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
 
   .gallery {
     display: grid;
@@ -72,8 +81,9 @@
   .hover-effect-container {
   position: relative;
   display: inline-block;
-  max-width: 90%;
+  max-width: 100%;
   margin: 10px auto;
+  cursor: pointer;
 }
 
 .hover-effect-container img {
@@ -89,7 +99,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 110%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6); /* Gray overlay with 60% opacity */
   opacity: 0;
@@ -103,12 +113,12 @@
 
 /* Optional: Add a text indicator for clickable images */
 .hover-effect-container::before {
-  content: 'Get Lost';
+  content: 'CLICK';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(255, 0, 217);
+  color: rgb(0, 255, 60);
   font-weight: bold;
   z-index: 1;
   opacity: 0;
@@ -134,27 +144,57 @@
   .back-button:hover {
     background-color: #ffdf4d;
   }
+  .zoom-on-click img {
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .zoom-on-click img.clicked {
+    transform: scale(2); /* or whatever size you want */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: none;
+  }
 </style>
 <body>
   <div class="container">
     <a href="index.html" class="back-button">Back to Home</a>
     <div class="gallery">
       <div class="gallery-item">
-        <div class="hover-effect-container">
-        <p>Get Lost</p>
+        <div href="Get Lost.html" class="hover-effect-container" onclick="window.open('Get Lost.html')">
+          <img src="public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
+        <p></p><p2>Get Lost</p2>
         <p>Photo Collection</p>
-        <img src="public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
+        </div>
+        
+        <div class="overlay" id="lightbox" onclick="closeLightbox()">
+          <img id="lightbox-img" src="">
         </div>
       </div>
       <div class="gallery-item">
         <img src="public/external/skindogs.png" alt="Art Piece 1">
-        <p>Skin Dogs</p>
+        <p2>Skin Dogs</p2>
         <p>The movie Kids</p>
         <p>My pill tower</p><p>and this Dog I drew, that I love a lot</p>
       </div>
       <div class="gallery-item">
         <img src="public/external/KAtheric.gif" alt="Art Piece 2">
-        <p>KAtheric</p>
+        <p2>KAtheric</p2>
         <p>an image of a church I took off a balcony. 
           <p>I see this church every day in the distance driving home.</p>
   <p>a view of commute</p> 
@@ -162,24 +202,24 @@
       </div>
       <div class="gallery-item">
         <img src="public/external/quick shit.gif" alt="Art Piece 3">
-        <p>Quick shit</p>
+        <p2>Quick shit</p2>
         <p>quick peace i made took like 10 mins</p>
       </div>
       <div class="gallery-item">
         <img src="public/external/tattoo.jpg" alt="Art Piece 4">
-        <p>Tramp Stamp Tattoo</p>
+        <p2>Tramp Stamp Tattoo</p2>
         <p>i desgined a tramp stamp, then drew this back and overlayed it. I luv the color on this one</p>
       </div>
       <div class="gallery-item">
         <img src="public/external/artsaleflyer.jpg" alt="Art Piece 4">
-        <p>Art Piece 4</p>
+        <p2>Art Piece 4</p2>
         <p>i have no idea whats happening. flyer i made. collabed with eviee. yeah its sucked at first then we moved to skate park 
           and people actully showed up mostly eviee friends but it was really fun everyone was 
           looking at my paintings and it made me feel seen bc otherwise my art just sits in my room unenjoyed and sad.</p>
       </div>
       <div class="gallery-item">
         <img src="public/external/victoryroyale.jpg" alt="Art Piece 4">
-        <p>victoryroyale</p>
+        <p2>victoryroyale</p2>
         <p>we got the wyatt bathroom selfie</p>
         <p>
         </p>dude will say big things coming then od
@@ -193,3 +233,13 @@
   </div>
 </body>
 </html>
+<script>
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+</script>
