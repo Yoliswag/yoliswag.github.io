@@ -80,7 +80,7 @@
 
   .hover-effect-container {
   position: relative;
-  display: inline-block;
+  display: block;
   max-width: 100%;
   margin: 10px auto;
   cursor: pointer;
@@ -176,12 +176,12 @@
     <a href="index.html" class="back-button">Back to Home</a>
     <div class="gallery">
       <div class="gallery-item">
-        <div href="Get Lost.html" class="hover-effect-container" onclick="window.open('Get Lost.html')">
+        <div class="hover-effect-container" role="button" tabindex="0"
+             onclick="window.location.href='Get Lost.html'">
           <img src="public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
-        <p></p><p2>Get Lost</p2>
-        <p>Photo Collection</p>
-        </div>
-        
+          <p></p><p2>Get Lost</p2>
+          <p>Photo Collection</p>
+        </div>    
         <div class="overlay" id="lightbox" onclick="closeLightbox()">
           <img id="lightbox-img" src="">
         </div>
