@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minds eye</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  body {
+    background-color: #000;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the start */
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: auto;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px; /* Add margin at the top */
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px #ff00ff;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+  }
+  p2 {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
+
+  .gallery {
+    gap: 20px;
+}
+
+  .gallery-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    background-color: #000000;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #000;
+    text-align: center; /* Center text within each gallery item */
+    padding: 10px;
+  }
+
+  .gallery-item img {
+    max-width: 100%; /* Make images smaller */
+    height: auto;
+    margin: 10px auto;
+  }
+
+  .gallery-item p {
+    font-size: 1rem;
+    text-shadow: 1px 1px 3px #000;
+  }
+
+  .hover-effect-container {
+    position: relative;
+    max-width: 100%; /* Adjust max-width for smaller images */
+    margin: 10px auto;
+    cursor: pointer;
+  }
+
+  .hover-effect-container img {
+    max-width: 100%;
+    margin: 0;
+    transition: all 0.3s ease;
+  }
+
+  /* Overlay that appears on hover */
+  .hover-effect-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .hover-effect-container:hover::after {
+    opacity: 1;
+  }
+
+  /* Optional: Add a text indicator for clickable images */
+  .hover-effect-container::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-effect-container:hover::before {
+    opacity: 1;
+  }
+
+  .back-button {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+  }
+
+  .back-button:hover {
+    background-color: #ffdf4d;
+  }
+
+  .zoom-on-click img {
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .zoom-on-click img.clicked {
+    transform: scale(2); /* or whatever size you want */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: none;
+  }
+  p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+    color:#ff00ff
+  }
+  .p2 {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
+</style>
+<body>
+  <div class="container">
+    <p><p2>Minds Eye</p2>
+    <p>Photo Collection</p>
+    <div class="gallery">
+      <div class="gallery-item">
+        <div class="hover-effect-container">
+          <img src="public/external/DSC_0608.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="overlay" id="lightbox" onclick="closeLightbox()">
+          <img id="lightbox-img" src="">
+        </div>
+        <div class="hover-effect-container">
+          <img src="public/external/DSC_0611.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="public/external/DSC_0618.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+      </div>
+        <div class="hover-effect-container">
+          <img src="public/external/DSC_0636.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+      </div>
+        <div class="hover-effect-container">
+            <img src="public/external/DSC_0668.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+          </div>
+          <div class="hover-effect-container">
+            <img src="public/external/DSC_0715.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="public/external/DSC_0726.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+      </div>
+        <div class="hover-effect-container">
+          <img src="public/external/DSC_0741.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+      </div>
+        <div class="hover-effect-container">
+          <img src="public/external/DSC_0753.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+      </div>
+    <div class="hover-effect-container">
+      <img src="public/external/DSC_0261.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+  </div>
+  <div class="hover-effect-container">
+    <img src="public/external/DSC_0235.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+  </div>
+  <div class="hover-effect-container">
+    <img src="public/external/DSC_0253.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+</div>
+        <div class="hover-effect-container">
+            <img src="public/external/DSC_0639.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+            <img src="public/external/20240116_001922810_iOS.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+            <img src="public/external/20240116_002449900_iOS.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+<div class="hover-effect-container">
+  <img src="public/external/DSC_0071.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+</div>
+<div class="hover-effect-container">
+  <img src="public/external/DSC_0006.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+</div>
+<div class="hover-effect-container">
+  <img src="public/external/DSC_0036.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+</div>
+
+
+         </div>
+         <a href="gallery.html" class="back-button">Back to Gallery</a>
+     
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+</script>

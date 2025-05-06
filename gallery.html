@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <style>
+
   body {
     background-color: #000;
     color: #00ff00;
     font-family: "Courier New", Courier, monospace;
-    display: flex;
     justify-content: center;
     align-items: flex-start; /* Align items at the start */
     text-align: center;
@@ -140,6 +140,7 @@
     text-transform: uppercase;
     box-shadow: 2px 2px 4px #000;
     margin-top: 20px;
+    margin-bottom: 30px;
   }
   .back-button:hover {
     background-color: #ffdf4d;
@@ -170,11 +171,113 @@
     max-height: 90%;
     border: none;
   }
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 40px;
+background-color: black;
+border-bottom: 1px solid gray;
+}
+
+.welcome {
+  font-size: 48px;
+  color: red;
+  margin-bottom: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  color: magenta;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Creepster', cursive; /* Optional spooky style */
+
+}
+
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: black;
+  color: magenta;
+  font-size: 18px;
+  font-family: 'Creepster', cursive;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  border: 1px solid gray;
+  z-index: 1;
+  padding: 10px 0;
+}
+
+.dropdown-content a {
+  color: magenta;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #222;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.family {
+  width: 700px;
+  height: 40px;
+}
+
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
 <body>
+  <img class="family" src="public/external/family.gif" alt="Overlay Image">
+    <div class="navbar">
+      <div class="welcome">WELCOME!</div>
+      <div class="nav-links">
+        <a href="#" class="dropbtn">ABOUT</a>
+        <a href="#">GALLERY</a>
+        <div class="dropdown">
+          <button class="dropbtn">PROJECTS</button>
+          <div class="dropdown-content">
+            <a href="#">Minds Eye</a>
+            <a href="#">Bag</a>
+            <a href="#">Collabs</a>
+            <a href="#">Old Projects</a>
+          </div>
+        </div>
+      </div>
+    </div>
   <div class="container">
     <a href="index.html" class="back-button">Back to Home</a>
     <div class="gallery">
+      <div class="gallery-item">
+        <div class="hover-effect-container" role="button" tabindex="0"
+             onclick="window.location.href='Minds Eye.html'">
+          <img src="public/external/DSC_0639.jpg" alt="Art Piece 1">
+          <p></p><p2>Get Lost</p2>
+          <p>Photo Collection</p>
+        </div>    
+        <div class="overlay" id="lightbox" onclick="closeLightbox()">
+          <img id="lightbox-img" src="">
+        </div>
+      </div>
       <div class="gallery-item">
         <div class="hover-effect-container" role="button" tabindex="0"
              onclick="window.location.href='Get Lost.html'">
