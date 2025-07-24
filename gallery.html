@@ -22,10 +22,8 @@
 
   .container {
     max-width: auto;
-    width: 100%;
     padding: 20px;
     border-radius: 10px;
-    margin-top: 20px; /* Add margin at the top */
   }
 
   h1 {
@@ -174,9 +172,10 @@
 
 .navbar {
 display: flex;
+max-width: 100%;
 justify-content: space-between;
 align-items: center;
-padding: 20px 40px;
+padding: 30px 100px;
 background-color: black;
 border-bottom: 1px solid gray;
 }
@@ -185,6 +184,7 @@ border-bottom: 1px solid gray;
   font-size: 48px;
   color: red;
   margin-bottom: 20px;
+
 }
 
 .nav-links {
@@ -238,8 +238,8 @@ border-bottom: 1px solid gray;
   display: block;
 }
 .family {
-  width: 700px;
-  height: 40px;
+  width: 100%;
+  height: 250px;
 }
 
 
@@ -247,6 +247,9 @@ border-bottom: 1px solid gray;
 <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 
 <body>
+  <audio id="audioPlayer" autoplay>
+    <source src="/public/external/woody-woodpecker-laugh-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
+</audio>
   <img class="family" src="public/external/family.gif" alt="Overlay Image">
     <div class="navbar">
       <div class="welcome">WELCOME!</div>
@@ -256,7 +259,7 @@ border-bottom: 1px solid gray;
         <div class="dropdown">
           <button class="dropbtn">PROJECTS</button>
           <div class="dropdown-content">
-            <a href="#">Minds Eye</a>
+            <a href="Invisiblecity.html">Invisible City</a>
             <a href="#">Bag</a>
             <a href="#">Collabs</a>
             <a href="#">Old Projects</a>
@@ -267,12 +270,26 @@ border-bottom: 1px solid gray;
   <div class="container">
     <a href="index.html" class="back-button">Back to Home</a>
     <div class="gallery">
+      
       <div class="gallery-item">
         <div class="hover-effect-container" role="button" tabindex="0"
-             onclick="window.location.href='Minds Eye.html'">
-          <img src="public/external/DSC_0639.jpg" alt="Art Piece 1">
-          <p></p><p2>Get Lost</p2>
+             onclick="window.location.href='mindseye.html'">
+          <img src="DSC_0639.jpg" alt="Art Piece 1">
+ <p>Photo Collection</p>
+          <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Minds Eye</p2>
+  <br><br>
+          <img src="weball.jpg" alt="Art Piece 1">
+              </div>    
+        <div class="overlay" id="lightbox" onclick="closeLightbox()">
+          <img id="lightbox-img" src="">
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="hover-effect-container" role="button" tabindex="0"
+             onclick="window.location.href='Invisiblecity.html'">
+          <img src="public/external/almostcaught.jpg" alt="Art Piece 1">
           <p>Photo Collection</p>
+          <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Invisible City</p2>
         </div>    
         <div class="overlay" id="lightbox" onclick="closeLightbox()">
           <img id="lightbox-img" src="">
@@ -282,8 +299,8 @@ border-bottom: 1px solid gray;
         <div class="hover-effect-container" role="button" tabindex="0"
              onclick="window.location.href='Get Lost.html'">
           <img src="public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
-          <p></p><p2>Get Lost</p2>
           <p>Photo Collection</p>
+          <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Get Lost</p2>
         </div>    
         <div class="overlay" id="lightbox" onclick="closeLightbox()">
           <img id="lightbox-img" src="">

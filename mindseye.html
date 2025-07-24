@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minds Eye</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  body {
+    background-color: #000;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the start */
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: auto;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px; /* Add margin at the top */
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px #ff00ff;
+    margin-bottom: 10px;
+  }
+  p2 {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
+  p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin: 50px auto;
+    padding-left: 250px;
+    padding-right: 200px;
+    color: #ffcc00;
+    font-family: "Courier New", Courier, monospace;
+    text-align: left;
+    line-height: 1.5;
+  }
+
+  .gallery {
+    gap: 20px;
+}
+
+  .gallery-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    background-color: #000000;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #000;
+    text-align: center; /* Center text within each gallery item */
+    padding: 10px;
+  }
+
+  .gallery-item img {
+    max-width: 100%; /* Make images smaller */
+    height: auto;
+    margin: 10px auto;
+  }
+
+  .gallery-item p {
+    font-size: 1rem;
+    text-shadow: 1px 1px 3px #000;
+  }
+
+  .hover-effect-container {
+    position: relative;
+    max-width: 100%; /* Adjust max-width for smaller images */
+    margin: 10px auto;
+    cursor: pointer;
+  }
+
+  .hover-effect-container img {
+    max-width: 100%;
+    margin: 0;
+    transition: all 0.3s ease;
+  }
+
+  /* Overlay that appears on hover */
+  .hover-effect-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .hover-effect-container:hover::after {
+    opacity: 1;
+  }
+
+  /* Optional: Add a text indicator for clickable images */
+  .hover-effect-container::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hover-effect-container:hover::before {
+    opacity: 1;
+  }
+
+  .back-button {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+  }
+
+  .back-button:hover {
+    background-color: #ffdf4d;
+  }
+
+  .zoom-on-click img {
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .zoom-on-click img.clicked {
+    transform: scale(2); /* or whatever size you want */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: none;
+  }
+  .p2 {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
+   body2 {
+            margin: 0;
+            padding: 50px;
+            background: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .player {
+            background: #2a2a2a;
+            border: 2px inset #666;
+            padding: 20px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .display {
+            background: #000;
+            color: #00ff00;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px inset #333;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn {
+            background: #3a3a3a;
+            border: 2px outset #666;
+            color: #fff;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn:hover {
+            background: #4a4a4a;
+        }
+
+        .btn:active {
+            border: 2px inset #666;
+        }
+
+        .play {
+            background: #ff0066;
+            color: #fff;
+        }
+
+        .play:hover {
+            background: #ff3388;
+        }
+        .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #00ff00;
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+}
+
+.nav-arrow:hover {
+    background: rgba(0, 255, 0, 0.2);
+    color: #fff;
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+</style>
+<body>
+  <div class="container">
+    </p>
+    <h1>Minds Eye</h1>
+    <p>Photography Project inspired by the song "Things to Do" by Alex G</p>
+    
+    <p2>“Hold on tight to this time, this place. Cause everything you know will be erased”.</p2>
+    <p> </p>
+    <p>It makes me think of activities I used to do as a kid. Like walking to school every day and paying attention to the small things I would find. <i></i><br> You never realize that peace, being a kid and just looking, with no rush and little worries. Now I make sure I really take my time to embrace and appreciate what’s around me and “suck it in” because life really does change fast, you never know when it’ll be the last time.
+       Last time you’ll be in a certain place, with a certain mindset, with a certain feeling, with a certain perspective. It all changes. I decided to shoot at a new park and my old elementary school that haven’t visited in 10 years. When I was exploring, I expected everything to be the same. I wanted everything to be an exact snapshot of how I remember it, but it wasn’t. All the playgrounds were new, and the bushes were unkept. It was all different. I wonder what will change in my present. I must appreciate where I am now and enjoy my surroundings before it changes, or I change. I think my work for this project is mediocre but my last 10 final images came out better than I expected, especially with the time I spent on it. I struggled to find time and a good day for photos. It was hard because I’m an adult now, I have work, I have classes, I have worries and struggles now taking up my day. I found myself skipping class to catch up on sleep, so I missed the critiques. I really wish I was a kid again so I could just go outside and play, but now I can’t seem to find time to see and feel the sun.</p>
+    <p></p>
+      <div class="player">
+        <div class="display">
+            <div>♪ Things to do - Alex G</div>
+        </div>
+                <audio id="audioPlayer" controls>
+          <source src="/public/external/10 - Alex G - Things to Do.mp3" type="audio/mpeg">
+
+        </audio>
+
+    </div>
+    <p3>
+      <br><br>
+      <i>Thinking of things to do</i><br><br>
+      <i>Yeah, only the cheapest things left there for you</i><br><br>
+      <i>And the only thing I learned from you</i><br><br>
+      <i>Is that there’s nothing left to look forward to and</i><br><br>
+      <i>I was asleep for days</i><br><br>
+      <i>And now you’re the only thing keeping me awake</i><br><br>
+      <i>The calculator will make the same mistakes</i><br><br>
+      <i>Yeah, I see it in its face</i><br><br>
+      <i>Hold on tight to this time, this place</i><br><br>
+      <i>‘Cause everything you know will be erased</i><br><br>
+      <i>You were born inside your head</i><br><br>
+      <i>And that is where you’ll be when you are dead</i><br><br>
+      <i>You’re just a boy, you are no man</i><br><br>
+      <i>And nobody you know will understand</i><br><br>
+      <i>You’re just a boy, you are no man</i><br><br>
+      <i>And nobody you know will understand</i><br><br>
+    </p3>
+    <p3>
+      <i>[Chorus]</i><br><br>
+      <i>Welcoming you back home</i><br><br>
+      <i>The only one that you have ever known</i><br><br>
+      <i>Welcoming you back home</i><br><br>
+      <i>The only one that you will ever know</i><br><br>
+    </p3>
+    <br>
+    
+    <div class="gallery">
+     <div class="overlay" id="lightbox" onclick="closeLightbox()">
+    <button class="nav-arrow prev-arrow" onclick="event.stopPropagation(); prevImage()">❮</button>
+    <img id="lightbox-img" src="">
+    <button class="nav-arrow next-arrow" onclick="event.stopPropagation(); nextImage()">❯</button>
+</div>
+      <div class="gallery-item">
+        <div class="hover-effect-container">
+          <img src="DSC_0639.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="court.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="game.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="can.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="gate.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="grass.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="house.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="sun.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="weball.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="hover-effect-container">
+          <img src="bug.jpg" alt="Art Piece 1" onclick="openLightbox(this.src)">
+        </div>
+      </div>
+    </div>
+    <a href="gallery.html" class="back-button">Back to Gallery</a>
+  </div>
+  <script>
+let currentImageIndex = 0;
+const images = [
+    "DSC_0639.jpg",
+    "court.jpg", 
+    "game.jpg",
+    "can.jpg",
+    "gate.jpg",
+    "grass.jpg",
+    "house.jpg",
+    "sun.jpg",
+    "weball.jpg",
+    "bug.jpg"
+];
+
+function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    // Find the index of the clicked image
+    currentImageIndex = images.indexOf(src);
+    
+    lightboxImg.src = src;
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    document.getElementById('lightbox-img').src = images[currentImageIndex];
+}
+
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    document.getElementById('lightbox-img').src = images[currentImageIndex];
+}
+
+// Close lightbox with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+        nextImage();
+    } else if (e.key === 'ArrowLeft') {
+        prevImage();
+    }
+});
+</script>
+</body>
+</html>
+
+
