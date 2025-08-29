@@ -22,7 +22,6 @@
 
   .container {
     max-width: auto;
-    padding: 20px;
     border-radius: 10px;
   }
 
@@ -175,26 +174,23 @@ display: flex;
 max-width: 100%;
 justify-content: space-between;
 align-items: center;
-padding: 30px 100px;
+padding: 30px 50px 40px;
 background-color: black;
 border-bottom: 1px solid gray;
 }
-
 .welcome {
-  font-size: 48px;
+  font-size: 60px;
   color: red;
-  margin-bottom: 20px;
-
+  font-weight: bold;
 }
-
 .nav-links {
   display: flex;
   gap: 40px;
-  color: magenta;
-  text-decoration: none;
-  font-size: 18px;
-  font-family: 'Creepster', cursive; /* Optional spooky style */
-
+  color: blue;
+  text-decoration: underline;
+  font-size: 30px;
+  padding: 60px 130px 30px;
+  font-weight: bold;
 }
 
 
@@ -241,6 +237,12 @@ border-bottom: 1px solid gray;
   width: 100%;
   height: 250px;
 }
+.nav-label {
+  display: flex;
+  gap: 40px;
+  font-size: 30px;
+  padding: 50px 50px 40px;
+}
 
 
 </style>
@@ -252,23 +254,31 @@ border-bottom: 1px solid gray;
 </audio>
   <img class="family" src="public/external/family.gif" alt="Overlay Image">
     <div class="navbar">
-      <div class="welcome">WELCOME!</div>
-      <div class="nav-links">
-        <a href="#" class="dropbtn">ABOUT</a>
-        <a href="#">GALLERY</a>
-        <div class="dropdown">
-          <button class="dropbtn">PROJECTS</button>
-          <div class="dropdown-content">
-            <a href="Invisiblecity.html">Invisible City</a>
-            <a href="#">Bag</a>
-            <a href="#">Collabs</a>
-            <a href="#">Old Projects</a>
+      <div class="welcome">Yolitzy.com</div>
           </div>
         </div>
       </div>
     </div>
   <div class="container">
+    <div>
+    <a href="Get Lost.html" class="nav-links">Get Lost</a>
+    <a href="Invisiblecity.html" class="nav-links">Invisible City</a>
+    <a href="mindseye.html" class="nav-links">Mindseye</a>
+    
+    <div style="height: 100px;"></div>
+
+    </div>
     <a href="index.html" class="back-button">Back to Home</a>
+    <div id="chat" style="font-family:sans-serif; max-width:400px; margin:auto;">
+  <div id="messages" style="min-height:200px; border:1px solid #ccc; padding:10px; margin-bottom:10px; overflow-y:auto;"></div>
+  <input id="userInput" placeholder="Say something..." style="width:75%;" />
+  <button onclick="respond()">Send</button>
+</div>
+
+
+    <div style="height: 100px;"></div>
+
+
     <div class="gallery">
       
       <div class="gallery-item">
@@ -362,4 +372,36 @@ border-bottom: 1px solid gray;
   function closeLightbox() {
     document.getElementById("lightbox").style.display = "none";
   }
+  
+
+const responses = [
+  "bruh what",
+  "nah i'm good",
+  "🤖 thinking too hard rn",
+  "did you mean to say that?",
+  "i'm literally just code",
+  "ok and?",
+  "huh?",
+  "lol what"
+];
+
+function respond() {
+  const input = document.getElementById("userInput").value;
+  const messages = document.getElementById("messages");
+
+  if (input.trim() === "") return;
+
+  const userMsg = document.createElement("div");
+  userMsg.textContent = "You: " + input;
+  messages.appendChild(userMsg);
+
+  const botMsg = document.createElement("div");
+  const randomReply = responses[Math.floor(Math.random() * responses.length)];
+  botMsg.textContent = "Thing: " + randomReply;
+  messages.appendChild(botMsg);
+
+  messages.scrollTop = messages.scrollHeight;
+  document.getElementById("userInput").value = "";
+}
+
 </script>
