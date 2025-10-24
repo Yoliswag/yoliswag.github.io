@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter Password</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    input, button {
+      margin: 6px;
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>The best platform t_____</h2>
+  <input type="password" id="passwordInput" placeholder="password">
+  <button onclick="checkPassword()">Submit</button>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value;
+      const correct = "tumblr"; // change this to your password
+      if (password === correct) {
+        window.location.href = "real.html";
+      } else {
+        alert("Sorry wrong 😬");
+      }
+    }
+  </script>
+</body>
+</html>
+

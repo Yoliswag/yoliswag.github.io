@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JewerlyWork</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    background-color: #000;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the start */
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: auto;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px #ff00ff;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+  }
+  p2 {
+    padding-top: 30px;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 20px;
+    color: #00ff00;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+  }
+
+  .gallery-item {
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 10px #000;
+    text-align: center; /* Center text within each gallery item */
+    
+  }
+
+  .gallery-item img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 10px auto 10px;
+    border: 3px solid #ff00ff;
+  }
+
+  .gallery-item p {
+    font-size: 1rem;
+    color: #ff00ff;
+    text-shadow: 1px 1px 3px #000;
+  }
+
+  .hover-effect-container {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.hover-effect-container img {
+  display: block;
+  max-width: 100%;
+  margin: 0; /* Reset margin since the container has margin */
+  transition: all 0.3s ease;
+}
+
+/* Overlay that appears on hover */
+.hover-effect-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Gray overlay with 60% opacity */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hover-effect-container:hover::after {
+  opacity: 1;
+}
+
+/* Optional: Add a text indicator for clickable images */
+.hover-effect-container::before {
+  content: 'CLICK';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 255, 60);
+  font-weight: bold;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-effect-container:hover::before {
+  opacity: 1;
+}
+
+  .back-button {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .back-button:hover {
+    background-color: #ffdf4d;
+  }
+  .zoom-on-click img {
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .zoom-on-click img.clicked {
+    transform: scale(2); /* or whatever size you want */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: none;
+  }
+
+.navbar {
+display: flex;
+max-width: 100%;
+justify-content: space-between;
+align-items: center;
+padding: 30px 50px 40px;
+background-color: black;
+border-bottom: 1px solid gray;
+}
+.welcome {
+  font-size: 60px;
+  color: red;
+  font-weight: bold;
+}
+.nav-links {
+  display: flex;
+  gap: 40px;
+  color: blue;
+  text-decoration: underline;
+  font-size: 30px;
+  padding: 60px 130px 30px;
+  font-weight: bold;
+}
+
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: black;
+  color: magenta;
+  font-size: 18px;
+  font-family: 'Creepster', cursive;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  border: 1px solid gray;
+  z-index: 1;
+  padding: 10px 0;
+}
+
+.dropdown-content a {
+  color: magenta;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #222;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.family {
+  width: 100%;
+  height: 250px;
+}
+.nav-label {
+  display: flex;
+  gap: 40px;
+  font-size: 30px;
+  padding: 50px 50px 40px;
+}
+</style>
+
+<div class="welcome">Yolitzy.com</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div>
+<p>Jewerly work done working as a potogragher and art assistant for local lexington artist Carolyn Signh</p>
+<p>Creator Of LusterWear LaudableMudStudio MeteriousMud </p>
+<a href="Invisiblecity.html" class="nav-links">Invisible City</a>
+<a href="mindseye.html" class="nav-links">Mindseye</a>
