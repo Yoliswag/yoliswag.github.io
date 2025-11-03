@@ -1,533 +1,330 @@
 <!DOCTYPE html>
-<html lang="english">
-  <head>
-    <title>exported project</title>
-    <meta name="viewport" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
 
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;  -webkit-font-smoothing: antialiased;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;  color: inherit;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}details {  display: block;  margin: 0;  padding: 0;}summary::-webkit-details-marker {  display: none;}[data-thq="accordion"] [data-thq="accordion-content"] {  max-height: 0;  overflow: hidden;  transition: max-height 0.3s ease-in-out;  padding: 0;}[data-thq="accordion"] details[data-thq="accordion-trigger"][open] + [data-thq="accordion-content"] {  max-height: 300vh;}details[data-thq="accordion-trigger"][open] summary [data-thq="accordion-icon"] {  transform: rotate(180deg);}html { scroll-behavior: smooth  }
-    </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 16px;
-      }
-  
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-theme-neutral-dark);
-        background: var(--dl-color-theme-neutral-light);
-
-        fill: var(--dl-color-theme-neutral-dark);
-      }
-    </style>
-
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/animate.css@4.1.1/animate.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Eater:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lakki+Reddy:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Rubik+Iso:wght@400&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
-    />
-  </head>
-  <div id='navbar' class='navbar'>
-  </div>
-  <body>
+  body {
+    background-color: #000000;
+    color: #00ff00;
     
-    <div class="wrapper-main">
-    <link rel="stylesheet" href="./style.css" />
-    <div>
-      <link href="./index.css" rel="stylesheet" />
+    font-family: "Courier New", Courier, monospace;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the start */
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
 
-      <div class="landing-container">
-        <div class="landing-landing">
-          <div class="landing-background">
-            
-            <img
-              src="public/external/matrix.gif"
-              alt="matrix1627"
-              class="landing-matrix1"
-            />
-            <img
-              src="public/external/KAtheric.gif"
-              alt="landing-k-atheric1"
-              class="landing-k-atheric1"
-            />
-            <img
-              src="public/external/skindogs1911-wodf-1100w.png"
-              alt="skindogs1911"
-              class="landing-skindogs1"
-            />
-          </div>
-          <img
-            src="public/external/lowtek1910-um1v-600h.png"
-            alt="lowtek1910"
-            class="landing-lowtek1"
-          />
-          <img
-            src="public/external/nunporn139-4wz-800w.png"
-            alt="nunporn139"
-            class="landing-nunporn"
-          />
-          <img
-            src="public/external/snowstrippers96-ccgl-700w.png"
-            alt="snowstrippers96"
-            class="landing-snowstrippers"
-          />
-          <img
-            src="public/external/iloveyou192-jrn-500w.png"
-            alt="iloveyou192"
-            class="landing-iloveyou1"
-          />
-          <img
-            src="public/external/image416-p7u-300h.png"
-            alt="image416"
-            class="landing-image4"
-          />
-                   <div class="landing-background-border-shadow">
-              <div class="music-player">
-                <h2>Thank You for gathering</h2>
-                <audio id="audio" controls style="display: block; margin: 0 auto;">
-                  <source src="public/external/2hollis - 3.mp3" type="audio/mp3">
-                </audio>
-              </div>
-          </div>
-          <img
-            src="public/external/image2137-qnak-300h.png"
-            alt="image2137"
-            class="landing-image2"
-          />
-          <div class="landing-debtgif"></div>
-          <img
-            src="public/external/debt.gif"
-            alt="image8140"
-            class="landing-image8"
-          />
-          <img
-            src="public/external/man17-oihu-300h.png"
-            alt="man17"
-            class="landing-man"
-          />
-          <img
-            src="public/external/animmlp1518-w4w-200h.png"
-            alt="animMLP1518"
-            class="landing-anim-mlp1"
-          />
-          <img
-            src="public/external/japanesead197-k6zn-200h.png"
-            alt="japanesead197"
-            class="landing-japanesead1"
-          />
-          <img
-            src="public/external/japanesead2198-o4ec-200h.png"
-            alt="japanesead2198"
-            class="landing-japanesead21"
-          />
-          <img
-            src="public/external/bar141-6pdn-200h.png"
-            alt="bar141"
-            class="landing-bar"
-          />
-          <img
-            src="public/external/image10142-ftxa-200w.png"
-            alt="image10142"
-            class="landing-image10"
-          />
-          <img
-            src="public/external/exbar143-u0e-200h.png"
-            alt="exbar143"
-            class="landing-exbar"
-          />
-          <img
-            src="public/external/image12144-gsfh-300h.png"
-            alt="image12144"
-            class="landing-image12"
-          />
-          <img
-            src="public/external/image15147-bfr3-200h.png"
-            alt="image15147"
-            class="landing-image15"
-          />
-          <img
-            src="public/external/wtc fireman.gif"
-            alt="wtcangelfireman1624"
-            class="landing-wtcangelfireman1"
-          />
-          <img
-            src="public/external/image7119-l1xn-200h.png"
-            alt="image7119"
-            class="landing-image7"
-          />
-          <img
-            src="public/external/image18150-kui5-300h.png"
-            alt="image18150"
-            class="landing-image18"
-          />
-          <img
-            src="public/external/image17149-mbla-300h.png"
-            alt="image17149"
-            class="landing-image17"
-          />
-          <img
-            src="public/external/one way.gif"
-            alt="oneway1517"
-            class="landing-oneway1"
-          />
-          <img
-            src="public/external/american medical.png"
-            alt="americanmedical123"
-            class="landing-americanmedical"
-          />
-          <div class="landing-weedgif"></div>
-          <div class="landing-familygif"></div>
-          <div class="landing-newgif">
-            <img
-              src="public/external/image1118-ufrr-200h.png"
-              alt="image1118"
-              class="landing-image1"
-            />
-            <img
-              src="public/external/xboxlive1520-437-200h.png"
-              alt="xboxlive1520"
-              class="landing-xboxlive1"
-            />
-          </div>
-          <img
-            src="public/external/myhead1521615-3jq-300w.png"
-            alt="Myhead152126"
-            class="landing-myhead152"
-          />
-          <img 
-            src="public/external/welcome.gif"
-            alt="welcome gif"
-            class="landing-welcomegif1"
-          />
-          <img 
-          src="public/external/welcome.gif"
-          alt="welcome gif"
-          class="landing-welcomegif2"
-          />
-          <img 
-          src="public/external/welcome.gif"
-          alt="welcome gif"
-          class="landing-welcomegif3"
-      />
-          <img 
-          src="public/external/money jumping.gif"
-          alt="Money jumping animation"
-          class="landing-money20jumpinggif2"
-      />
-          <img 
-          src="public/external/money jumping.gif"
-          alt="Money jumping animation"
-          class="landing-money20jumpinggif2"
-          />
-          <span class="landing-text4">
-            Wher here for a fun time not a long time.
-          </span>
+  .container {
+    max-width: auto;
+    border-radius: 10px;
+  }
 
-          <img
-            src="public/external/eaglecross.gif"
-            alt="eaglecross1510"
-            class="landing-eaglecross1"
-          />
-          <img
-            src="public/external/Gun.gif"
-            alt="Gun158"
-            class="landing-gun1"
-          />
-          <img
-            src="public/external/politic3.gif"
-            alt="politic31512"
-            class="landing-politic31"
-          />
-          <img
-            src="public/external/people.gif"
-            alt="people1513"
-            class="landing-people1"
-          />
-          <img
-            src="public/external/halo.gif"
-            alt="halo1521"
-            class="landing-halo1"
-          />
-          <img
-            src="public/external/halohumpday.gif"
-            alt="halohumpday1522"
-            class="landing-halohumpday1"
-          />
-          <img
-            src="public/external/mi-pene-logo.gif"
-            alt="mipenelogo1523"
-            class="landing-mipenelogo1"
-          />
-          <img
-            src="public/external/mangaporno.gif"
-            alt="mangaporno154"
-            class="landing-mangaporno1"
-          />
-          <img
-            src="public/external/america.gif"
-            alt="america159"
-            class="landing-america1"
-          />
-          <img
-            src="public/external/derp 1.jpeg"
-            alt="derp194"
-            class="landing-derp1"
-          />
-          <img
-            src="public/external/download 1.png"
-            alt="download195"
-            class="landing-download1"
-          />
-          <img
-            src="public/external/ps2banner2.gif"
-            alt="ps2banner21519"
-            class="landing-ps2banner21"
-          />
-          <img
-            src="public/external/virilitypills4.gif"
-            alt="virilitypills41516"
-            class="landing-virilitypills41"
-          />
-          <img
-            src="public/external/Baner_naskoart.gif"
-            alt="Banernaskoart1515"
-            class="landing-banernaskoart1"
-          />
-          <img
-            src="public/external/blow.gif"
-            alt="blow155"
-            class="landing-blow1"
-          />
-          <span class="landing-text5">youll do great things in life</span>
-          <div class="landing-sociallinks">
-            <img
-              src="public/external/rectangle61619-co9n-200h.png"
-              alt="Rectangle61619"
-              class="landing-rectangle6"
-            />
-            <a href="https://www.instagram.com/Raviy0li" target="_blank" rel="noopener noreferrer">
-              <img
-                  src="public/external/instagram1619-oq51.svg"
-                  alt="instagram1619"
-                  class="landing-instagram1"
-              />
-              <span class="landing-text6">Raviy0li</span>
-              <img
-                  src="public/external/rectangle51619-sz5-200h.png"
-                  alt="Rectangle51619"
-                  class="landing-rectangle5"
-              />
-          </a>
-            <a href="https://www.x.com/raviy0li" target="_blank" rel="noopener noreferrer">
-            <img
-              src="public/external/twitter1619-6ew.svg"
-              alt="twitter1619"
-              class="landing-twitter"
-            />
-            <span class="landing-text7">Raviy0li</span>
-            </a>
-            <img
-              src="public/external/rectangle41619-l5g-200h.png"
-              alt="Rectangle41619"
-              class="landing-rectangle4"
-            />
-            <a href="https://www.instagram.com/Rostieta" target="_blank" rel="noopener noreferrer">
-              <span class="landing-text8">Rostieta</span>
-              <img
-                  src="public/external/instagram1619-d1h4.svg"
-                  alt="instagram1619"
-                  class="landing-instagram2"
-              />
-            <a href="https://yolitzy.com" target="_blank" rel="noopener noreferrer">
-              <img
-                  src="public/external/rectangle71619-jvmg-200h.png"
-                  alt="Rectangle71619"
-                  class="landing-rectangle7"
-              />
-              <span class="landing-text9">Yolitzy.com</span>
-          </a>
-            <div class="landing-link">
-              <a href="gallery.html" class="landing-text2">CLICK HERE</a>
-            </div>
+  h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px #ff00ff;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;#605b5b
+  }
+  p2 {
+    padding-top: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #00ff00;
+    text-shadow: 1px -1px 2px #000000;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+  }
+
+  .gallery-item {
+    border-radius: 10px;
+    padding: 10px;
+ text-align: center; /* Center text within each gallery item */
+    
+    
+  }
+
+  .gallery-item img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 10px auto 10px;
+    border: 3px solid #ff00ff;
+    box-shadow: 2px 2px 2px rgba(84, 84, 84, 0.5);
+   
+
+  }
+
+  .gallery-item p {
+    font-size: 1rem;
+    color: #ff00ff;
+  }
+
+  .hover-effect-container {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.hover-effect-container img {
+  display: block;
+  max-width: 100%;
+  margin: 0; /* Reset margin since the container has margin */
+  transition: all 0.3s ease;
+}
+
+/* Overlay that appears on hover */
+.hover-effect-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100%;
+  background-color: rgba(255, 49, 231, 0.6); /* Gray overlay with 60% opacity */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hover-effect-container:hover::after {
+  opacity: 1;
+}
+
+/* Optional: Add a text indicator for clickable images */
+.hover-effect-container::before {
+  content: 'CLICK';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 255, 60);
+  font-weight: bold;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-effect-container:hover::before {
+  opacity: 1;
+}
+
+  .back-button {
+    display: inline-block;
+    background-color: #fff826;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .back-button:hover {
+    background-color: #ffdf4d;
+  }
+  .zoom-on-click img {
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .zoom-on-click img.clicked {
+    transform: scale(2); /* or whatever size you want */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: none;
+  }
+
+.navbar {
+max-width: 100%;
+border-bottom: 1px solid gray;
+}
+.welcome {
+  font-size: 60px;
+  color: red;
+  font-weight: bold;
+  text-align: left;
+  padding: 50px 130px 50px;
+}
+.nav-links {
+  display: flex;
+  gap: 40px;
+  color: rgb(23, 96, 255);
+  text-decoration: underline;
+  font-size: 30px;
+  padding: 60px 130px 30px;
+  font-weight: bold;
+}
+
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: black;
+  color: magenta;
+  font-size: 18px;
+  font-family: 'Creepster', cursive;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  border: 1px solid gray;
+  z-index: 1;
+  padding: 10px 0;
+}
+
+.dropdown-content a {
+  color: magenta;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #222;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.family {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+.nav-label {
+  display: flex;
+  gap: 40px;
+  font-size: 30px;
+  padding: 50px 50px 40px;
+}
+.project-line {
+  display: flex;             /* put children on same line */               /* space between them */
+  align-items: baseline;         /* spacing between rows */
+}
+.meta {
+  font-size: 14px;
+  font-style: italic;
+}
+
+
+    .yoli-section body,
+    .yoli-section {
+        font-family: Times New Roman, serif;
+    
+            color: #ff00ff;
+  font-size: 30px;
+  padding: 60px 130px 30px;
+  line-height: 2;
+  text-align: left;
+    }
+
+
+
+
+    
+
+
+
+
+
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+<body>
+
+  <img class="family" src="public/external/family.gif" alt="Overlay Image">
+    <div class="navbar">
+      <div class="welcome" style="text-align: center;">Yolitzy.com</div>
+          </div>
+          <!-- Then wrap your content -->
+<div class="yoli-section">
+    <p style="text-align: center;">Yolitzy is currently under construction<br>
+</p>
+
         </div>
+              <div id="portfolio" class="gallery-item"></div>
+
+              <iframe width="70%" height="120" scrolling="no" frameborder="yes" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2055275968&color=%23ff00bf&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #c70000;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/wraith9_gloam" title="Wraith9" target="_blank" style="color: #f10000; text-decoration: none;">Wraith9</a> · <a href="https://soundcloud.com/wraith9_gloam/2fd95d97-67db-4581-9f3e-8cb9f8ce9aa8" title="Doves" target="_blank" style="color: #e00000; text-decoration: none;">Doves</a></div>
+         <br><br><br><br>      
+<img style="width: 30%;" src="portfolio/7b4bio5hobgskW8qdPdvSqcwwJTvbiCMpGmRey1Rtd8H5rXgFVhybNSznokQayUr4RJoJv3ixpQPf69bQ9yBkMoK242J3jUwzP6swMhkX41Kvuhpek72XmoUrfUXgrPmdfqXe6UgthWjXhWXQwRZmg8EysHG.jpg" alt="Photo taken on July 23, 2022 at 8:53 AM"> <br><br><br><br>
+
+    
       </div>
     </div>
-  
-<div data-layer="landing" class="Landing" style="width: 100%; height: 100%; position: relative; background: black">
-    <div data-layer="background" class="Background" style="width: 1450px; height: 2331px; left: -40px; top: -17px; position: absolute">
-        <img data-layer="matrix 1" class="Matrix1" style="width: 1208.04px; height: 538.40px; left: 83.90px; top: 483.72px; position: absolute" src="public/external/matrix.gif" />
-        <img data-layer="KAtheric 1" class="landing-k-atheric1" style=" left: 41px; top: 0px; position: absolute" src="public/external/KAtheric.gif" />
-        <img data-layer="skindogs 1" class="Skindogs1" style="width: 1080px; height: 1080px; left: 0px; top: 1251px; position: absolute" src="public/external/skindogs.png" />
-    </div>
-    <img data-layer="low tek" class="LowTek" style="width: 674px; height: 545px; left: 464px; top: 736px; position: absolute" src="/Photos/low tek.jpeg"
-    <img data-layer="nunporn" class="Nunporn" style="width: 720px; height: 300px; left: 256px; top: 1319px; position: absolute" src="public/external/nunporn139-4wz-800w.png" />
-    <img data-layer="snow strippers" class="SnowStrippers" style="width: 686px; height: 386px; left: 817px; top: 318px; position: absolute" src="https://via.placeholder.com/686x386" />
-    <img data-layer="iloveyou" class="Iloveyou" style="width: 403px; height: 393px; left: 179px; top: 312px; position: absolute" src="/Photos/iloveyou.jpeg" />
-    <img data-layer="image 4" class="Image4" style="width: 300px; height: 300px; left: 1130px; top: 820px; position: absolute" src="public/external/image 4.png" />
-    <div data-layer="Shop" class="Shop" style="width: 185px; height: 60px; left: 641px; top: 230px; position: absolute; text-align: center; color: #FF00E5; font-size: 12px; font-family: Eater; font-weight: 400; text-transform: uppercase; word-wrap: break-word">Shop</div>
-    <div data-layer="Link" class="Link" style="height: 38px; padding-top: 10px; padding-bottom: 11px; padding-left: 20px; padding-right: 17.58px; left: 145px; top: 813px; position: absolute; background: #FFCC00; box-shadow: 2px 2px 4px black; border-radius: 5px; justify-content: center; align-items: center; display: inline-flex">
-        <div data-layer="whats the point" class="WhatsThePoint" style="width: 152.98px; height: 17px; text-align: center; color: black; font-size: 16px; font-family: Bona Nova SC; font-weight: 700; text-transform: uppercase; word-wrap: break-word">whats the point</div>
-    </div>
-    <div class="landing-link">
-      <a href="What's the point.html" class="landing-text2">whats the point</a>
-    </div>
-    <img data-layer="image 2" class="Image2" style="width: 250px; height: 250px; left: 1192px; top: 1182px; position: absolute" src="public/external/image 2.png" />
-    <img data-layer="debt.gif" class="DebtGif" style="width: 175px; height: 676px; left: 1056px; top: 60px; position: absolute" src="public/external/debt.gif" />
-    <img data-layer="image 8" class="Image8" style="width: 250px; height: 126px; left: 1192px; top: 1284px; position: absolute" src="public/external/image 8.png" />
-    <img data-layer="man" class="Man" style="width: 661px; height: 279px; left: 489px; top: 515px; position: absolute" src="public/external/man1616-a15j-600w.png" />
-    <img data-layer="animMLP 1" class="Animmlp1" style="width: 234px; height: 69px; left: 1174px; top: 736px; position: absolute" src="public/external/animMLP 1.gif" />
-    <img data-layer="japanesead 1" class="Japanesead1" style="width: 143px; height: 60px; left: 761px; top: 2109px; position: absolute" src="public/external/japanesead197-k6zn-200h.png" />
-    <img data-layer="japanesead2 1" class="Japanesead21" style="width: 468px; height: 60px; left: 60px; top: 2197px; position: absolute" src="public/external/japanesead2198-o4ec-200h.png" />
-    <img data-layer="bar" class="Bar" style="width: 468px; height: 60px; left: 662px; top: 1128px; position: absolute" src="public/external/bar.png" />
-    <img data-layer="image 10" class="Image10" style="width: 169px; height: 395px; left: 23px; top: 320px; position: absolute" src="public/external/image 10.png" />
-    <img data-layer="ex bar" class="ExBar" style="width: 468px; height: 60px; left: 112px; top: 1691px; position: absolute" src="public/external/ex bar.png" />
-    <img data-layer="image 12" class="Image12" style="width: 400px; height: 270px; left: 564px; top: 1634px; position: absolute" src="public/external/image 12.png" />
-    <img data-layer="image 15" class="Image15" style="width: 200px; height: 35px; left: 15px; top: 67px; position: absolute" src="public/external/image 15.png" />
-    <img data-layer="wtc-angel-fireman 1" class="WtcAngelFireman1" style="width: 494px; height: 415.80px; left: 482px; top: 741px; position: absolute; transform: rotate(180deg); transform-origin: 0 0" src="public/external/wtc fireman.gif" />
-    <img data-layer="image 7" class="Image7" style="width: 468px; height: 60px; left: 499px; top: 715px; position: absolute" src="public/external/image 7.png" />
-    <img data-layer="image 18" class="Image18" style="width: 200px; height: 216px; left: 1242px; top: 67px; position: absolute" src="public/external/image 18.png" />
-    <img data-layer="image 17" class="Image17" style="width: 195px; height: 253px; left: 419px; top: 1745px; position: absolute" src="public/external/image 17.png" />
-    <img data-layer="one-way 1" class="OneWay1" style="width: 349px; height: 141px; left: 240px; top: 979px; position: absolute" src="public/external/one way.gif" />
-    <img data-layer="american medical" class="AmericanMedical" style="width: 1048px; height: 852px; left: 293px; top: 469px; position: absolute" src="/Photos/american medical.png" />
-    <img data-layer="weed.gif" class="WeedGif" style="width: 437px; height: 211px; left: -42px; top: 141px; position: absolute" src="public/external/weed.gif" />
-    <img data-layer="family.gif" class="FamilyGif" style="width: 1191px; height: 82px; left: 121px; top: 1196px; position: absolute" src="public/external/family.gif" />
-    <div data-layer="new.gif" class="NewGif" style="width: 600px; height: 243px; left: 424px; top: 224px; position: absolute; background-image: url(public/external/new.gif)">
-        <img data-layer="image 1" class="Image1" style="width: 150px; height: 20px; left: 336px; top: 206px; position: absolute" src="public/external/image1118-ufrr-200h.png" />
-        <img data-layer="xboxlive 1" class="Xboxlive1" style="width: 588px; height: 60px; left: 0px; top: 176px; position: absolute" src="public/external/xboxlive.gif" />
-    </div>
-    <img data-layer="Myhead1.5 2" class="Myhead152" style="width: 468px; height: 574px; left: 103px; top: -133px; position: absolute" src="public/external/myhead1521615-3jq-300w.png" />
-    <img data-layer="welcome.gif" class="WelcomeGif" style="width: 470px; height: 48px; left: -16px; top: -3px; position: absolute" src="public/external/welcome.gif" />
-    <img data-layer="welcome.gif" class="WelcomeGif" style="width: 513px; height: 48px; left: 434px; top: -3px; position: absolute" src="public/external/welcome.gif" />
-    <img data-layer="welcome.gif" class="WelcomeGif" style="width: 507px; height: 48px; left: 935px; top: -3px; position: absolute" src="public/external/welcome.gif" />
-    <img data-layer="money%20jumping.gif" class="Money20jumpingGif" style="width: 145px; height: 181px; left: 2px; top: 642px; position: absolute" src="public/external/money jumping.gif" />
-    <img data-layer="money%20jumping.gif" class="Money20jumpingGif" style="width: 145px; height: 181px; left: 870px; top: -17px; position: absolute" src="public/external/money jumping.gif" />
-    <div data-layer="Wher here for a fun time not a long time." class="WherHereForAFunTimeNotALongTime" style="width: 1207px; height: 128px; left: 87px; top: 445px; position: absolute; text-align: center; color: #BB009C; font-size: 36px; font-family: Lakki Reddy; font-weight: 400; word-wrap: break-word">Wher here for a fun time not a long time.</div>
-    <img data-layer="eaglecross 1" class="Eaglecross1" style="width: 318px; height: 127px; left: 1068px; top: 2167px; position: absolute" src="public/external/eaglecross 1.gif" />
-    <img data-layer="Gun 1" class="Gun1" style="width: 339px; height: 245px; left: 880px; top: 1651px; position: absolute" src="public/external/Gun.gif" />
-    <img data-layer="politic3 1" class="Politic31" style="width: 196px; height: 196px; left: 1193px; top: 1440px; position: absolute" src="public/external/politic3.gif" />
-    <img data-layer="people 1" class="People1" style="width: 110px; height: 320px; left: 121px; top: 1278px; position: absolute" src="public/external/people.gif" />
-    <img data-layer="halo 1" class="Halo1" style="width: 175px; height: 247px; left: 439px; top: 1993px; position: absolute" src="public/external/halo.gif" />
-    <img data-layer="halohumpday 1" class="Halohumpday1" style="width: 208px; height: 232px; left: 976px; top: 1459px; position: absolute" src="public/external/halohumpday.gif" />
-    <img data-layer="mi-pene-logo 1" class="MiPeneLogo1" style="width: 279px; height: 57px; left: 372px; top: 1128px; position: absolute" src="public/external/mi pene.gif" />
-    <img data-layer="mangaporno 1" class="Mangaporno1" style="width: 366px; height: 47px; left: 684px; top: 2272px; position: absolute" src="public/external/mangaporno.gif" />
-    <img data-layer="america 1" class="America1" style="width: 204px; height: 153px; left: 964px; top: 1293px; position: absolute" src="public/external/america.gif" />
-    <img data-layer="derp 1" class="Derp1" style="width: 323px; height: 296px; left: 1085px; top: 1856px; position: absolute" src="public/external/derp 1.jpeg" />
-    <img data-layer="download 1" class="Download1" style="width: 225px; height: 225px; left: 144px; top: 1964px; position: absolute" src="public/external/download 1.png" />
-    <img data-layer="ps2banner2 1" class="Ps2banner21" style="width: 479px; height: 62px; left: 318px; top: 1598px; position: absolute" src="public/external/ps2banner2.gif" />
-    <img data-layer="virilitypills4 1" class="Virilitypills41" style="width: 500px; height: 64px; left: 96px; top: 1782px; position: absolute" src="public/external/virilitypills4.gif" />
-    <img data-layer="Baner_naskoart 1" class="BanerNaskoart1" style="width: 673px; height: 65px; left: 318px; top: 2242px; position: absolute" src="public/external/Baner_naskoart.gif" />
-    <img data-layer="blow 1" class="Blow1" style="width: 456px; height: 58px; left: 614px; top: 2030px; position: absolute" src="public/external/blow.gif" />
+      <script>
+        async function loadPortfolio() {
+          const res = await fetch('portfolio/data.json');
+          const items = await res.json();
+    
+          // sort by date (newest first)
+          items.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+          const container = document.getElementById('portfolio');
+          items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'portfolio-item';
+    
+            div.innerHTML = `
+              ${item.file.endsWith('.jpg') || item.file.endsWith('.png') 
+                ? `<img src="portfolio/${item.file}" alt="${item.title}">`
+                : `<a href="portfolio/${item.file}" target="_blank">View File</a>`}
+              <h2>${item.title}</h2>
+              <p><em>${item.date}</em></p>
+              <p>${item.description}</p> <br><br>
+            `;
+    
+            container.appendChild(div);
+          });
+        }
+    
+        loadPortfolio();
+      </script>
+      
 
-    <div class="star-container" onclick="alert('tum link coming im just getting comfortable with it. its my baby my safe place i cant just give it for free')">
-      <div class="star-border"></div>
-      <div class="star"></div>
-      <div class="button-text">tumtumtum</div>
-      <div class="sparkle"></div>
-      <div class="sparkle"></div>
-      <div class="sparkle"></div>
-      <div class="sparkle"></div>
-  </div>
-    <div data-layer="youll do great things in life" class="YoullDoGreatThingsInLife" style="width: 1271px; height: 436px; left: 73px; top: 1772px; position: absolute; text-align: center; color: #0392FF; font-size: 197px; font-family: Londrina Solid; font-weight: 400; word-wrap: break-word">youll do great things in life</div>
-    <div data-layer="social links" class="SocialLinks" style="width: 365px; height: 282px; left: 719px; top: 288px; position: absolute">
-        <div data-layer="Rectangle 6" class="Rectangle6" style="width: 311.32px; height: 75.20px; left: 253.68px; top: 423px; position: absolute; background: black; border-radius: 10px"></div>
-        <div data-layer="instagram" class="Instagram" style="width: 76.49px; height: 75.20px; left: 200px; top: 423px; position: absolute; background: #FF00EA; border-radius: 14px">
-            <div data-layer="instagram" class="Instagram" style="width: 76.49px; height: 75.20px; left: 0px; top: 0px; position: absolute; background: black"></div>
-        </div>
-     
-    </div>
-</div>
-</div>
-    </body>
-  </html>
-
+</body>
+</html>

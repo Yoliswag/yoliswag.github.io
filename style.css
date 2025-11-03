@@ -32,6 +32,41 @@
   --dl-space-space-oneandhalfunits: 24px;
 }
  
+/* Using Google Fonts (Jacquard 24) ---------------------------------------------------------
+  The page includes the Google Fonts stylesheet; if you prefer self-hosting, replace this
+  comment with an @font-face declaration that points to your local font files. */
+
+/* The Figma-converted element styles (large display text) */
+.figma-text{
+  font-family: "Jacquard 24", 'Helvetica Neue', Arial, sans-serif;
+  font-size: 128px; /* from Figma text-[128px] */
+  line-height: 1; /* tight leading to match design */
+  text-align: center;
+  color: #ff853e;
+  font-weight: 400;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+/* Responsive fallback so it doesn't overflow on small screens */
+@media (max-width:900px){
+  .figma-text{font-size:128px}
+}
+
+@media (max-width:480px){
+  .figma-text{font-size:44px}
+}
+
+/* Small modifier for using the Jacquard display font at body/inline sizes */
+.figma-text--small{
+  font-size: 24px; /* body-sized headline */
+  line-height:1.2;
+  white-space:normal; /* allow wrapping */
+}
+
+
 
 .button {
   color: var(--dl-color-theme-neutral-dark);
