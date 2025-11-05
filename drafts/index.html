@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yolitzy</title>
+    <style>
+        body {
+            font-family: Times New Roman, serif;
+            margin: 40px;
+            background: white;
+            color: black;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        a {
+            color: #0000EE;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #551A8B;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>HI=i  hi hi</h1>
+
+    <p>Drafts/Dev Notes its okay.</p>   
+
+    <h2>Drafts</h2>
+    <ul>
+        <li><a href="bag.txt">bag.txt</a></li>
+        <li><a href="indexdraft.html">indexdraft.html</a></li>
+        <li><a href="homedraft.html">homedraft.html</a></li>
+        <li><a href="JewerlyWork.html">JewerlyWork.html</a></li>
+        <li><a href="myhead.txt">myhead.txt</a></li>
+        <li><a href="simple-index.html">simple-index.html</a></li>
+        <li><a href="real.html">real.html</a></li>
+        <script>
+            var files = [];
+            var folder = "drafts/";
+
+            function fetchFiles() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var response = xhr.responseText;
+                        var fileNames = response.split("\n");
+                        for (var i = 0; i < fileNames.length; i++) {
+                            if (fileNames[i].trim() != "") {
+                                files.push(fileNames[i].trim());
+                            }
+                        }
+                        for (var i = 0; i < files.length; i++) {
+                            var link = document.createElement("li");
+                            var a = document.createElement("a");
+                            a.href = folder + files[i];
+                            a.innerText = files[i];
+                            link.appendChild(a);
+                            document.querySelector("ul").appendChild(link);
+                        }
+                    }
+                };
+                xhr.open("GET", folder + "files.txt", true);
+                xhr.send();
+            }
+
+            fetchFiles();
+        </script>
+    </ul>
+
+</body>
+</html>
