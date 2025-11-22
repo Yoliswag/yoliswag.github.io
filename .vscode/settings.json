@@ -1,5 +1,6 @@
 {
     "liveServer.settings.CustomBrowser": "chrome",
     "liveServer.settings.host": "192.168.4.44",
-    "liveServer.settings.useLocalIp": true
+    "liveServer.settings.useLocalIp": true,
+    "liveServer.settings.port": 5501
 }
