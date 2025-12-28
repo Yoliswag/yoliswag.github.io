@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Enter Password</title>
@@ -24,7 +24,7 @@
 </head>
 <body>
   <h2>The best platform t_____</h2>
-  <input type="password" id="passwordInput" placeholder="password">
+  <input type="password" id="passwordInput" placeholder="password" onkeydown="if (event.keyCode === 13) { checkPassword(); }">
   <button onclick="checkPassword()">Submit</button>
 
   <script>
@@ -32,9 +32,9 @@
       const password = document.getElementById("passwordInput").value;
       const correct = "tumblr"; // change this to your password
       if (password === correct) {
-        window.location.href = "real.html";
+        window.location.href = "real/index.html";
       } else {
-        alert("Sorry wrong 😬");
+        alert("Sorry wrong");
       }
     }
   </script>

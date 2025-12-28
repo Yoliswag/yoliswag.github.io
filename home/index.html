@@ -9,9 +9,7 @@
 <style>
 
   body {
-    background-color: #ffffff;
-    color: #000000;
-    
+    background-color: #111111;
     font-family: "Courier New", Courier, monospace;
     justify-content: center;
     align-items: flex-start; /* Align items at the start */
@@ -28,6 +26,7 @@
 
   h1 {
     font-size: 2.5rem;
+        color: #14ff28;
     text-shadow: 2px 2px 5px #ff00ff;
     margin-bottom: 10px;
   }
@@ -248,6 +247,7 @@ border-bottom: 1px solid gray;
 .meta {
   font-size: 14px;
   font-style: italic;
+    color: rgb(0, 255, 60);
 }
 
 
@@ -276,102 +276,61 @@ border-bottom: 1px solid gray;
 <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 
 <body>
-  <audio id="audioPlayer" autoplay>
-    <source src="/public/external/woody-woodpecker-laugh-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
-</audio>
-  <img class="family" src="public/external/family.gif" alt="Overlay Image">
     <div class="navbar">
-      <div class="welcome">Yolitzy.com</div>
+      <div class="welcome" style="text-align: center;">Yolitzy.com</div>
           </div>
-          <!-- Then wrap your content -->
+    <div style="height: 100px;"></div>
 <div class="yoli-section">
 
-    <p>Hey, I’m Yolitzy — or Yoli.<br>
+    <p>Yolitzy — or Yoli's Portfolio<br>
 <br>
-I make things with textiles, take photos, design stuff, and often dig in my butt. 
-<br>
-I’m scared of people and obsessed with music. I like making everything myself, usually in isolation, but I’m always looking for collaborators (or just someone to listen to me babber about). 
+Including textiles, Photography and design. 
 <br><br>
-I work as an artist assistant/photographer for a local artist and my other gig is designing, coding and studying AI generation for my professor. If you ever need custom fine jewelry, or help setting up a small website, online shop, or portfolio, I’d be happy to share what I know.
+I work as an artist assistant/photographer for a local artist and my other gig is designing, coding and studying AI generation for websites for my professor. If you ever need custom fine jewelry, or help setting up a small website, online shop, or portfolio, I’d be happy to share what I know.
 </p>
+<p>Contact me at <a href="mailto:contact@yolitzy.com" style="color:rgb(255, 229, 243);">contact@yolitzy.com</a></p>
 
         </div>
       </div>
     </div>
+        <div style="height: 120px;"></div>
+              <h1>Project Quick Links</h1>
+        <div style="height: 60px;"></div>
   <div class="container">
     <div>
     <div class="project-line">
-      <a href="Get Lost.html" class="nav-links">Get Lost</a>
+      <a href="/portfolio/getlost/index.html" class="nav-links">Get Lost</a>
       <span class="meta">Photography, 2024</span>
     </div>
     <div class="project-line">
-      <a href="Invisiblecity.html" class="nav-links">Invisible City</a>
+      <a href="/portfolio/invisiblecity/index.html" class="nav-links">Invisible City</a>
       <span class="meta">Photography, 2024</span>
     </div>
     <div class="project-line">
-      <a href="mindseye.html" class="nav-links">Mindseye</a>
+      <a href="/portfolio/mindseye/index.html" class="nav-links">Mindseye</a>
       <span class="meta">Photography, 2024</span>
     </div>
     <div class="project-line">
-      <a href="Bag.html" class="nav-links">Bag(Working on it)</a>
+      <a href="/portfolio/bag/index.html" class="nav-links">Bag(Working on it)</a>
       <span class="meta">Fiber, 2024</span>
     </div>
     
     <div style="height: 100px;"></div>
 
     </div>
-    <a href="index.html" class="back-button">Back to Home</a>
-    <div id="chat" style="font-family:sans-serif; max-width:400px; margin:auto;">
-  <div id="messages" style="min-height:200px; border:1px solid #ccc; padding:10px; margin-bottom:10px; overflow-y:auto;"></div>
-  <input id="userInput" placeholder="Say something..." style="width:75%;" />
-  <button onclick="respond()">Send</button>
-</div>
-
-
-    <div style="height: 100px;"></div>
-
-      <h1>My Portfolio</h1>
       <div id="portfolio" class="gallery-item"></div>
     
-      <script>
-        async function loadPortfolio() {
-          const res = await fetch('portfolio/data.json');
-          const items = await res.json();
-    
-          // sort by date (newest first)
-          items.sort((a, b) => new Date(b.date) - new Date(a.date));
-    
-          const container = document.getElementById('portfolio');
-          items.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'portfolio-item';
-    
-            div.innerHTML = `
-              ${item.file.endsWith('.jpg') || item.file.endsWith('.png') 
-                ? `<img src="portfolio/${item.file}" alt="${item.title}">`
-                : `<a href="portfolio/${item.file}" target="_blank">View File</a>`}
-              <h2>${item.title}</h2>
-              <p><em>${item.date}</em></p>
-              <p>${item.description}</p>
-            `;
-    
-            container.appendChild(div);
-          });
-        }
-    
-        loadPortfolio();
-      </script>
 
     <div class="gallery">
       
       <div class="gallery-item">
         <div class="hover-effect-container" role="button" tabindex="0"
              onclick="window.location.href='mindseye.html'">
-          <img src="DSC_0639.jpg" alt="Art Piece 1">
+          <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Art Piece 1">
  <p>Photo Collection</p>
           <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Minds Eye</p2>
   <br><br>
-          <img src="mindseye/weball.jpeg" alt="Art Piece 1">
+          <img src="/portfolio/mindseye/Minds Eye/weball.jpg" alt="Art Piece 1">
               </div>    
         <div class="overlay" id="lightbox" onclick="closeLightbox()">
           <img id="lightbox-img" src="">
@@ -379,8 +338,8 @@ I work as an artist assistant/photographer for a local artist and my other gig i
       </div>
       <div class="gallery-item">
         <div class="hover-effect-container" role="button" tabindex="0"
-             onclick="window.location.href='Invisiblecity.html'">
-          <img src="public/external/almostcaught.jpg" alt="Art Piece 1">
+             onclick="window.location.href='/invisiblecity/Invisible city/Invisible city.html'">
+          <img src="/portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="Art Piece 1">
           <p>Photo Collection</p>
           <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Invisible City</p2>
         </div>    
@@ -390,8 +349,8 @@ I work as an artist assistant/photographer for a local artist and my other gig i
       </div>
       <div class="gallery-item">
         <div class="hover-effect-container" role="button" tabindex="0"
-             onclick="window.location.href='Get Lost.html'">
-          <img src="public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
+             onclick="window.location.href='/portfolio/getlost/index.html'">
+          <img src="/public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
           <p>Photo Collection</p>
           <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Get Lost</p2>
         </div>    
@@ -400,13 +359,13 @@ I work as an artist assistant/photographer for a local artist and my other gig i
         </div>
       </div>
       <div class="gallery-item">
-        <img src="public/external/skindogs.png" alt="Art Piece 1">
+        <img src="/public/external/skindogs.png" alt="Art Piece 1">
         <p2>Skin Dogs</p2>
         <p>The movie Kids</p>
         <p>My pill tower</p><p>and this Dog I drew, that I love a lot</p>
       </div>
       <div class="gallery-item">
-        <img src="public/external/KAtheric.gif" alt="Art Piece 2">
+        <img src="/public/external/KAtheric.gif" alt="Art Piece 2">
         <p2>KAtheric</p2>
         <p>an image of a church I took off a balcony. 
           <p>I see this church every day in the distance driving home.</p>
@@ -414,35 +373,36 @@ I work as an artist assistant/photographer for a local artist and my other gig i
            <p>the mega choc I just had on my laptop, idk. Inverted picture of an actor, I don't remember her name.</p>
       </div>
       <div class="gallery-item">
-        <img src="public/external/quick shit.gif" alt="Art Piece 3">
+        <img src="/public/external/quick shit.gif" alt="Art Piece 3">
         <p2>Quick shit</p2>
         <p>quick peace i made took like 10 mins</p>
       </div>
       <div class="gallery-item">
-        <img src="public/external/tattoo.jpg" alt="Art Piece 4">
+        <img src="/public/external/tattoo.jpg" alt="Art Piece 4">
         <p2>Tramp Stamp Tattoo</p2>
         <p>i desgined a tramp stamp, then drew this back and overlayed it. I luv the color on this one</p>
       </div>
       <div class="gallery-item">
-        <img src="public/external/artsaleflyer.jpg" alt="Art Piece 4">
+        <img src="/public/external/artsaleflyer.jpg" alt="Art Piece 4">
         <p2>Art Piece 4</p2>
         <p>i have no idea whats happening. flyer i made. collabed with eviee. yeah its sucked at first then we moved to skate park 
           and people actully showed up mostly eviee friends but it was really fun everyone was 
           looking at my paintings and it made me feel seen bc otherwise my art just sits in my room unenjoyed and sad.</p>
       </div>
       <div class="gallery-item">
-        <img src="public/external/victoryroyale.jpg" alt="Art Piece 4">
+        <img src="/public/external/victoryroyale.jpg" alt="Art Piece 4">
         <p2>victoryroyale</p2>
         <p>we got the wyatt bathroom selfie</p>
         <p>
-        </p>dude will say big things coming then od
+        <p>dude will say big things coming then od
         </p>
         <p>our holiday shake at tolly ho</p>
         <p>facebook market and weed rainbowdash</p>
       </div>
       <!-- Add more gallery items as needed -->
     </div>
-    <a href="index.html" class="back-button">Back to Home</a>
+        <div style="height: 100px;"></div>
+    <a href="/home/index.html" class="back-button">Back to Top</a>
   </div>
 </body>
 </html>
@@ -456,36 +416,4 @@ I work as an artist assistant/photographer for a local artist and my other gig i
     document.getElementById("lightbox").style.display = "none";
   }
   
-
-const responses = [
-  "bruh what",
-  "nah i'm good",
-  "🤖 thinking too hard rn",
-  "did you mean to say that?",
-  "i'm literally just code",
-  "ok and?",
-  "huh?",
-  "lol what",
-  "bruh"
-];
-
-function respond() {
-  const input = document.getElementById("userInput").value;
-  const messages = document.getElementById("messages");
-
-  if (input.trim() === "") return;
-
-  const userMsg = document.createElement("div");
-  userMsg.textContent = "You: " + input;
-  messages.appendChild(userMsg);
-
-  const botMsg = document.createElement("div");
-  const randomReply = responses[Math.floor(Math.random() * responses.length)];
-  botMsg.textContent = "Thing: " + randomReply;
-  messages.appendChild(botMsg);
-
-  messages.scrollTop = messages.scrollHeight;
-  document.getElementById("userInput").value = "";
-}
-
 </script>
