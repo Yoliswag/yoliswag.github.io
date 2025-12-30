@@ -58,6 +58,9 @@
     
     
   }
+  .portfolio-item {
+    padding-bottom: 20px;
+  }
 
   .gallery-item img {
     max-width: 90%;
@@ -265,7 +268,7 @@ border-bottom: 1px solid gray;
 .container2 {
     max-width: 100%;
     margin: 0 auto;
-    padding: 40px 40px 40px 200px;
+    padding: 10%;
     border-radius: 20px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
     align-items: flex-start;
@@ -305,6 +308,10 @@ border-bottom: 1px solid gray;
 
      <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/yoliwebsite2/index.html">Website Version 2</a></p>
 
+     <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
+
+     
+
 
 
 
@@ -319,40 +326,133 @@ border-bottom: 1px solid gray;
 
               <iframe width="70%" height="120" scrolling="no" frameborder="yes" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2055275968&color=%23ff00bf&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #c70000;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/wraith9_gloam" title="Wraith9" target="_blank" style="color: #f10000; text-decoration: none;">Wraith9</a> · <a href="https://soundcloud.com/wraith9_gloam/2fd95d97-67db-4581-9f3e-8cb9f8ce9aa8" title="Doves" target="_blank" style="color: #e00000; text-decoration: none;">Doves</a></div>
          <br><br><br><br>      
-<img style="width: 30%;" src="portfolio/7b4bio5hobgskW8qdPdvSqcwwJTvbiCMpGmRey1Rtd8H5rXgFVhybNSznokQayUr4RJoJv3ixpQPf69bQ9yBkMoK242J3jUwzP6swMhkX41Kvuhpek72XmoUrfUXgrPmdfqXe6UgthWjXhWXQwRZmg8EysHG.jpg" alt="Photo taken on July 23, 2022 at 8:53 AM"> <br><br><br><br>
+<img style="width: 30%;" src="/play/photos/7b4bio5hobgskW8qdPdvSqcwwJTvbiCMpGmRey1Rtd8H5rXgFVhybNSznokQayUr4RJoJv3ixpQPf69bQ9yBkMoK242J3jUwzP6swMhkX41Kvuhpek72XmoUrfUXgrPmdfqXe6UgthWjXhWXQwRZmg8EysHG.jpg" alt="Photo taken on July 23, 2022 at 8:53 AM"> <br><br><br><br>
 
     
       </div>
     </div>
-      <script>
-        async function loadPortfolio() {
-          const res = await fetch('portfolio/data.json');
-          const items = await res.json();
-    
-          // sort by date (newest first)
-          items.sort((a, b) => new Date(b.date) - new Date(a.date));
-    
-          const container = document.getElementById('portfolio');
-          items.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'portfolio-item';
-    
-            div.innerHTML = `
-              ${item.file.endsWith('.jpg') || item.file.endsWith('.png') 
-                ? `<img src="portfolio/${item.file}" alt="${item.title}">`
-                : `<a href="portfolio/${item.file}" target="_blank">View File</a>`}
-              <h2>${item.title}</h2>
-              <p><em>${item.date}</em></p>
-              <p>${item.description}</p> <br><br>
-            `;
-    
-            container.appendChild(div);
-          });
-        }
-    
-        loadPortfolio();
-      </script>
-      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
 
+<script>
+async function loadPortfolio() {
+    // Your photos data with custom titles and descriptions
+    const photosData = [
+        {
+            "file": "DSC_0245.jpg",
+            "title": "Friend",
+            "description": "From Get Lost collection"
+        },
+        {
+            "file": "webcam-toy-photo39.jpg",
+            "title": "",
+            "description": ""
+        },
+        {
+            "file": "webcam-toy-photo40.jpg",
+            "title": "",
+            "description": ""
+        }
+    ];
+    
+    const container = document.getElementById('portfolio');
+    const items = [];
+    
+    // Function to load image and extract EXIF date
+    const loadImageWithEXIF = (photoData) => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = `/play/photos/${photoData.file}`;
+            
+            img.onload = function() {
+                EXIF.getData(img, function() {
+                    // Get the original date photo was taken
+                    const dateTimeOriginal = EXIF.getTag(this, "DateTimeOriginal");
+                    const dateTime = EXIF.getTag(this, "DateTime");
+                    
+                    let photoDate;
+                    let dateString;
+                    
+                    if (dateTimeOriginal) {
+                        // EXIF date format: "2024:02:01 14:30:25"
+                        const parts = dateTimeOriginal.split(' ');
+                        const datePart = parts[0].replace(/:/g, '-');
+                        const timePart = parts[1];
+                        photoDate = new Date(`${datePart}T${timePart}`);
+                        dateString = photoDate.toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    } else if (dateTime) {
+                        const parts = dateTime.split(' ');
+                        const datePart = parts[0].replace(/:/g, '-');
+                        const timePart = parts[1];
+                        photoDate = new Date(`${datePart}T${timePart}`);
+                        dateString = photoDate.toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    } else {
+                        photoDate = new Date();
+                        dateString = "";
+                    }
+                    
+                    resolve({
+                        file: photoData.file,
+                        title: photoData.title,
+                        description: photoData.description,
+                        date: photoDate,
+                        dateString: dateString
+                    });
+                });
+            };
+            
+            img.onerror = () => {
+                resolve({
+                    file: photoData.file,
+                    title: photoData.title,
+                    description: photoData.description,
+                    date: new Date(),
+                    dateString: "Date unknown"
+                });
+            };
+        });
+    };
+    
+    // Load all images with EXIF data
+    for (const photoData of photosData) {
+        const item = await loadImageWithEXIF(photoData);
+        items.push(item);
+    }
+    
+    // Sort by date (newest first)
+    items.sort((a, b) => b.date - a.date);
+    
+    // Display items
+    items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'portfolio-item';
+        
+        div.innerHTML = `
+            <img src="/play/photos/${item.file}" alt="${item.title}">
+            <h2>${item.title}</h2>
+            <h2>${item.file}</h2>
+            <p><em>${item.dateString}</em></p>
+            <p>${item.description}</p>
+        `;
+        
+        container.appendChild(div);
+    });
+}
+
+// Load portfolio when page loads
+loadPortfolio();
+</script>
+  
 </body>
 </html>

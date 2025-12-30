@@ -1,28 +1,20 @@
 [
-    {
+  {
       "file": "DSC_0245.jpg",
       "title": "Friend",
       "date": "2024-02-01",
       "description": "From Get Lost collection"
-      
-    }
-   ,     
-    {
-      "file": "/webcam-toy-photo39.jpg",
-      "title": "",
-      "date": "",
+  },     
+  {
+      "file": "webcam-toy-photo39.jpg",
+      "title": "Webcam Photo 39",
+      "date": "2024-02-02",
+      "description": "Description here"
+  },
+  {
+      "file": "",
+      "title": "Webcam Photo 40",
+      "date": "2024-02-03",
       "description": ""
-      
-    }
-    ,
-        {
-      "file": "/webcam-toy-photo40.jpg",
-      "title": "",
-      "date": "",
-      "description": ""
-      
-    }
-    
-
-  ]
-  
+  }
+]
