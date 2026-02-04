@@ -1,419 +1,832 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Gallery</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            touch-action: none;
+        }
+        .gallery-container {
+            position: relative;
+            max-width: 1400px;
+            width: 100%;
+        }
+        
+        .image-wrapper {
+            position: absolute;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        .image-wrapper:hover {
+            border-color: #ddd;
+        }
+        
+        .image-wrapper.active {
+            border-color: #666;
+            z-index: 1000 !important;
+        }
+        
+        .gallery-item {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            cursor: move;
+            pointer-events: none;
+        }
+        
+          
+        .image-wrapper:hover .gallery-item {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        
+        .image-wrapper.dragging {
+            opacity: 0.5;
+        }
+        
+        /* Resize handle */
+        .resize-handle {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            cursor: nwse-resize;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        
+        .image-wrapper:hover .resize-handle,
+        .image-wrapper.active .resize-handle {
+            opacity: 1;
+        }
+        
+        /* Fullscreen overlay */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            z-index: 10000;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        .fullscreen-overlay.active {
+            display: flex;
+        }
+        .fullscreen-overlay img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        
+        /* Instructions */
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 14px;
+            z-index: 5000;
+        }
+
+        .navbar {
+            max-width: 100%;
+            border-bottom: 1px solid gray;
+        } 
+
+        .welcome {
+            font-size: 60px;
+            color: red;
+            font-weight: bold;
+            text-align: left;
+            padding: 50px 130px 50px;
+        }
+    </style>
 </head>
-<style>
-
-  body {
-    background-color: #111111;
-    font-family: "Courier New", Courier, monospace;
-    justify-content: center;
-    align-items: flex-start; /* Align items at the start */
-    text-align: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-  }
-
-  .container {
-    max-width: auto;
-    border-radius: 10px;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-        color: #14ff28;
-    text-shadow: 2px 2px 5px #ff00ff;
-    margin-bottom: 10px;
-  }
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;#605b5b
-  }
-  p2 {
-    padding-top: 30px;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #00ff00;
-    text-shadow: 1px -1px 2px #000000;
-    font-family: "Courier New", Courier, monospace;
-    
-  }
-
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    gap: 20px;
-  }
-
-  .gallery-item {
-    border-radius: 10px;
-    padding: 10px;
- text-align: center; /* Center text within each gallery item */
-    
-    
-  }
-
-  .gallery-item img {
-    max-width: 90%;
-    height: auto;
-    display: block;
-    margin: 10px auto 10px;
-    border: 3px solid #ff00ff;
-    box-shadow: 2px 2px 2px rgba(84, 84, 84, 0.5);
-   
-
-  }
-
-  .gallery-item p {
-    font-size: 1rem;
-    color: #ff00ff;
-  }
-
-  .hover-effect-container {
-  position: relative;
-  display: block;
-  max-width: 100%;
-  margin: 10px auto;
-  cursor: pointer;
-}
-
-.hover-effect-container img {
-  display: block;
-  max-width: 100%;
-  margin: 0; /* Reset margin since the container has margin */
-  transition: all 0.3s ease;
-}
-
-/* Overlay that appears on hover */
-.hover-effect-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 110%;
-  height: 100%;
-  background-color: rgba(255, 49, 231, 0.6); /* Gray overlay with 60% opacity */
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.hover-effect-container:hover::after {
-  opacity: 1;
-}
-
-/* Optional: Add a text indicator for clickable images */
-.hover-effect-container::before {
-  content: 'CLICK';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: rgb(0, 255, 60);
-  font-weight: bold;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.hover-effect-container:hover::before {
-  opacity: 1;
-}
-
-  .back-button {
-    display: inline-block;
-    background-color: #fff826;
-    color: #000;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    text-transform: uppercase;
-    box-shadow: 2px 2px 4px #000;
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
-  .back-button:hover {
-    background-color: #ffdf4d;
-  }
-  .zoom-on-click img {
-    transition: 0.3s ease;
-    cursor: pointer;
-  }
-
-  .zoom-on-click img.clicked {
-    transform: scale(2); /* or whatever size you want */
-  }
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-
-  .overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    border: none;
-  }
-
-.navbar {
-max-width: 100%;
-border-bottom: 1px solid gray;
-}
-.welcome {
-  font-size: 60px;
-  color: red;
-  font-weight: bold;
-  text-align: left;
-  padding: 50px 130px 50px;
-}
-.nav-links {
-  display: flex;
-  gap: 40px;
-  color: rgb(23, 96, 255);
-  text-decoration: underline;
-  font-size: 30px;
-  padding: 60px 130px 30px;
-  font-weight: bold;
-}
-
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  background-color: black;
-  color: magenta;
-  font-size: 18px;
-  font-family: 'Creepster', cursive;
-  cursor: pointer;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: black;
-  border: 1px solid gray;
-  z-index: 1;
-  padding: 10px 0;
-}
-
-.dropdown-content a {
-  color: magenta;
-  padding: 10px 20px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #222;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.family {
-  width: 100%;
-  height: 100px;
-  overflow: hidden;
-}
-.nav-label {
-  display: flex;
-  gap: 40px;
-  font-size: 30px;
-  padding: 50px 50px 40px;
-}
-.project-line {
-  display: flex;             /* put children on same line */               /* space between them */
-  align-items: baseline;         /* spacing between rows */
-}
-.meta {
-  font-size: 14px;
-  font-style: italic;
-    color: rgb(0, 255, 60);
-}
-
-
-    .yoli-section body,
-    .yoli-section {
-        font-family: Times New Roman, serif;
-    
-            color: #ff00ff;
-  font-size: 30px;
-  padding: 60px 130px 30px;
-  line-height: 2;
-  text-align: left;
-    }
-
-
-
-
-    
-
-
-
-
-
-
-</style>
-<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-
 <body>
-    <div class="navbar">
-      <div class="welcome" style="text-align: center;">Yolitzy.com</div>
-          </div>
-    <div style="height: 100px;"></div>
-<div class="yoli-section">
-
-    <p>Yolitzy — or Yoli's Portfolio<br>
-<br>
-Including textiles, Photography and design. 
-<br><br>
-I work as an artist assistant/photographer for a local artist and my other gig is designing, coding and studying AI generation for websites for my professor. If you ever need custom fine jewelry, or help setting up a small website, online shop, or portfolio, I’d be happy to share what I know.
-</p>
-<p>Contact me at <a href="mailto:contact@yolitzy.com" style="color:rgb(255, 229, 243);">contact@yolitzy.com</a></p>
-
-        </div>
-      </div>
-    </div>
-        <div style="height: 120px;"></div>
-              <h1>Project Quick Links</h1>
-        <div style="height: 60px;"></div>
-  <div class="container">
-    <div>
-    <div class="project-line">
-      <a href="/portfolio/getlost/index.html" class="nav-links">Get Lost</a>
-      <span class="meta">Photography, 2024</span>
-    </div>
-    <div class="project-line">
-      <a href="/portfolio/invisiblecity/index.html" class="nav-links">Invisible City</a>
-      <span class="meta">Photography, 2024</span>
-    </div>
-    <div class="project-line">
-      <a href="/portfolio/mindseye/index.html" class="nav-links">Mindseye</a>
-      <span class="meta">Photography, 2024</span>
-    </div>
-    <div class="project-line">
-      <a href="/portfolio/bag/index.html" class="nav-links">Bag(Working on it)</a>
-      <span class="meta">Fiber, 2024</span>
+    <div class="instructions">
+        Drag to move • Drag corner to resize • Double-tap for fullscreen
     </div>
     
-    <div style="height: 100px;"></div>
-
+    <div class="gallery-container" id="gallery">
+        <div class="image-wrapper" style="left: 0px; top: 0px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/_DSC7672.JPG" alt="_DSC7672.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 0px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/100gecksalem.jpg" alt="100gecksalem.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 0px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/IMG_9673e.jpg" alt="IMG_9673e.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 0px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/party weave_0002.jpg" alt="party weave_0002.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 0px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/IMG_9646-1e.jpg" alt="IMG_9646-1e.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 280px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/mindseye/Minds Eye/grass.jpg" alt="grass.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 280px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/IMG_2360.JPEG" alt="IMG_2360.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 280px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/lady on ground.jpg" alt="lady on ground.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 280px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/20240216_011731140_iOS.jpg" alt="20240216_011731140_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 280px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/fiber sacns_0006.jpg" alt="fiber sacns_0006.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 560px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/invisiblecity/Invisible city/pottytime.jpg" alt="pottytime.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 560px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/invisiblecity/Invisible city/treesletmesee.jpg" alt="treesletmesee.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 560px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/mindseye/Minds Eye/house.jpg" alt="house.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 560px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/jajaajaja.png" alt="jajaajaja.png" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 560px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/20240815_024153000_iOS.jpg" alt="20240815_024153000_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 840px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/mindseye/Minds Eye/bug.jpg" alt="bug.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 840px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/20240213_020838530_iOS.jpg" alt="20240213_020838530_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 840px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/1F1D03B9-7279-4C59-AF5C-34C19094747D.jpg" alt="1F1D03B9-7279-4C59-AF5C-34C19094747D.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 840px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/yoli session 3.jpg" alt="yoli session 3.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 840px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/IMG_9656-1e.jpg" alt="IMG_9656-1e.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 1120px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/IMG_9223.JPG" alt="IMG_9223.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 1120px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/IMG_9814.jpg" alt="IMG_9814.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 1120px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/invisiblecity/Invisible city/stairs.jpg" alt="stairs.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 1120px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/IMG_9899.jpg" alt="IMG_9899.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 1120px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/20241219_081739000_iOS.jpg" alt="20241219_081739000_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 1400px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/invisiblecity/Invisible city/can.jpg" alt="can.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 1400px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/Sagmeister.jpg" alt="Sagmeister.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 1400px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/SAM_1275.jpg" alt="SAM_1275.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 1400px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/20211122_051000055_iOS.jpg" alt="20211122_051000055_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 1400px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/kevin.JPEG" alt="kevin.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 1680px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/quick shit.gif" alt="quick shit.gif" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 1680px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/IMG_9663-1e.jpg" alt="IMG_9663-1e.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 1680px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/wantedme_fin1_1.jpg" alt="wantedme_fin1_1.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 1680px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/myhead1521615-auyb-300w.png" alt="myhead1521615-auyb-300w.png" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 1680px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="almostcaught.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 1960px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/IMG_5502.JPEG" alt="IMG_5502.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 1960px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/20240213_020913990_iOS.jpg" alt="20240213_020913990_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 1960px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/Blackberry.jpg" alt="Blackberry.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 1960px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/Screenshot 2025-07-02 at 9.41.38 PM.jpg" alt="Screenshot 2025-07-02 at 9.41.38 PM.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 1960px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/yoli_1_.jpg" alt="yoli_1_.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 2240px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/IMG_9889.jpg" alt="IMG_9889.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 2240px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/mindseye/Minds Eye/sun.jpg" alt="sun.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 2240px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/mindseye/Minds Eye/weball.jpg" alt="weball.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 2240px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/IMG_8640.JPEG" alt="IMG_8640.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 2240px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/IMG_7828.JPEG" alt="IMG_7828.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 2520px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/SAM_1248.jpg" alt="SAM_1248.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 2520px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/yoli5-861-1.jpg" alt="yoli5-861-1.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 2520px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/Artboard 6-80.jpg" alt="Artboard 6-80.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 2520px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/Screenshot 2025-08-28 at 4.18.53 PM.png" alt="Screenshot 2025-08-28 at 4.18.53 PM.png" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 2520px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/SAM_1604.jpg" alt="SAM_1604.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 2800px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/2Artboard 2.jpg" alt="2Artboard 2.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 2800px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/IMG_9745-Edit.jpg" alt="IMG_9745-Edit.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 2800px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/20240213_020615680_iOS.jpg" alt="20240213_020615680_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 2800px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/Page 1 Zine.jpg" alt="Page 1 Zine.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 2800px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/IMG_6015_1.jpg" alt="IMG_6015_1.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 3080px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/yoli session 1-4211.JPG" alt="yoli session 1-4211.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 3080px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/SAM_0388.JPG" alt="SAM_0388.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 3080px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/IMG_8338.jpeg" alt="IMG_8338.jpeg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 3080px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/IMG_1044.JPG" alt="IMG_1044.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 3080px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/SAM_1344.JPG" alt="SAM_1344.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 3360px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/invisiblecity/Invisible city/justfriends.jpg" alt="justfriends.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 3360px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/_DSC7514.JPG" alt="_DSC7514.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 3360px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/tigy.jpg" alt="tigy.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 3360px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/mindseye/Minds Eye/game.jpg" alt="game.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 3360px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/rosestreet.jpg" alt="rosestreet.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 3640px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/landing.jpg" alt="landing.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 3640px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/skindogs.png" alt="skindogs.png" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 3640px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/red hair girl.jpg" alt="red hair girl.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 3640px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/invisiblecity/Invisible city/window.jpg" alt="window.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 3640px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/20240815_024133000_iOS.jpg" alt="20240815_024133000_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 3920px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/invisiblecity/Invisible city/darkrooms.jpg" alt="darkrooms.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 3920px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/Image_20250815_0003_1.jpg" alt="Image_20250815_0003_1.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 3920px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/Page 2 Zine.jpg" alt="Page 2 Zine.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 3920px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/invisiblecity/Invisible city/fence.jpg" alt="fence.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 3920px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/siccck.jpg" alt="siccck.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 4200px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/20220409_045143941_iOS.jpg" alt="20220409_045143941_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 4200px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/tattoo.jpg" alt="tattoo.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 4200px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/DSC00152.JPG" alt="DSC00152.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 4200px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/Self portrait_gorostietayolitzy.jpg" alt="Self portrait_gorostietayolitzy.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 4200px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/SAM_1342.JPG" alt="SAM_1342.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 4480px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/adfafd.jpg" alt="adfafd.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 4480px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/Tattoo girl.jpg" alt="Tattoo girl.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 4480px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/IMG_7765.JPG" alt="IMG_7765.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 4480px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/party weave_0003.jpg" alt="party weave_0003.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 4480px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/IMG_1168.JPEG" alt="IMG_1168.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 4760px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/SAM_1355.JPG" alt="SAM_1355.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 4760px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/yoli session 2.jpg" alt="yoli session 2.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 4760px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/invisiblecity/Invisible city/notrespass.jpg" alt="notrespass.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 4760px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/mindseye/Minds Eye/gate.jpg" alt="gate.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 4760px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/20230823_011524667_iOS.jpg" alt="20230823_011524667_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 5040px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/IMG_8639.PNG" alt="IMG_8639.PNG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 5040px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/IMG_7514.JPEG" alt="IMG_7514.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 5040px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/SAM_1273.jpg" alt="SAM_1273.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 5040px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/xfjxj.jpg" alt="xfjxj.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 5040px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/20231130_170748455_iOS.jpg" alt="20231130_170748455_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 5320px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/Laptop prototype.png" alt="Laptop prototype.png" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 5320px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/yay.jpeg" alt="yay.jpeg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 5320px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/KAtheric.gif" alt="KAtheric.gif" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 5320px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/DSC_0100.jpg" alt="DSC_0100.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 5320px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/20240216_012119340_iOS.jpg" alt="20240216_012119340_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 5600px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/IMG_3706.JPEG" alt="IMG_3706.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 5600px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/IMG_9130.JPG" alt="IMG_9130.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 5600px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/20211220_055143087_iOS.jpg" alt="20211220_055143087_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 5600px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/mindseye/Minds Eye/can.jpg" alt="can.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 5600px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/frist scan_0001tt.jpg" alt="frist scan_0001tt.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 5880px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/20240815_024145000_iOS.jpg" alt="20240815_024145000_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 5880px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/_DSC7421.JPG" alt="_DSC7421.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 5880px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/frist scan_0001 v2.jpg" alt="frist scan_0001 v2.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 5880px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/1710252345853-82dad7a2-4bae-45fd-9d24-9c92f9d47343_1.jpg" alt="1710252345853-82dad7a2-4bae-45fd-9d24-9c92f9d47343_1.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 5880px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/edit-9641-2.jpg" alt="edit-9641-2.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 6160px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/mindseye/Minds Eye/court.jpg" alt="court.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 6160px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/party weave_0004.jpg" alt="party weave_0004.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 6160px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/tumblr_38meow3ee5bab071aefeb314c3da763c5540_588d47f5_1280.jpg" alt="tumblr_38meow3ee5bab071aefeb314c3da763c5540_588d47f5_1280.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 6160px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/unsorted/20230427_003541000_iOS.jpg" alt="20230427_003541000_iOS.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 6160px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/2Artboard 1-20.jpg" alt="2Artboard 1-20.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 6440px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/Page 3 zine.jpg" alt="Page 3 zine.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 6440px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/DSC_0022.jpg" alt="DSC_0022.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 6440px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/SAM_1403.JPG" alt="SAM_1403.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 810px; top: 6440px; width: 250px; height: 250px;" data-col="3">
+            <img src="../portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="DSC_0639.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 1080px; top: 6440px; width: 250px; height: 250px;" data-col="4">
+            <img src="../portfolio/unsorted/yoli5-915e.jpg" alt="yoli5-915e.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 0px; top: 6720px; width: 250px; height: 250px;" data-col="0">
+            <img src="../portfolio/unsorted/yoli_3_smiley.jpg" alt="yoli_3_smiley.jpg" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 270px; top: 6720px; width: 250px; height: 250px;" data-col="1">
+            <img src="../portfolio/unsorted/yoli session 1-4231.JPG" alt="yoli session 1-4231.JPG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
+        <div class="image-wrapper" style="left: 540px; top: 6720px; width: 250px; height: 250px;" data-col="2">
+            <img src="../portfolio/unsorted/IMG_0549.JPEG" alt="IMG_0549.JPEG" class="gallery-item">
+            <div class="resize-handle"></div>
+        </div>
     </div>
-      <div id="portfolio" class="gallery-item"></div>
     
-
-    <div class="gallery">
-      
-      <div class="gallery-item">
-        <div class="hover-effect-container" role="button" tabindex="0"
-             onclick="window.location.href='mindseye.html'">
-          <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Art Piece 1">
- <p>Photo Collection</p>
-          <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Minds Eye</p2>
-  <br><br>
-          <img src="/portfolio/mindseye/Minds Eye/weball.jpg" alt="Art Piece 1">
-              </div>    
-        <div class="overlay" id="lightbox" onclick="closeLightbox()">
-          <img id="lightbox-img" src="">
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="hover-effect-container" role="button" tabindex="0"
-             onclick="window.location.href='/invisiblecity/Invisible city/Invisible city.html'">
-          <img src="/portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="Art Piece 1">
-          <p>Photo Collection</p>
-          <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Invisible City</p2>
-        </div>    
-        <div class="overlay" id="lightbox" onclick="closeLightbox()">
-          <img id="lightbox-img" src="">
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="hover-effect-container" role="button" tabindex="0"
-             onclick="window.location.href='/portfolio/getlost/index.html'">
-          <img src="/public/external/snowstrippersxturnabout.jpg" alt="Art Piece 1">
-          <p>Photo Collection</p>
-          <p style="text-decoration: underline;"></p><p2 style="text-decoration: underline;">Get Lost</p2>
-        </div>    
-        <div class="overlay" id="lightbox" onclick="closeLightbox()">
-          <img id="lightbox-img" src="">
-        </div>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/skindogs.png" alt="Art Piece 1">
-        <p2>Skin Dogs</p2>
-        <p>The movie Kids</p>
-        <p>My pill tower</p><p>and this Dog I drew, that I love a lot</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/KAtheric.jpg" alt="Art Piece 2">
-        <p2>KAtheric</p2>
-        <p>an image of a church I took off a balcony. 
-          <p>I see this church every day in the distance driving home.</p>
-  <p>a view of commute</p> 
-           <p>the mega choc I just had on my laptop, idk. Inverted picture of an actor, I don't remember her name.</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/quick shit.gif" alt="Art Piece 3">
-        <p2>Quick shit</p2>
-        <p>quick peace i made took like 10 mins</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/tattoo.jpg" alt="Art Piece 4">
-        <p2>Tramp Stamp Tattoo</p2>
-        <p>i desgined a tramp stamp, then drew this back and overlayed it. I luv the color on this one</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/artsaleflyer.jpg" alt="Art Piece 4">
-        <p2>Art Piece 4</p2>
-        <p>i have no idea whats happening. flyer i made. collabed with eviee. yeah its sucked at first then we moved to skate park 
-          and people actully showed up mostly eviee friends but it was really fun everyone was 
-          looking at my paintings and it made me feel seen bc otherwise my art just sits in my room unenjoyed and sad.</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/victoryroyale.jpg" alt="Art Piece 4">
-        <p2>victoryroyale</p2>
-        <p>we got the wyatt bathroom selfie</p>
-        <p>
-        <p>dude will say big things coming then od
-        </p>
-        <p>our holiday shake at tolly ho</p>
-        <p>facebook market and weed rainbowdash</p>
-      </div>
-      <!-- Add more gallery items as needed -->
+    <!-- Fullscreen overlay -->
+    <div class="fullscreen-overlay" id="fullscreen">
+        <img src="" alt="">
     </div>
-        <div style="height: 100px;"></div>
-    <a href="/index.html" class="back-button">Back to Top</a>
-  </div>
+    
+    <script>
+        const gallery = document.getElementById('gallery');
+        const wrappers = document.querySelectorAll('.image-wrapper');
+        const fullscreenOverlay = document.getElementById('fullscreen');
+        const fullscreenImg = fullscreenOverlay.querySelector('img');
+        
+        // Set gallery height based on images
+        gallery.style.minHeight = '7000px';
+        
+        // Adjust positions after images load for better packing
+        const columnHeights = [0, 0, 0, 0, 0];
+        const columnWidth = 270;
+        
+        wrappers.forEach((wrapper, index) => {
+            const img = wrapper.querySelector('.gallery-item');
+            const resizeHandle = wrapper.querySelector('.resize-handle');
+            
+            img.onload = function() {
+                const col = parseInt(wrapper.dataset.col);
+                const aspectRatio = img.naturalWidth / img.naturalHeight;
+                const height = 250 / aspectRatio;
+                
+                wrapper.style.top = columnHeights[col] + 'px';
+                wrapper.style.height = height + 'px';
+                columnHeights[col] += height + 20;
+                
+                // Update gallery height
+                const maxHeight = Math.max(...columnHeights);
+                gallery.style.minHeight = maxHeight + 'px';
+            };
+            
+            let isDragging = false;
+            let isResizing = false;
+            let hasMoved = false;
+            let offsetX, offsetY;
+            let startX, startY, startWidth, startHeight;
+            let lastTap = 0;
+            
+            // Touch support for pinch zoom
+            let initialDistance = 0;
+            let initialWidth = 0;
+            
+            // Dragging
+            wrapper.addEventListener('mousedown', (e) => {
+                if (e.target === resizeHandle) return;
+                isDragging = true;
+                hasMoved = false;
+                wrapper.classList.add('dragging');
+                wrapper.classList.add('active');
+                offsetX = e.clientX - wrapper.offsetLeft;
+                offsetY = e.clientY - wrapper.offsetTop;
+                wrapper.style.zIndex = 1000;
+                e.preventDefault();
+            });
+            
+            wrapper.addEventListener('touchstart', (e) => {
+                if (e.target === resizeHandle) return;
+                
+                // Double-tap detection
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                if (tapLength < 300 && tapLength > 0) {
+                    // Double tap - show fullscreen
+                    fullscreenImg.src = img.src;
+                    fullscreenOverlay.classList.add('active');
+                    e.preventDefault();
+                    return;
+                }
+                lastTap = currentTime;
+                
+                if (e.touches.length === 2) {
+                    // Two finger pinch to zoom
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+                    initialDistance = Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY
+                    );
+                    initialWidth = wrapper.offsetWidth;
+                    wrapper.classList.add('active');
+                } else if (e.touches.length === 1) {
+                    // Single finger drag
+                    isDragging = true;
+                    hasMoved = false;
+                    wrapper.classList.add('dragging');
+                    wrapper.classList.add('active');
+                    const touch = e.touches[0];
+                    offsetX = touch.clientX - wrapper.offsetLeft;
+                    offsetY = touch.clientY - wrapper.offsetTop;
+                    wrapper.style.zIndex = 1000;
+                }
+            });
+            
+            // Resize handle
+            resizeHandle.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                wrapper.classList.add('active');
+                startX = e.clientX;
+                startY = e.clientY;
+                startWidth = wrapper.offsetWidth;
+                startHeight = wrapper.offsetHeight;
+                wrapper.style.zIndex = 1000;
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            
+            resizeHandle.addEventListener('touchstart', (e) => {
+                isResizing = true;
+                wrapper.classList.add('active');
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                startWidth = wrapper.offsetWidth;
+                startHeight = wrapper.offsetHeight;
+                wrapper.style.zIndex = 1000;
+                e.stopPropagation();
+                e.preventDefault();
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    hasMoved = true;
+                    wrapper.style.left = (e.clientX - offsetX) + 'px';
+                    wrapper.style.top = (e.clientY - offsetY) + 'px';
+                } else if (isResizing) {
+                    const deltaX = e.clientX - startX;
+                    const newWidth = Math.max(100, startWidth + deltaX);
+                    const aspectRatio = img.naturalWidth / img.naturalHeight;
+                    const newHeight = newWidth / aspectRatio;
+                    
+                    wrapper.style.width = newWidth + 'px';
+                    wrapper.style.height = newHeight + 'px';
+                }
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 2 && initialDistance > 0) {
+                    // Pinch zoom
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+                    const currentDistance = Math.hypot(
+                        touch2.clientX - touch1.clientX,
+                        touch2.clientY - touch1.clientY
+                    );
+                    const scale = currentDistance / initialDistance;
+                    const newWidth = Math.max(100, initialWidth * scale);
+                    const aspectRatio = img.naturalWidth / img.naturalHeight;
+                    const newHeight = newWidth / aspectRatio;
+                    
+                    wrapper.style.width = newWidth + 'px';
+                    wrapper.style.height = newHeight + 'px';
+                    e.preventDefault();
+                } else if (isDragging && e.touches.length === 1) {
+                    hasMoved = true;
+                    const touch = e.touches[0];
+                    wrapper.style.left = (touch.clientX - offsetX) + 'px';
+                    wrapper.style.top = (touch.clientY - offsetY) + 'px';
+                }
+            });
+            
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    wrapper.classList.remove('dragging');
+                    wrapper.classList.remove('active');
+                    wrapper.style.zIndex = 1;
+                } else if (isResizing) {
+                    isResizing = false;
+                    wrapper.classList.remove('active');
+                    wrapper.style.zIndex = 1;
+                }
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+                isResizing = false;
+                initialDistance = 0;
+                wrapper.classList.remove('dragging');
+                wrapper.classList.remove('active');
+                wrapper.style.zIndex = 1;
+            });
+            
+            // Double-click for fullscreen (desktop)
+            wrapper.addEventListener('dblclick', (e) => {
+                if (!hasMoved) {
+                    fullscreenImg.src = img.src;
+                    fullscreenOverlay.classList.add('active');
+                }
+            });
+        });
+        
+        // Click overlay to close fullscreen
+        fullscreenOverlay.addEventListener('click', () => {
+            fullscreenOverlay.classList.remove('active');
+        });
+        
+        // Press Escape to close fullscreen
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                fullscreenOverlay.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
-<script>
-  function openLightbox(src) {
-    document.getElementById("lightbox-img").src = src;
-    document.getElementById("lightbox").style.display = "flex";
-  }
-
-  function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
-  }
-  
-</script>
