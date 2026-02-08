@@ -11,14 +11,19 @@
   body {
     background-color: #000000;
     color: #00ff00;
-    
     font-family: "Courier New", Courier, monospace;
     justify-content: center;
-    align-items: flex-start; /* Align items at the start */
+    align-items: flex-start;
     text-align: center;
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 
   .container {
@@ -31,10 +36,12 @@
     text-shadow: 2px 2px 5px #ff00ff;
     margin-bottom: 10px;
   }
+
   p {
     font-size: 1.2rem;
-    margin-bottom: 20px;#605b5b
+    margin-bottom: 20px; /* #605b5b */
   }
+
   p2 {
     padding-top: 30px;
     font-size: 1.2rem;
@@ -176,6 +183,7 @@
 max-width: 100%;
 border-bottom: 1px solid gray;
 }
+
 .welcome {
   font-size: 60px;
   color: red;
@@ -257,24 +265,159 @@ border-bottom: 1px solid gray;
 
     .yoli-section body,
     .yoli-section {
-        font-family: Times New Roman, serif;
-    
-            color: #ff00ff;
-  font-size: 30px;
-  padding: 60px 130px 30px;
-  line-height: 2;
-  text-align: left;
+      font-family: Times New Roman, serif;
+      color: #ff00ff;
+      font-size: 30px;
+      padding: 60px 130px 30px;
+      line-height: 2;
+      text-align: left;
     }
 
 .container2 {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 10%;
+    max-width: 90%;
+    margin: 0 20% 0 20%;
     border-radius: 20px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
     align-items: flex-start;
     text-align: left;
 }
+
+/* Masonry Layout */
+.gallery-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    column-count: 2;
+    column-gap: 20px;
+    padding: 20px;
+    
+}
+
+.image-wrapper {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen-overlay.active {
+    display: flex;
+}
+
+.fullscreen-overlay img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Masonry Item Styles */
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Masonry Section Styles */
+.masonry-section {
+    max-width: 90%;
+    margin: 0 5% 0 5%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding-top: 10%;
+}
+
+.masonry-section h2 {
+    font-size: 2.5rem;
+    color: #ff00ff;
+    text-shadow: 2px 2px 5px #ff00ff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: Times New Roman, serif;
+}
+
+.masonry-gallery {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    column-count: 5;
+    column-gap: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding-bottom: 10%;
+}
+
+.masonry-gallery {
+    width: 100%;
+    margin: 0 auto;
+    column-count: 2;
+    column-gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .masonry-gallery {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1024px) {
+    .masonry-gallery {
+        column-count: 5;
+    }
+}
+
 
 
 </style>
@@ -286,49 +429,59 @@ border-bottom: 1px solid gray;
     <div class="navbar">
       <div class="welcome" style="text-align: center;">Yolitzy.com</div>
           </div>
+        
           <!-- Then wrap your content -->
-<div class="yoli-section">
-    <p style="text-align: center;">this is play<br>
-</p>
-       </div>
-    <div class="container2" style="container2;">
-    <h1>Links</h1>
-    <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/play/gallery.html">FUN GALLERY</a></p>
+  <div class="yoli-section">
+      <p style="text-align: center;">this is play<br>
+        <br></p>
+        </div>
 
-    <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/joeupdates.html">joe</a></p>
-    
-    <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/lock.html">lock</a></p>
+      <div class="container2" style="container2;">
+      <h1>Links</h1>
+      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/play/gallery.html">FUN GALLERY</a></p>
 
-     <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/yoliwebsite2/index.html">Archive Website V 2</a></p>
+      <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/joeupdates.html">joe</a></p>
+      
+      <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/lock.html">lock</a></p>
 
-     <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
+      <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/yoliwebsite2/index.html">Archive Website V 2</a></p>
 
-     <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/getlost/index.html">Get lost</a></p>
-     <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/invisiblecity/index.html">Invisible city</a></p>
-     <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/mindseye/index.html">Minds eye</a></p>
-     <br>
-     <h1>Placeholders</h1>
-     <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href="/portfolio/myhead/myhead.txt">My head</a></p>
-     <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href="/portfolio/bag/bag.txt">My Bag</a></p>
-     <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/portfolio/jewerlywork/index.html">Jewerly Work</a></p>
-     <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/real/index.html">Real</a></p>
-     <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/portfolio/jewerlywork/index.html">Nauv</a></p>
-     <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/portfolio/jewerlywork/index.html">Objects</a></p>
+      <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
 
+      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/getlost/index.html">Get lost</a></p>
+      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/invisiblecity/index.html">Invisible city</a></p>
+      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/mindseye/index.html">Minds eye</a></p>
+      <br>
+      <h1>Placeholders</h1>
+      <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href="/portfolio/myhead/myhead.txt">My head</a></p>
+      <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href="/portfolio/bag/bag.txt">My Bag</a></p>
+      <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/portfolio/jewerlywork/index.html">Jewerly Work</a></p>
+      <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/real/index.html">Real</a></p>
+      <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/portfolio/jewerlywork/index.html">Nauv</a></p>
+      <p style="margin-left: 40px;"><a style="color: #1c1c1c;" href"/portfolio/jewerlywork/index.html">Objects</a></p>
 
+    </div>
 
+    <div class="masonry-section">
+      <h2>Gallery</h2>
+      <div class="masonry-gallery">
+        <div class="masonry-item"><img src="/portfolio/Photography/_DSC7672.JPG" alt=""></div>
+        <div class="masonry-item"><img src="/portfolio/getlost/100gecksalem.jpg" alt=""></div>
+        <div class="masonry-item"><img src="/portfolio/Photography/Blackberry.jpg" alt=""></div>
+        <div class="masonry-item"><img src="/portfolio/mindseye/Minds Eye/weball.jpg" alt=""></div> 
+        <div class="masonry-item"><img src="/portfolio/mindseye/Minds Eye/sun.jpg" alt=""></div>
+        <div class="masonry-item"><img src="/portfolio/invisiblecity/Invisible city/treesletmesee.jpg" alt=""></div>
+      </div>
+    </div>
 
-
-
-
-  </div>
-  <div class="container">
+    <div class="container">
    
               <div id="portfolio" class="gallery-item"></div>
 
               <iframe width="80%" height="120" scrolling="no" frameborder="yes" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2055275968&color=%23ff00bf&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #c70000;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/wraith9_gloam" title="Wraith9" target="_blank" style="color: #f10000; text-decoration: none;">Wraith9</a> · <a href="https://soundcloud.com/wraith9_gloam/2fd95d97-67db-4581-9f3e-8cb9f8ce9aa8" title="Doves" target="_blank" style="color: #e00000; text-decoration: none;">Doves</a></div>
          <br><br><br><br>      
 <img style="width: 50%;" src="/play/photos/7b4bio5hobgskW8qdPdvSqcwwJTvbiCMpGmRey1Rtd8H5rXgFVhybNSznokQayUr4RJoJv3ixpQPf69bQ9yBkMoK242J3jUwzP6swMhkX41Kvuhpek72XmoUrfUXgrPmdfqXe6UgthWjXhWXQwRZmg8EysHG.jpg" alt="Photo taken on July 23, 2022 at 8:53 AM"> <br><br><br><br>
+
 
     
       </div>

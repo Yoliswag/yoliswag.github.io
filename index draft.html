@@ -1,72 +1,4 @@
-import os
-
-# --- MANUAL IMAGE ORDER ---
-# List image paths here (relative to this script) in the exact order you want them to appear.
-# If empty, the script will auto-discover images as before.
-# You can list folders (they'll be expanded) or individual image files.
-manual_image_order = [
-    # Example:
-    # 'portfolio/invisiblecity/Invisible city/',
-    # 'portfolio/getlost/',
-]
-
-# Source folders with images (used only if manual_image_order is empty)
-source_folders = [
-    'portfolio',
-    # Add more folders here
-]
-output_filename = 'index.html'
-
-def generate_gallery():
-    image_extensions = ('.png', '.jpg', '.jpeg', '.gif', '.webp', '.bmp')
-    
-    if manual_image_order:
-        print("Using manual image order list (folders will be expanded)...")
-        expanded = []
-        missing = []
-        for p in manual_image_order:
-            if os.path.isdir(p):
-                for fname in sorted(os.listdir(p)):
-                    fpath = os.path.join(p, fname)
-                    if os.path.isfile(fpath) and fname.lower().endswith(image_extensions):
-                        expanded.append(fpath)
-            elif os.path.isfile(p):
-                expanded.append(p)
-            else:
-                missing.append(p)
-        all_images = [p for p in expanded if os.path.exists(p)]
-        if missing:
-            print(f"⚠️  Skipped: {missing}")
-    else:
-        all_images = []
-        print("Scanning folders for images...")
-        for folder in source_folders:
-            if os.path.exists(folder):
-                for root, dirs, files in os.walk(folder):
-                    for filename in files:
-                        if filename.lower().endswith(image_extensions):
-                            full_path = os.path.join(root, filename)
-                            all_images.append(full_path)
-                            print(f"  Found: {filename}")
-            else:
-                print(f"  ⚠️  {folder} not found")
-        
-        all_images = [p for p in all_images if os.path.exists(p)]
-        all_images.sort(key=lambda p: os.path.getmtime(p), reverse=True)
-    
-    print(f"\nFound {len(all_images)} images total!")
-    
-    # Pre-calculate image sizes for aspect ratio placeholders
-    from PIL import Image
-    img_size_cache = {}
-    for img_path in all_images:
-        try:
-            with Image.open(img_path) as im:
-                img_size_cache[img_path] = im.size
-        except Exception:
-            img_size_cache[img_path] = (1, 1)
-
-    html = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -173,15 +105,32 @@ def generate_gallery():
     </div>
     
     <div class="gallery-container" id="gallery">
-'''
-    
-    for i, img_path in enumerate(all_images):
-        web_path = img_path.replace('\\', '/')
-        w, h = img_size_cache.get(img_path, (1, 1))
-        aspect = w / h if h else 1
-        html += f'        <div class="image-wrapper" data-index="{i}" style="aspect-ratio: {w}/{h}; min-height: {int(200/aspect) if aspect>1 else 200}px;"><img src="{web_path}" alt="" class="gallery-item" loading="lazy"></div>\n'
-    
-    html += '''    </div>
+        <div class="image-wrapper" data-index="0" style="aspect-ratio: 3872/2592; min-height: 133px;"><img src="portfolio/Photography/_DSC7672.JPG" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="1" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/getlost/100gecksalem.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="2" style="aspect-ratio: 2592/3872; min-height: 200px;"><img src="portfolio/Photography/Blackberry.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="3" style="aspect-ratio: 2000/3000; min-height: 200px;"><img src="portfolio/Photography/DSC_0022.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="4" style="aspect-ratio: 2000/3000; min-height: 200px;"><img src="portfolio/Photography/DSC_0100.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="5" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/weball.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="6" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/sun.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="7" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/house.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="8" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/grass.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="9" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/mindseye/Minds Eye/gate.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="10" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/game.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="11" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="12" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/court.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="13" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/can.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="14" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/bug.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="15" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/treesletmesee.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="16" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/pottytime.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="17" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/notrespass.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="18" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/justfriends.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="19" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/fence.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="20" style="aspect-ratio: 911/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/stairs.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="21" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/window.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="22" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/darkrooms.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="23" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/can.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="24" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="" class="gallery-item" loading="lazy"></div>
+    </div>
     
     <div class="fullscreen-overlay" id="fullscreen">
         <img src="" alt="">
@@ -268,12 +217,4 @@ def generate_gallery():
         });
     </script>
 </body>
-</html>'''
-    
-    with open(output_filename, 'w') as f:
-        f.write(html)
-    
-    print(f"✅ Generated {len(all_images)} images!")
-    print(f"📁 Saved to: {output_filename}")
-
-generate_gallery()
+</html>

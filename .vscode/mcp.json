@@ -1,0 +1,16 @@
+{
+	"servers": {
+		"time": {
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"mcp/time",
+				"--local-timezone=America/New_York"
+			],
+			"type": "stdio"
+		}
+	},
+	"inputs": []
+}
