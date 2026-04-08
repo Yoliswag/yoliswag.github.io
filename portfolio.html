@@ -22,6 +22,7 @@
 
         .family {
             width: 100%;
+            max-width: 1400px;
             height: 100px;
             overflow: hidden;
         }
@@ -78,6 +79,140 @@
             outline: none;
         }
 
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+  }
+
+  .gallery-item {
+    border-radius: 10px;
+    padding: 10px;
+ text-align: center; /* Center text within each gallery item */
+    
+    
+  }
+
+  .gallery-item img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 10px auto 10px;
+    border: 3px solid #ff00ff;
+    box-shadow: 2px 2px 2px rgba(84, 84, 84, 0.5);
+   
+
+  }
+
+  .gallery-item p {
+    font-size: 1rem;
+    color: #ff00ff;
+  }
+
+  p2 {
+    padding-top: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #00ff00;
+    text-shadow: 1px -1px 2px #000000;
+    font-family: "Courier New", Courier, monospace;
+    
+  }
+
+  .hover-effect-container {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.hover-effect-container img {
+  display: block;
+  max-width: 100%;
+  margin: 0; /* Reset margin since the container has margin */
+  transition: all 0.3s ease;
+}
+
+/* Overlay that appears on hover */
+.hover-effect-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100%;
+  background-color: rgba(255, 49, 231, 0.6); /* Gray overlay with 60% opacity */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hover-effect-container:hover::after {
+  opacity: 1;
+}
+
+/* Optional: Add a text indicator for clickable images */
+.hover-effect-container::before {
+  content: 'CLICK';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 255, 60);
+  font-weight: bold;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-effect-container:hover::before {
+  opacity: 1;
+}
+
+  .back-button {
+    display: inline-block;
+    background-color: #fff826;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .back-button:hover {
+    background-color: #ffdf4d;
+  }
+  .zoom-on-click img {
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+
+  .zoom-on-click img.clicked {
+    transform: scale(2); /* or whatever size you want */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border: none;
+  }
+
         .page-wrap {
             width: 100%;
             max-width: 1100px;
@@ -105,10 +240,23 @@
         }
 
         .portfolio-card {
-            border: 1px solid #ff00ff;
-            padding: 16px;
-            background: #050505;
+            border: 1px solid #1f1f1f;
+            padding: 20px;
+            background: #1f1f1f;
             min-height: 120px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .portfolio-card .card-bottom {
+            text-align: right;
+        }
+
+        .portfolio-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border: 1px solid #ff00ff;
         }
 
         .portfolio-card h2 {
@@ -203,24 +351,21 @@
             <a href="/portfolio.html">Portfolio</a>
             <a href="/cv.html">CV</a>
             <a href="/contact.html">Contact</a>
-            <a href="/yoliwebsite2/index.html">Archive</a>
+            <a href="/archive/index.html">Archive</a>
         </nav>
     </div>
 
     <main class="page-wrap">
-        <h1>Portfolio</h1>
-        <p class="intro">Selected series and visual experiments.</p>
+        <p class="intro" style="text-align: center;">Selected series and visual experiments.</p>
 
         <div class="container2" id="portfolio-links">
       <h1>Links</h1>
 
-      <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/yoliwebsite2/index.html">Archive Website V 2</a></p>
+      <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/archive/index.html">Archive Website V 2</a></p>
 
       <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
 
-      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/getlost/index.html">Get lost</a></p>
-      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/invisiblecity/index.html">Invisible city</a></p>
-      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/mindseye/index.html">Minds eye</a></p>
+
       <br>
             <details class="upcoming-dropdown">
                 <summary>Posted Soon <span style="font-size: 12px; vertical-align: middle">&#x25BE;</span></summary>
@@ -234,60 +379,161 @@
                 </ul>
             </details>
 
-            <div class="contact-card" id="contact">
-                <h1>Contact</h1>
-                <p>Email for collaborations and commissions: <a href="mailto:hello@yolitzy.com">hello@yolitzy.com</a></p>
-            </div>
+
 
     </div>
-
+        <h1>Projects</h1>
         <section class="portfolio-grid" aria-label="Portfolio projects">
             <article class="portfolio-card">
-                <h2>Get Lost</h2>
-                <p>Street snapshots and textures from wandering with no map.</p>
-                <a href="/portfolio/getlost/index.html">View project</a>
+                <div>
+                    <h2>Get Lost</h2>
+                    <a href="/portfolio/getlost/index.html">
+                        <img src="/public/external/snowstrippersxturnabout.jpg" alt="Get Lost preview">
+                    </a>
+                </div>
+                <div class="card-bottom">
+                    <p style="color: rgb(0, 255, 60); font-style: italic;">Photography, 2024</p>
+                </div>
             </article>
 
             <article class="portfolio-card">
-                <h2>Invisible City</h2>
-                <p>Details of urban life hiding in plain sight.</p>
-                <a href="/portfolio/invisiblecity/index.html">View project</a>
+                <div>
+                    <h2>Invisible City</h2>
+                    <a href="/portfolio/invisiblecity/index.html">
+                        <img src="/portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="Get Lost preview">
+                    </a>
+                </div>
+                <div class="card-bottom">
+                    <p style="color: rgb(0, 255, 60); font-style: italic;">Photography, 2024</p>
+                </div>
             </article>
 
             <article class="portfolio-card">
-                <h2>Minds Eye</h2>
-                <p>Color studies and digital edits built from memory and mood.</p>
-                <a href="/portfolio/mindseye/index.html">View project</a>
+                <div>
+                    <h2>Minds Eye</h2>
+                    <a href="/portfolio/mindseye/index.html">
+                        <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Get Lost preview">
+                    </a>
+                </div>
+                 <div class="card-bottom">
+                    <p style="color: rgb(0, 255, 60); font-style: italic;">Photography, 2024</p>
+                </div>
             </article>
 
             <article class="portfolio-card">
-                <h2>Jewerly Work</h2>
-                <p>Object-focused documentation and wearable forms.</p>
-                <a href="/portfolio/jewerlywork/index.html">View project</a>
+                <div>
+                    <h2>Bag</h2>
+                    <p>Working on it</p>
+                    <a href="/portfolio/bag/index.html">
+                        <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Get Lost preview">
+                    </a>
+                </div>
+                 <div class="card-bottom">
+                    <p style="color: rgb(0, 255, 60); font-style: italic;">Fiber, 2024</p>
+                </div>
             </article>
 
             <article class="portfolio-card">
-                <h2>Photography Archive</h2>
-                <p>Core image archive and source material for larger projects.</p>
-                <a href="/portfolio/Photography/">Open archive</a>
+                <div>
+                    <h2>My Head</h2>
+                    <p>Working on it</p>
+                    <a href="/portfolio/myhead/myhead.txt">
+                        <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Get Lost preview">
+                    </a>
+                </div>
+                 <div class="card-bottom">
+                    <p style="color: rgb(0, 255, 60); font-style: italic;">Fiber, 2024</p>
+                </div>
             </article>
 
             <article class="portfolio-card">
-                <h2>Real</h2>
-                <p>A separate world inside the site connected to this portfolio.</p>
-                <a href="/real/index.html">View project</a>
+                <div>
+                    <h2>Jewerly Work</h2>
+                    <p>Object-focused documentation and wearable forms.</p>
+                    <a href="/portfolio/jewerlywork/index.html">View project</a>
+                </div>
             </article>
+
+            <article class="portfolio-card">
+                <div>
+                    <h2>Photography Archive</h2>
+                    <p>Core image archive and source material for larger projects.</p>
+                    <a href="/portfolio/Photography/">Open archive</a>
+                </div>
+            </article>
+
+            <article class="portfolio-card">
+                <div>
+                    <h2>Real</h2>
+                    <p>Writing experiment separate world inside the site connected to this portfolio.</p>
+                    <a href="/real/index.html">View project</a>
+                </div>
+            </article>
+    
+            <div style="height: 100px;"></div>
         </section>
-
-        <details class="upcoming-dropdown">
-            <summary>Posted Soon</summary>
-            <ul class="upcoming-list">
-                <li><a href="/portfolio/myhead/myhead.txt">My head</a></li>
-                <li><a href="/portfolio/bag/bag.txt">My Bag</a></li>
-                <li><a href="/portfolio/jewerlywork/index.html">Nauv</a></li>
-                <li><a href="/portfolio/jewerlywork/index.html">Objects</a></li>
-            </ul>
-        </details>
+            <div class="contact-card" id="contact">
+                <h1>Contact</h1>
+                <p>Email for collaborations and commissions: <a href="mailto:contact@yolitzy.com" style="color:rgb(255, 229, 243);">contact@yolitzy.com</a></p>
+            </div>
     </main>
+
+    
+    <div style="height: 100px;"></div>
+
+    </div>
+      <div id="portfolio" class="gallery-item"></div>
+    
+
+    <div class="gallery">
+      
+  <br><br>
+
+      <div class="gallery-item">
+        <img src="/public/external/skindogs.png" alt="Art Piece 1">
+        <p2>Skin Dogs</p2>
+        <p>The movie Kids</p>
+        <p>My pill tower</p><p>and this Dog I drew, that I love a lot</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/public/external/KAtheric.jpg" alt="Art Piece 2">
+        <p2>KAtheric</p2>
+        <p>an image of a church I took off a balcony. 
+          <p>I see this church every day in the distance driving home.</p>
+  <p>a view of commute</p> 
+           <p>the mega choc I just had on my laptop, idk. Inverted picture of an actor, I don't remember her name.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/public/external/quick shit.gif" alt="Art Piece 3">
+        <p2>Quick shit</p2>
+        <p>quick peace i made took like 10 mins</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/public/external/tattoo.jpg" alt="Art Piece 4">
+        <p2>Tramp Stamp Tattoo</p2>
+        <p>i desgined a tramp stamp, then drew this back and overlayed it. I luv the color on this one</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/public/external/artsaleflyer.jpg" alt="Art Piece 4">
+        <p2>Art Piece 4</p2>
+        <p>i have no idea whats happening. flyer i made. collabed with eviee. yeah its sucked at first then we moved to skate park 
+          and people actully showed up mostly eviee friends but it was really fun everyone was 
+          looking at my paintings and it made me feel seen bc otherwise my art just sits in my room unenjoyed and sad.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="/public/external/victoryroyale.jpg" alt="Art Piece 4">
+        <p2>victoryroyale</p2>
+        <p>we got the wyatt bathroom selfie</p>
+        <p>
+        <p>dude will say big things coming then od
+        </p>
+        <p>our holiday shake at tolly ho</p>
+        <p>facebook market and weed rainbowdash</p>
+      </div>
+      <!-- Add more gallery items as needed -->
+    </div>
+        <div style="height: 100px;"></div>
+    <a href="/index.html" class="back-button">Back to Top</a>
+  </div>
 </body>
 </html>

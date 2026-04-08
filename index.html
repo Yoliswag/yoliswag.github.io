@@ -23,11 +23,8 @@
         /* ── GIF HEADER ── */
         .family {
             width: 100%;
-            max-width: 1400px;
             height: 100px;
             overflow: hidden;
-            object-fit: cover;
-            display: block;
         }
 
         /* ── NAV ── */
@@ -218,7 +215,7 @@
 </head>
 <body>
 
-    <img class="family" src="/play/photos/family.gif" alt="">
+    <img class="family" src="/play/photos/family.gif" alt="Overlay Image">
 
     <div class="navbar">
         <div class="welcome"><a href="/index.html">Yolitzy.com</a></div>
@@ -227,7 +224,7 @@
             <a href="/portfolio.html">Portfolio</a>
             <a href="/cv.html">CV</a>
             <a href="/contact.html">Contact</a>
-            <a href="/yoliwebsite2/index.html">Archive</a>
+            <a href="/archive/index.html">Archive</a>
         </nav>
     </div>
 
@@ -235,8 +232,7 @@
     <div class="intro-section">
         <!-- replace this with your actual intro -->
         photographer, web maker, illustrator.<br>
-        based in Kentucky. making work about [what you care about].<br>
-        <span style="font-size: 16px; color: #888; margin-top: 16px; display: block;">↓ recent work</span>
+        based in Kentucky. making work about...<br>
     </div>
 
     <!-- RECENT WORK LABEL -->
@@ -244,12 +240,12 @@
 
     <!-- GALLERY (6 newest images) -->
     <div class="gallery-container" id="gallery">
-        <div class="image-wrapper" data-index="0" style="aspect-ratio: 3872/2592; min-height: 133px;"><img src="portfolio/Photography/_DSC7672.JPG" alt="" class="gallery-item" loading="eager"></div>
-        <div class="image-wrapper" data-index="1" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/getlost/100gecksalem.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        <div class="image-wrapper" data-index="2" style="aspect-ratio: 2592/3872; min-height: 200px;"><img src="portfolio/Photography/Blackberry.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="0" style="aspect-ratio: 3872/2592; min-height: 133px;"><img src="archive/unsorted/bedgirl.jpg" alt="" class="gallery-item" loading="eager"></div>
+        <div class="image-wrapper" data-index="1" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli_1_.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="2" style="aspect-ratio: 2592/3872; min-height: 200px;"><img src="archive/unsorted/party weave_0004.jpg" alt="" class="gallery-item" loading="lazy"></div>
         <div class="image-wrapper" data-index="3" style="aspect-ratio: 2000/3000; min-height: 200px;"><img src="portfolio/Photography/DSC_0022.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        <div class="image-wrapper" data-index="4" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/weball.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        <div class="image-wrapper" data-index="5" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/treesletmesee.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="4" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli5-915e.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="5" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli_3_smiley.jpg" alt="" class="gallery-item" loading="lazy"></div>
     </div>
 
     <div style="width:100%; max-width:1400px; text-align:right; padding: 12px 0;">
@@ -258,7 +254,7 @@
 
     <!-- HIT COUNTER -->
     <div class="hit-counter">
-        <div>visitors</div>
+        <div>visits</div>
         <div class="counter-display" id="counter-display">[ loading ]</div>
     </div>
 
@@ -267,7 +263,6 @@
         <img src="" alt="">
     </div>
 
-    <div class="instructions">double-tap or double-click for fullscreen</div>
 
     <script>
         // ── GALLERY LAYOUT ──
@@ -335,20 +330,8 @@
         // ── FULLSCREEN ──
         wrappers.forEach((wrapper) => {
             const img = wrapper.querySelector('.gallery-item');
-            let lastTap = 0;
 
-            wrapper.addEventListener('touchstart', () => {
-                const now = new Date().getTime();
-                if (now - lastTap < 300) {
-                    fullscreenImg.src = img.src;
-                    fullscreenOverlay.classList.add('active');
-                    lastTap = 0;
-                } else {
-                    lastTap = now;
-                }
-            });
-
-            wrapper.addEventListener('dblclick', () => {
+            wrapper.addEventListener('click', () => {
                 fullscreenImg.src = img.src;
                 fullscreenOverlay.classList.add('active');
             });

@@ -1,0 +1,322 @@
+.i-phone16-plus1-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+ 
+.i-phone16-plus1i-phone16-plus1 {
+  width: 100%;
+  height: 932px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+ 
+.i-phone16-plus1k-atheric1 {
+  top: -3px;
+  left: -5px;
+  width: 437px;
+  height: 725px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-skindogs1 {
+  top: 722px;
+  left: 0px;
+  width: 430px;
+  height: 213px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-wtcangelfireman1 {
+  top: 478px;
+  left: 181px;
+  width: 184px;
+  height: 155px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-lowtek1 {
+  top: 528px;
+  left: 222px;
+  width: 208px;
+  height: 168px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-debtgif {
+  top: 39px;
+  left: 330px;
+  width: 109px;
+  height: 420.9999694824219px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.i-phone16-plus1-newgif {
+  top: 242px;
+  left: 0px;
+  width: 430px;
+  height: 236px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.i-phone16-plus1-image1 {
+  top: 206px;
+  left: 336px;
+  width: 150px;
+  height: 20px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-xboxlive1 {
+  top: 176px;
+  left: 0px;
+  width: 588px;
+  height: 60px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-myhead152 {
+  top: -46px;
+  left: -65px;
+  width: 279px;
+  height: 342px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-welcomegif {
+  top: 0px;
+  left: 0px;
+  width: 437px;
+  height: 41px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.i-phone16-plus1-background-border-shadow {
+  top: 56px;
+  left: 59px;
+  width: 289px;
+  height: 80px;
+  display: flex;
+  position: absolute;
+  background: linear-gradient(180deg, rgba(255, 97, 235, 1) 0%, rgba(243, 156, 18, 1) 100%);
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 1) ;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: rgba(192, 57, 43, 1);
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10px;
+}
+ 
+.i-phone16-plus1-text1 {
+  top: 7px;
+  left: -22px;
+  color: rgba(0, 0, 0, 1);
+  width: 331px;
+  height: auto;
+  position: absolute;
+  font-size: 14px;
+  font-style: Bold;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+ 
+.i-phone16-plus1-weedgif {
+  top: 123px;
+  left: -28px;
+  width: 310px;
+  height: 150px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.i-phone16-plus1-man {
+  top: 145px;
+  left: -121px;
+  width: 509px;
+  height: 215px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-sociallinks {
+  top: 370px;
+  left: 33px;
+  width: 365px;
+  height: 282px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.i-phone16-plus1-rectangle4 {
+  top: 0px;
+  left: 38.91543960571289px;
+  width: 326px;
+  height: 78px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.i-phone16-plus1-rectangle5 {
+  top: 103.4000015258789px;
+  left: 53.67647171020508px;
+  width: 311px;
+  height: 75px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.i-phone16-plus1-rectangle6 {
+  top: 206.8000030517578px;
+  left: 53.67647171020508px;
+  width: 311px;
+  height: 75px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.i-phone16-plus1-instagram1 {
+  top: 206.8000030517578px;
+  left: 0px;
+  width: 76px;
+  height: 75px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-text2 {
+  left: -20px;
+  color: rgba(255, 0, 233, 1);
+  width: 344px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+ 
+.i-phone16-plus1-text3 {
+  top: 103.4000244140625px;
+  left: -20px;
+  color: rgba(255, 0, 233, 1);
+  width: 335px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+ 
+.i-phone16-plus1-text4 {
+  top: 206.79998779296875px;
+  left: -20px;
+  color: rgba(255, 0, 233, 1);
+  width: 335px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+ 
+.i-phone16-plus1-twitter {
+  top: 103.4000015258789px;
+  left: 0px;
+  width: 75px;
+  height: 75px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-instagram2 {
+  top: 0px;
+  left: 0px;
+  width: 76px;
+  height: 78px;
+  position: absolute;
+}
+ 
+.i-phone16-plus1-rectangle7 {
+  top: -96.68571472167969px;
+  left: 0px;
+  width: 365px;
+  height: 75px;
+  position: absolute;
+  border-radius: 10px;
+}
+ 
+.i-phone16-plus1-text5 {
+  top: -96.68572998046875px;
+  color: rgba(255, 0, 233, 1);
+  width: 365px;
+  height: auto;
+  position: absolute;
+  font-size: 52px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Rubik Iso;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+ 
+.i-phone16-plus1-money20jumpinggif {
+  top: -3px;
+  left: 301px;
+  width: 145px;
+  height: 181px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+ 
+.i-phone16-plus1-blow1 {
+  top: 874px;
+  left: 0px;
+  width: 430px;
+  height: 58px;
+  position: absolute;
+}
