@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive | Yolitzy.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Contact | Yolitzy.com</title>
     <style>
         * {
             box-sizing: border-box;
@@ -16,14 +16,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
             font-family: "Courier New", Courier, monospace;
             color: #ff00ff;
         }
 
+        .family {
+            width: 100%;
+            max-width: 1400px;
+            height: 100px;
+            overflow: hidden;
+            object-fit: cover;
+            display: block;
+        }
+
         .navbar {
-            max-width: 100%;
             width: 100%;
             max-width: 1400px;
             border-bottom: 1px solid rgb(249, 255, 72);
@@ -36,7 +42,7 @@
             color: red;
             font-weight: bold;
             text-align: center;
-            padding: 50px 0 50px;
+            padding: 50px 0px 50px;
         }
 
         .welcome a,
@@ -74,17 +80,37 @@
             outline: none;
         }
 
-        .archive-wrap {
+        .contact-wrap {
             width: 100%;
-            max-width: 1400px;
-            border: 1px solid #333;
+            max-width: 900px;
+            border: 1px solid #ff00ff;
             background: #050505;
+            padding: 24px;
+            margin-top: 18px;
         }
 
-        .archive-image {
-            width: 100%;
-            height: auto;
-            display: block;
+        h1 {
+            margin-top: 0;
+            color: #ff00ff;
+            text-shadow: 2px 2px 5px #236823;
+        }
+
+        p {
+            color: #8bd8ff;
+            line-height: 1.6;
+        }
+
+        .contact-link,
+        .contact-link:visited {
+            color: #70ff8d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-link:hover,
+        .contact-link:focus-visible {
+            text-decoration: underline;
+            outline: none;
         }
 
         @media (max-width: 768px) {
@@ -105,6 +131,8 @@
     </style>
 </head>
 <body>
+    <img class="family" src="/play/photos/family.gif" alt="">
+
     <div class="navbar">
         <div class="welcome"><a href="/index.html">Yolitzy.com</a></div>
         <nav class="nav-links" aria-label="Main navigation">
@@ -116,8 +144,12 @@
         </nav>
     </div>
 
-    <div class="archive-wrap">
-        <img class="archive-image" src="/yoliwebsite2/yoliwebsite2/ezgif-6cf14d8c999448.gif" alt="Archive GIF">
-    </div>
+    <main class="contact-wrap">
+        <h1>Contact</h1>
+        <p>
+            For collaborations, commissions, or questions, email:
+            <a class="contact-link" href="mailto:hello@yolitzy.com">hello@yolitzy.com</a>
+        </p>
+    </main>
 </body>
 </html>

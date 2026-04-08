@@ -115,6 +115,14 @@
             padding: 50px 0px 50px;
         }
 
+        .welcome a,
+        .welcome a:visited,
+        .welcome a:hover,
+        .welcome a:active {
+            color: red;
+            text-decoration: none;
+        }
+
         .navbar {
             width: 100%;
             max-width: 1400px;
@@ -144,16 +152,15 @@
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
+        .nav-links a:visited {
+            color: #000000;
+        }
+
         .nav-links a:hover,
         .nav-links a:focus-visible {
             background: #70ff8d;
             color: #000000;
             outline: none;
-        }
-
-        .nav-links a.active {
-            background: #70ff8d;
-            color: #000000;
         }
 
         .yoli-section body,
@@ -254,11 +261,11 @@
 <div class="navbar">
       <div class="welcome" style="text-align: center;"><a href="/index.html">Yolitzy.com</a></div>
       <nav class="nav-links" aria-label="Main navigation">
-          <a href="#about" class="active" aria-current="page">About Me</a>
-          <a href="#portfolio-links">Portfolio</a>
-          <a href="#gallery">Gallery</a>
+          <a href="/about.html">About Me</a>
+          <a href="/portfolio.html">Portfolio</a>
+          <a href="/cv.html">CV</a>
+          <a href="/contact.html">Contact</a>
           <a href="/yoliwebsite2/index.html">Archive</a>
-          <a href="#contact">Contact</a>
       </nav>
 </div>
 

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Yolitzy.com</title>
     <style>
         * {
             box-sizing: border-box;
@@ -16,101 +17,33 @@
             flex-direction: column;
             align-items: center;
             font-family: "Courier New", Courier, monospace;
-            
+            color: #ff00ff;
         }
 
-        .gallery-container {
-            position: relative;
+        /* ── GIF HEADER ── */
+        .family {
             width: 100%;
             max-width: 1400px;
-        }
-        
-        .image-wrapper {
-            position: absolute;
-        }
-        
-        .gallery-item {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center center;
+            height: 100px;
+            overflow: hidden;
+            object-fit: cover;
             display: block;
-            -webkit-user-select: none;
-            user-select: none;
         }
 
-        .family {
-             width: 100%;
-             height: 100px;
-             overflow: hidden;
-        }
-        
-        /* Fullscreen overlay */
-        .fullscreen-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* ── NAV ── */
+        .navbar {
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .fullscreen-overlay.active {
-            display: flex;
-        }
-        
-        .fullscreen-overlay img {
-            max-width: 95%;
-            max-height: 95%;
-            object-fit: contain;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-        }
-        
-        .instructions {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            padding: 10px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            font-size: 13px;
-            z-index: 5000;
-            max-width: 90vw;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 20px;
-            }
-            .instructions {
-                font-size: 12px;
-                padding: 1px 1px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 20px;
-            }
-            .instructions {
-                font-size: 11px;
-                padding: 1px 1px;
-            }
+            max-width: 1400px;
+            border-bottom: 1px solid rgb(249, 255, 72);
+            padding-bottom: 22px;
+            margin-bottom: 18px;
         }
 
         .welcome {
             font-size: 60px;
             color: red;
             font-weight: bold;
-            text-align: left;
+            text-align: center;
             padding: 50px 0px 50px;
         }
 
@@ -120,14 +53,6 @@
         .welcome a:active {
             color: red;
             text-decoration: none;
-        }
-
-        .navbar {
-            width: 100%;
-            max-width: 1400px;
-            border-bottom: 1px solid rgb(249, 255, 72);
-            padding-bottom: 22px;
-            margin-bottom: 18px;
         }
 
         .nav-links {
@@ -145,10 +70,8 @@
             color: #000000;
             text-decoration: none;
             border: 1px solid #0b76ff;
-            
             padding: 10px 16px;
             border-radius: 0;
-            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         .nav-links a:visited {
@@ -162,307 +85,299 @@
             outline: none;
         }
 
-        .yoli-section body,
-        .yoli-section {
-            font-family: Times New Roman, serif;
+        /* ── INTRO ── */
+        .intro-section {
+            width: 100%;
+            max-width: 1400px;
+            font-size: 26px;
             color: #ff00ff;
-            font-size: 30px;
-            padding: 60px 130px 30px;
-            line-height: 2;
-            text-align: left;
+            padding: 60px 60px 40px;
+            line-height: 1.8;
+            border-bottom: 1px solid #333;
         }
 
-        .container2 {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 10%;
-            border-radius: 20px;
-            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
-            align-items: flex-start;
-            text-align: left;
+        /* ── RECENT WORK ── */
+        .recent-header {
+            width: 100%;
+            max-width: 1400px;
+            font-size: 13px;
+            color: #f9ff48;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 30px 60px 14px;
+            border-bottom: 1px solid #f9ff48;
+            margin-bottom: 0;
         }
 
-        .contact-card {
-            margin-top: 30px;
-            margin-left: 40px;
-            border-left: 3px solid #00ff66;
-            padding-left: 16px;
-            color: #00ff66;
+        /* ── GALLERY ── */
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 20px;
         }
 
-        .contact-card a {
-            color: #00ff66;
-        }
-
-        .upcoming-dropdown {
-            margin: 24px 0 40px 40px;
-            max-width: 460px;
-            border: 1px solid #ff00ff;
-            background: #050505;
-        }
-
-        .upcoming-dropdown summary {
+        .image-wrapper {
+            position: absolute;
             cursor: pointer;
-            list-style: none;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #ff00ff;
-            padding: 12px 14px;
-            border-bottom: 1px solid #ff00ff;
         }
 
-        .upcoming-dropdown[open] summary {
-            background: #101010;
+        .gallery-item {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            display: block;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
-        .upcoming-list {
-            list-style: none;
-            margin: 0;
-            padding: 8px 14px 12px;
+        /* ── FULLSCREEN ── */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
         }
 
-        .upcoming-list li {
-            margin: 10px 0;
-        }
-
-        .upcoming-list a,
-        .upcoming-list a:visited {
-            color: #8bd8ff;
-            text-decoration: none;
-        }
-
-        .upcoming-list a:hover,
-        .upcoming-list a:focus-visible {
-            text-decoration: underline;
-            color: #70ff8d;
-            outline: none;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 5px #236823;
-            margin-bottom: 10px;
-            color: #ff00ff;
-        }
-
-          .gallery-item p {
-            font-size: 1rem;
-            color: #ff00ff;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 20px; /* #605b5b */
-        }
-
-        p2 {
-            padding-top: 30px;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #00ff00;
-            text-shadow: 1px -1px 2px #000000;
-            font-family: "Courier New", Courier, monospace;
-    
-        }
-
-        .nav-label {
+        .fullscreen-overlay.active {
             display: flex;
-            gap: 40px;
-            font-size: 30px;
-            padding: 50px 50px 40px;
         }
 
-        .project-line {
-            display: flex;             /* put children on same line */               /* space between them */
-            align-items: baseline;       /* spacing between rows */
-        }
-        .meta {
-            font-size: 14px;
-            font-style: italic;
+        .fullscreen-overlay img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
         }
 
+        /* ── HIT COUNTER ── */
+        .hit-counter {
+            width: 100%;
+            max-width: 1400px;
+            text-align: center;
+            padding: 40px 0 20px;
+            font-size: 13px;
+            color: #f9ff48;
+            letter-spacing: 0.15em;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+        }
+
+        .counter-display {
+            font-size: 18px;
+            font-family: "Courier New", monospace;
+            letter-spacing: 0.2em;
+            margin-top: 6px;
+        }
+
+        /* ── INSTRUCTIONS ── */
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            border: 1px solid #333;
+            color: #888;
+            padding: 8px 16px;
+            font-size: 12px;
+            z-index: 5000;
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .welcome {
                 font-size: 44px;
                 padding: 30px 0 20px;
             }
-
             .nav-links {
                 font-size: 16px;
                 gap: 10px;
             }
-
             .nav-links a {
                 padding: 8px 14px;
             }
+            .intro-section {
+                font-size: 20px;
+                padding: 40px 20px 30px;
+            }
+            .recent-header {
+                padding: 20px 20px 10px;
+            }
         }
-
-
     </style>
 </head>
 <body>
-        <img class="family" src="/play/photos/family.gif" alt="Overlay Image">
-<div class="navbar">
-    <div class="welcome" style="text-align: center;"><a href="/index.html">Yolitzy.com</a></div>
-      <nav class="nav-links" aria-label="Main navigation">
-          <a href="/about.html">About Me</a>
-          <a href="#portfolio-links">Portfolio</a>
-          <a href="#gallery">Gallery</a>
-          <a href="/yoliwebsite2/index.html">Archive</a>
-          <a href="#contact">Contact</a>
-      </nav>
-</div>
 
-<div class="yoli-section" id="about">
-    <p style="text-align: center;">this is index
-</p>
-       </div>
-    <div class="container2" id="portfolio-links">
-      <h1>Links</h1>
+    <img class="family" src="/play/photos/family.gif" alt="">
 
-      <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/yoliwebsite2/index.html">Archive Website V 2</a></p>
-
-      <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
-
-      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/getlost/index.html">Get lost</a></p>
-      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/invisiblecity/index.html">Invisible city</a></p>
-      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/mindseye/index.html">Minds eye</a></p>
-      <br>
-            <details class="upcoming-dropdown">
-                <summary>Posted Soon <span style="font-size: 12px; vertical-align: middle">&#x25BE;</span></summary>
-                <ul class="upcoming-list">
-                    <li><a href="/portfolio/myhead/myhead.txt">My head</a></li>
-                    <li><a href="/portfolio/bag/bag.txt">My Bag</a></li>
-                    <li><a href="/portfolio/jewerlywork/index.html">Jewerly Work</a></li>
-                    <li><a href="/real/index.html">Real</a></li>
-                    <li><a href="/portfolio/jewerlywork/index.html">Nauv</a></li>
-                    <li><a href="/portfolio/jewerlywork/index.html">Objects</a></li>
-                </ul>
-            </details>
-
-            <div class="contact-card" id="contact">
-                <h1>Contact</h1>
-                <p>Email for collaborations and commissions: <a href="mailto:hello@yolitzy.com">hello@yolitzy.com</a></p>
-            </div>
-
+    <div class="navbar">
+        <div class="welcome"><a href="/index.html">Yolitzy.com</a></div>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="/about.html">About Me</a>
+            <a href="/portfolio.html">Portfolio</a>
+            <a href="/cv.html">CV</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/yoliwebsite2/index.html">Archive</a>
+        </nav>
     </div>
 
-    <div class="instructions">
-        Double-tap or double-click for fullscreen
+    <!-- INTRO -->
+    <div class="intro-section">
+        <!-- replace this with your actual intro -->
+        photographer, web maker, illustrator.<br>
+        based in Kentucky. making work about [what you care about].<br>
+        <span style="font-size: 16px; color: #888; margin-top: 16px; display: block;">↓ recent work</span>
     </div>
-    
-    <div class="container">
-        <div class="gallery-container" id="gallery">
-            <div class="image-wrapper" data-index="0" style="aspect-ratio: 3872/2592; min-height: 133px;"><img src="portfolio/Photography/_DSC7672.JPG" alt="" class="gallery-item" loading="eager"></div>
-            <div class="image-wrapper" data-index="1" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/getlost/100gecksalem.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="2" style="aspect-ratio: 2592/3872; min-height: 200px;"><img src="portfolio/Photography/Blackberry.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="3" style="aspect-ratio: 2000/3000; min-height: 200px;"><img src="portfolio/Photography/DSC_0022.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="4" style="aspect-ratio: 2000/3000; min-height: 200px;"><img src="portfolio/Photography/DSC_0100.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="5" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/weball.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="6" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/sun.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="7" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/house.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="8" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/grass.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="9" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/mindseye/Minds Eye/gate.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="10" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/game.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="11" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="12" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/court.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="13" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/can.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="14" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/bug.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="15" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/treesletmesee.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="16" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/pottytime.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="17" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/notrespass.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="18" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/justfriends.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="19" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/fence.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="20" style="aspect-ratio: 911/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/stairs.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="21" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/window.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="22" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/darkrooms.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="23" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/can.jpg" alt="" class="gallery-item" loading="lazy"></div>
-            <div class="image-wrapper" data-index="24" style="aspect-ratio: 1000/1500; min-height: 200px;"><img src="portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        </div>
-    
+
+    <!-- RECENT WORK LABEL -->
+    <div class="recent-header">Recent Work</div>
+
+    <!-- GALLERY (6 newest images) -->
+    <div class="gallery-container" id="gallery">
+        <div class="image-wrapper" data-index="0" style="aspect-ratio: 3872/2592; min-height: 133px;"><img src="portfolio/Photography/_DSC7672.JPG" alt="" class="gallery-item" loading="eager"></div>
+        <div class="image-wrapper" data-index="1" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/getlost/100gecksalem.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="2" style="aspect-ratio: 2592/3872; min-height: 200px;"><img src="portfolio/Photography/Blackberry.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="3" style="aspect-ratio: 2000/3000; min-height: 200px;"><img src="portfolio/Photography/DSC_0022.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="4" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/mindseye/Minds Eye/weball.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="5" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="portfolio/invisiblecity/Invisible city/treesletmesee.jpg" alt="" class="gallery-item" loading="lazy"></div>
+    </div>
+
+    <div style="width:100%; max-width:1400px; text-align:right; padding: 12px 0;">
+        <a href="/portfolio.html" style="color:#f9ff48; font-size:13px; letter-spacing:0.08em;">all work →</a>
+    </div>
+
+    <!-- HIT COUNTER -->
+    <div class="hit-counter">
+        <div>visitors</div>
+        <div class="counter-display" id="counter-display">[ loading ]</div>
+    </div>
+
+    <!-- FULLSCREEN OVERLAY -->
     <div class="fullscreen-overlay" id="fullscreen">
         <img src="" alt="">
     </div>
-    
+
+    <div class="instructions">double-tap or double-click for fullscreen</div>
+
     <script>
+        // ── GALLERY LAYOUT ──
         const gallery = document.getElementById('gallery');
         const wrappers = document.querySelectorAll('.image-wrapper');
         const fullscreenOverlay = document.getElementById('fullscreen');
         const fullscreenImg = fullscreenOverlay.querySelector('img');
-        
+
+        function getAspectRatio(img, wrapper) {
+            if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+                return img.naturalWidth / img.naturalHeight;
+            }
+
+            const ratioSource = wrapper.style.aspectRatio || getComputedStyle(wrapper).aspectRatio;
+            if (ratioSource && ratioSource.includes('/')) {
+                const parts = ratioSource.split('/').map((part) => parseFloat(part.trim()));
+                if (parts[0] > 0 && parts[1] > 0) {
+                    return parts[0] / parts[1];
+                }
+            }
+
+            return 1;
+        }
+
         function layoutImages() {
             const width = window.innerWidth;
-            const columns = width > 1024 ? 5 : 2;
+            const columns = width > 1024 ? 3 : 2;
             const gap = 20;
             const containerWidth = Math.min(1400, width - 40);
             const effectiveWidth = containerWidth - (gap * (columns - 1));
             const colWidth = Math.floor(effectiveWidth / columns);
             const columnHeights = Array(columns).fill(0);
             gallery.style.width = containerWidth + 'px';
-            
-            wrappers.forEach((wrapper, index) => {
+
+            wrappers.forEach((wrapper) => {
                 const img = wrapper.querySelector('.gallery-item');
-                const col = index % columns;
-                const x = col * (colWidth + gap);
-                const y = columnHeights[col];
-                
-                function applyDimensions() {
-                    const aspectRatio = img.naturalWidth / img.naturalHeight;
-                    const height = colWidth / aspectRatio;
-                    wrapper.style.width = colWidth + 'px';
-                    wrapper.style.height = height + 'px';
-                    wrapper.style.left = x + 'px';
-                    wrapper.style.top = y + 'px';
-                    columnHeights[col] += height + 20;
-                    gallery.style.height = Math.max(...columnHeights) + 'px';
-                }
-                
-                if (img.complete && img.naturalWidth > 0) {
-                    applyDimensions();
-                } else {
-                    img.onload = applyDimensions;
-                }
+                const ratio = getAspectRatio(img, wrapper);
+                const height = colWidth / ratio;
+                const shortestColumn = columnHeights.indexOf(Math.min(...columnHeights));
+                const x = shortestColumn * (colWidth + gap);
+                const y = columnHeights[shortestColumn];
+
+                wrapper.style.width = colWidth + 'px';
+                wrapper.style.height = height + 'px';
+                wrapper.style.left = x + 'px';
+                wrapper.style.top = y + 'px';
+
+                columnHeights[shortestColumn] += height + gap;
             });
+
+            gallery.style.height = Math.max(...columnHeights) + 'px';
         }
-        
+
         layoutImages();
-        
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(layoutImages, 250);
         });
-        
+        wrappers.forEach((wrapper) => {
+            const img = wrapper.querySelector('.gallery-item');
+            img.addEventListener('load', layoutImages, { once: true });
+        });
+
+        // ── FULLSCREEN ──
         wrappers.forEach((wrapper) => {
             const img = wrapper.querySelector('.gallery-item');
             let lastTap = 0;
-            
+
             wrapper.addEventListener('touchstart', () => {
-                const currentTime = new Date().getTime();
-                if (currentTime - lastTap < 300) {
+                const now = new Date().getTime();
+                if (now - lastTap < 300) {
                     fullscreenImg.src = img.src;
                     fullscreenOverlay.classList.add('active');
                     lastTap = 0;
                 } else {
-                    lastTap = currentTime;
+                    lastTap = now;
                 }
             });
-            
+
             wrapper.addEventListener('dblclick', () => {
                 fullscreenImg.src = img.src;
                 fullscreenOverlay.classList.add('active');
             });
         });
-        
+
         fullscreenOverlay.addEventListener('click', () => {
             fullscreenOverlay.classList.remove('active');
         });
-        
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                fullscreenOverlay.classList.remove('active');
-            }
+            if (e.key === 'Escape') fullscreenOverlay.classList.remove('active');
         });
+
+        // ── HIT COUNTER ──
+        // Uses counterapi.dev — free, no login needed
+        // Replace "yolitzy-main" with any unique namespace you want
+        const COUNTER_KEY = 'yolitzy-main';
+        const counterEl = document.getElementById('counter-display');
+
+        fetch(`https://api.counterapi.dev/v1/${COUNTER_KEY}/up`)
+            .then(r => r.json())
+            .then(data => {
+                const count = String(data.count).padStart(7, '0');
+                counterEl.textContent = `[ ${count} ]`;
+            })
+            .catch(() => {
+                counterEl.textContent = '[ 0000001 ]';
+            });
     </script>
+
 </body>
 </html>

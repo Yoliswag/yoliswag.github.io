@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Portfolio | Yolitzy.com</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Courier New", Courier, monospace;
+            color: #ff00ff;
+        }
+
+        .family {
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .welcome {
+            font-size: 60px;
+            color: red;
+            font-weight: bold;
+            text-align: left;
+            padding: 50px 0 50px;
+        }
+
+        .welcome a,
+        .welcome a:visited,
+        .welcome a:hover,
+        .welcome a:active {
+            color: red;
+            text-decoration: none;
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 1400px;
+            border-bottom: 1px solid rgb(249, 255, 72);
+            padding-bottom: 22px;
+            margin-bottom: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: #0b76ff;
+            gap: 14px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0 20px;
+        }
+
+        .nav-links a,
+        .nav-links a:visited {
+            color: #000000;
+            text-decoration: none;
+            border: 1px solid #0b76ff;
+            padding: 10px 16px;
+            border-radius: 0;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: #70ff8d;
+            color: #000000;
+            outline: none;
+        }
+
+        .page-wrap {
+            width: 100%;
+            max-width: 1100px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: #ff00ff;
+            text-shadow: 2px 2px 5px #236823;
+            margin-bottom: 12px;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            margin-bottom: 26px;
+            color: #8bd8ff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .portfolio-card {
+            border: 1px solid #ff00ff;
+            padding: 16px;
+            background: #050505;
+            min-height: 120px;
+        }
+
+        .portfolio-card h2 {
+            margin: 0 0 8px;
+            font-size: 1.35rem;
+            color: #ff00ff;
+        }
+
+        .portfolio-card p {
+            margin: 0 0 14px;
+            color: #9ad0ff;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .portfolio-card a,
+        .portfolio-card a:visited {
+            color: #70ff8d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .portfolio-card a:hover,
+        .portfolio-card a:focus-visible {
+            text-decoration: underline;
+            outline: none;
+        }
+
+        .upcoming-dropdown {
+            max-width: 460px;
+            border: 1px solid #ff00ff;
+            background: #050505;
+        }
+
+        .upcoming-dropdown summary {
+            cursor: pointer;
+            list-style: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff00ff;
+            padding: 12px 14px;
+            border-bottom: 1px solid #ff00ff;
+        }
+
+        .upcoming-list {
+            list-style: none;
+            margin: 0;
+            padding: 8px 14px 12px;
+        }
+
+        .upcoming-list li {
+            margin: 10px 0;
+        }
+
+        .upcoming-list a,
+        .upcoming-list a:visited {
+            color: #8bd8ff;
+            text-decoration: none;
+        }
+
+        .upcoming-list a:hover,
+        .upcoming-list a:focus-visible {
+            text-decoration: underline;
+            color: #70ff8d;
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .welcome {
+                font-size: 44px;
+                padding: 30px 0 20px;
+            }
+
+            .nav-links {
+                font-size: 16px;
+                gap: 10px;
+            }
+
+            .nav-links a {
+                padding: 8px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="family" src="/play/photos/family.gif" alt="Overlay Image">
+
+    <div class="navbar">
+        <div class="welcome" style="text-align: center;"><a href="/index.html">Yolitzy.com</a></div>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="/about.html">About Me</a>
+            <a href="/portfolio.html">Portfolio</a>
+            <a href="/cv.html">CV</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/yoliwebsite2/index.html">Archive</a>
+        </nav>
+    </div>
+
+    <main class="page-wrap">
+        <h1>Portfolio</h1>
+        <p class="intro">Selected series and visual experiments.</p>
+
+        <div class="container2" id="portfolio-links">
+      <h1>Links</h1>
+
+      <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/yoliwebsite2/index.html">Archive Website V 2</a></p>
+
+      <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
+
+      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/getlost/index.html">Get lost</a></p>
+      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/invisiblecity/index.html">Invisible city</a></p>
+      <p style="margin-left: 40px;"><a style="color: #ff4bc0;" href="/portfolio/mindseye/index.html">Minds eye</a></p>
+      <br>
+            <details class="upcoming-dropdown">
+                <summary>Posted Soon <span style="font-size: 12px; vertical-align: middle">&#x25BE;</span></summary>
+                <ul class="upcoming-list">
+                    <li><a href="/portfolio/myhead/myhead.txt">My head</a></li>
+                    <li><a href="/portfolio/bag/bag.txt">My Bag</a></li>
+                    <li><a href="/portfolio/jewerlywork/index.html">Jewerly Work</a></li>
+                    <li><a href="/real/index.html">Real</a></li>
+                    <li><a href="/portfolio/jewerlywork/index.html">Nauv</a></li>
+                    <li><a href="/portfolio/jewerlywork/index.html">Objects</a></li>
+                </ul>
+            </details>
+
+            <div class="contact-card" id="contact">
+                <h1>Contact</h1>
+                <p>Email for collaborations and commissions: <a href="mailto:hello@yolitzy.com">hello@yolitzy.com</a></p>
+            </div>
+
+    </div>
+
+        <section class="portfolio-grid" aria-label="Portfolio projects">
+            <article class="portfolio-card">
+                <h2>Get Lost</h2>
+                <p>Street snapshots and textures from wandering with no map.</p>
+                <a href="/portfolio/getlost/index.html">View project</a>
+            </article>
+
+            <article class="portfolio-card">
+                <h2>Invisible City</h2>
+                <p>Details of urban life hiding in plain sight.</p>
+                <a href="/portfolio/invisiblecity/index.html">View project</a>
+            </article>
+
+            <article class="portfolio-card">
+                <h2>Minds Eye</h2>
+                <p>Color studies and digital edits built from memory and mood.</p>
+                <a href="/portfolio/mindseye/index.html">View project</a>
+            </article>
+
+            <article class="portfolio-card">
+                <h2>Jewerly Work</h2>
+                <p>Object-focused documentation and wearable forms.</p>
+                <a href="/portfolio/jewerlywork/index.html">View project</a>
+            </article>
+
+            <article class="portfolio-card">
+                <h2>Photography Archive</h2>
+                <p>Core image archive and source material for larger projects.</p>
+                <a href="/portfolio/Photography/">Open archive</a>
+            </article>
+
+            <article class="portfolio-card">
+                <h2>Real</h2>
+                <p>A separate world inside the site connected to this portfolio.</p>
+                <a href="/real/index.html">View project</a>
+            </article>
+        </section>
+
+        <details class="upcoming-dropdown">
+            <summary>Posted Soon</summary>
+            <ul class="upcoming-list">
+                <li><a href="/portfolio/myhead/myhead.txt">My head</a></li>
+                <li><a href="/portfolio/bag/bag.txt">My Bag</a></li>
+                <li><a href="/portfolio/jewerlywork/index.html">Nauv</a></li>
+                <li><a href="/portfolio/jewerlywork/index.html">Objects</a></li>
+            </ul>
+        </details>
+    </main>
+</body>
+</html>
