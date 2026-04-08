@@ -363,19 +363,22 @@
         });
 
         // ── HIT COUNTER ──
-        // Uses counterapi.dev — free, no login needed
-        // Replace "yolitzy-main" with any unique namespace you want
-        const COUNTER_KEY = 'yolitzy-main';
+        // Uses CounterAPI v1 endpoint format: /v1/:namespace/:name/up
+        const COUNTER_NAMESPACE = 'yolitzy';
+        const COUNTER_NAME = 'main';
         const counterEl = document.getElementById('counter-display');
 
-        fetch(`https://api.counterapi.dev/v1/${COUNTER_KEY}/up`)
-            .then(r => r.json())
+        fetch(`https://api.counterapi.dev/v1/${COUNTER_NAMESPACE}/${COUNTER_NAME}/up`)
+            .then(r => {
+                if (!r.ok) throw new Error('Counter request failed');
+                return r.json();
+            })
             .then(data => {
                 const count = String(data.count).padStart(7, '0');
                 counterEl.textContent = `[ ${count} ]`;
             })
             .catch(() => {
-                counterEl.textContent = '[ 0000001 ]';
+                counterEl.textContent = '[ error ]';
             });
     </script>
 
