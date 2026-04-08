@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>About | Yolitzy.com</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Courier New", Courier, monospace;
+            
+        }
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+        }
+        
+        .image-wrapper {
+            position: absolute;
+        }
+        
+        .gallery-item {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            display: block;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .family {
+             width: 100%;
+             height: 100px;
+             overflow: hidden;
+        }
+        
+        /* Fullscreen overlay */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fullscreen-overlay.active {
+            display: flex;
+        }
+        
+        .fullscreen-overlay img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 13px;
+            z-index: 5000;
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .instructions {
+                font-size: 12px;
+                padding: 1px 1px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px;
+            }
+            .instructions {
+                font-size: 11px;
+                padding: 1px 1px;
+            }
+        }
+
+        .welcome {
+            font-size: 60px;
+            color: red;
+            font-weight: bold;
+            text-align: left;
+            padding: 50px 0px 50px;
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 1400px;
+            border-bottom: 1px solid rgb(249, 255, 72);
+            padding-bottom: 22px;
+            margin-bottom: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: #0b76ff;
+            gap: 14px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0 20px;
+        }
+
+        .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            border: 1px solid #0b76ff;
+            
+            padding: 10px 16px;
+            border-radius: 0;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: #70ff8d;
+            color: #000000;
+            outline: none;
+        }
+
+        .nav-links a.active {
+            background: #70ff8d;
+            color: #000000;
+        }
+
+        .yoli-section body,
+        .yoli-section {
+            font-family: Times New Roman, serif;
+            color: #ff00ff;
+            font-size: 30px;
+            padding: 60px 130px 30px;
+            line-height: 2;
+            text-align: left;
+        }
+
+        .container2 {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10%;
+            border-radius: 20px;
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .contact-card {
+            margin-top: 30px;
+            margin-left: 40px;
+            border-left: 3px solid #00ff66;
+            padding-left: 16px;
+            color: #00ff66;
+        }
+
+        .contact-card a {
+            color: #00ff66;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 5px #ff00ff;
+            margin-bottom: 10px;
+        }
+
+          .gallery-item p {
+            font-size: 1rem;
+            color: #ff00ff;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px; /* #605b5b */
+        }
+
+        p2 {
+            padding-top: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #00ff00;
+            text-shadow: 1px -1px 2px #000000;
+            font-family: "Courier New", Courier, monospace;
+    
+        }
+
+        .nav-label {
+            display: flex;
+            gap: 40px;
+            font-size: 30px;
+            padding: 50px 50px 40px;
+        }
+
+        .project-line {
+            display: flex;             /* put children on same line */               /* space between them */
+            align-items: baseline;       /* spacing between rows */
+        }
+        .meta {
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .welcome {
+                font-size: 44px;
+                padding: 30px 0 20px;
+            }
+
+            .nav-links {
+                font-size: 16px;
+                gap: 10px;
+            }
+
+            .nav-links a {
+                padding: 8px 14px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+        <img class="family" src="/play/photos/family.gif" alt="Overlay Image">
+<div class="navbar">
+      <div class="welcome" style="text-align: center;"><a href="/index.html">Yolitzy.com</a></div>
+      <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about" class="active" aria-current="page">About Me</a>
+          <a href="#portfolio-links">Portfolio</a>
+          <a href="#gallery">Gallery</a>
+          <a href="/yoliwebsite2/index.html">Archive</a>
+          <a href="#contact">Contact</a>
+      </nav>
+</div>
+
+<div class="yoli-section" id="about">
+    <p style="text-align: center;">
+        I am Yolitzy, an artist building images and worlds through photography, collage, and mixed digital experiments.<br>
+        My work follows memory, family, and playful chaos, turning everyday moments into personal archives.
+    </p>
+       </div>    
+    
+</body>
+</html>
