@@ -88,97 +88,109 @@
         }
 
 
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    gap: 20px;
-        padding: 20px;
+  .mosaic {
+    columns: 3 200px;
+    column-gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
   }
 
-  .gallery-item {
-    border-radius: 10px;
-    padding: 10px;
- text-align: center; /* Center text within each gallery item */
-    
-    
-  }
-
-  .gallery-item img {
-    max-width: 90%;
-    height: auto;
-    display: block;
-    margin: 10px auto 10px;
-    border: 3px solid #ff00ff;
-    box-shadow: 2px 2px 2px rgba(84, 84, 84, 0.5);
-   
-
-  }
-
-  .gallery-item p {
-    font-size: 1rem;
-    color: #ff00ff;
-  }
-
-  p2 {
-    padding-top: 30px;
-    font-size: 1.2rem;
+  .mosaic-item {
+    break-inside: avoid;
     margin-bottom: 20px;
-    color: #00ff00;
-    text-shadow: 1px -1px 2px #000000;
-    font-family: "Courier New", Courier, monospace;
-    
+    position: relative;
   }
 
-  .hover-effect-container {
-  position: relative;
-  display: block;
-  max-width: 100%;
-  margin: 10px auto;
-  cursor: pointer;
-}
+  .mosaic-item img {
+    width: 100%;
+    display: block;
+  }
 
-.hover-effect-container img {
-  display: block;
-  max-width: 100%;
-  margin: 0; /* Reset margin since the container has margin */
-  transition: all 0.3s ease;
-}
+  /* hover overlay */
+  .mosaic-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.78);
+    padding: 10px 10px 8px;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    pointer-events: none;
+  }
 
-/* Overlay that appears on hover */
-.hover-effect-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 110%;
-  height: 100%;
-  background-color: rgba(255, 49, 231, 0.6); /* Gray overlay with 60% opacity */
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
+  .mosaic-item:hover .mosaic-caption {
+    opacity: 1;
+  }
 
-.hover-effect-container:hover::after {
-  opacity: 1;
-}
+  .mosaic-caption .title {
+    font-weight: bold;
+    color: #70ff8d;
+    font-size: 0.85rem;
+  }
 
-/* Optional: Add a text indicator for clickable images */
-.hover-effect-container::before {
-  content: 'CLICK';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: rgb(0, 255, 60);
-  font-weight: bold;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+  .mosaic-caption .desc {
+    color: #8bd8ff;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
 
-.hover-effect-container:hover::before {
-  opacity: 1;
-}
+  /* mobile: always show caption below image */
+  @media (hover: none) {
+    .mosaic-caption {
+      position: static;
+      opacity: 1;
+      background: none;
+      padding: 4px 2px 2px;
+      pointer-events: auto;
+    }
+  }
+
+  .mosaic-text-card {
+    border: 1px solid #ff00ff;
+    padding: 16px;
+  }
+
+  .mosaic-text-card h2 {
+    color: #ff00ff;
+    margin: 0 0 6px;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .mosaic-text-card p {
+    color: #8bd8ff;
+    font-size: 0.8rem;
+    margin: 0 0 8px;
+  }
+
+  .mosaic-text-card a,
+  .mosaic-text-card a:visited {
+    color: #70ff8d;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .mosaic-text-card a:hover {
+    text-decoration: underline;
+  }
+
+  .page-links {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 20px 40px;
+  }
+
+  .page-links p a {
+    color: #e5ff00;
+    text-decoration: none;
+  }
+
+  .page-links p a:hover {
+    text-decoration: underline;
+  }
 
   .back-button {
     display: inline-block;
@@ -190,150 +202,13 @@
     border-radius: 5px;
     text-transform: uppercase;
     box-shadow: 2px 2px 4px #000;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin: 20px 0 30px;
   }
+
   .back-button:hover {
     background-color: #ffdf4d;
   }
-  .zoom-on-click img {
-    transition: 0.3s ease;
-    cursor: pointer;
-  }
-
-  .zoom-on-click img.clicked {
-    transform: scale(2); /* or whatever size you want */
-  }
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-
-  .overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    border: none;
-  }
-
-        .page-wrap {
-            width: 100%;
-            max-width: 1100px;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #ff00ff;
-            text-shadow: 2px 2px 5px #236823;
-            font-size: 38px;
-        }
-
-        .intro {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: #8bd8ff;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .portfolio-card {
-
-            padding: 20px;
-
-            min-height: 120px;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .portfolio-card .card-bottom {
-            text-align: right;
-        }
-
-        .portfolio-card img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-            border: 1px solid #ff00ff;
-        }
-
-        .portfolio-card h2 {
-            margin: 0 0 8px;
-            font-size: 1.35rem;
-            color: #ff00ff;
-        }
-
-        .portfolio-card p {
-            margin: 0 0 14px;
-            color: #9ad0ff;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .portfolio-card a,
-        .portfolio-card a:visited {
-            color: #70ff8d;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .portfolio-card a:hover,
-        .portfolio-card a:focus-visible {
-            text-decoration: underline;
-            outline: none;
-        }
-
-        .upcoming-dropdown {
-            max-width: 460px;
-
-            border: 1px solid #ff00ff;
-            background: #050505;
-        }
-
-        .upcoming-dropdown summary {
-            cursor: pointer;
-            list-style: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #ff00ff;
-            padding: 12px 14px;
-            border-bottom: 1px solid #ff00ff;
-        }
-
-        .upcoming-list {
-            list-style: none;
-            margin: 0;
-            padding: 8px 14px 12px;
-        }
-
-        .upcoming-list li {
-            margin: 10px 0;
-        }
-
-        .upcoming-list a,
-        .upcoming-list a:visited {
-            color: #8bd8ff;
-            text-decoration: none;
-        }
-
-        .upcoming-list a:hover,
-        .upcoming-list a:focus-visible {
-            text-decoration: underline;
-            color: #70ff8d;
-            outline: none;
-        }
-                h2 {
+  h2 {
             color: #ff00ff;
             font-size: 16px;
             letter-spacing: 2px;
@@ -367,163 +242,258 @@
             <a href="/about.html">About Me</a>
             <a href="/portfolio.html">Portfolio</a>
             <a href="/web-design.html">Web Design</a>
-            <a href="/cv.html">CV</a>
-            <a href="/contact.html">Contact</a>
             <a href="/archive/index.html">Archive</a>
         </nav>
     </div>
 
-    <main class="page-wrap">
-        <p class="intro" style="text-align: center;">Selected series and visual experiments.</p>
+    <p style="text-align:center; color:#8bd8ff; font-size:1rem; padding: 10px 0 0;">Selected series and visual experiments.</p>
 
-        
-        <h1>Photography Projects</h1>
-        <section class="portfolio-grid" aria-label="Portfolio projects">
-            <article class="portfolio-card">
-                <div>
-                    <h2>Get Lost</h2>
-                    <a href="/portfolio/getlost/index.html">
-                        <img src="/public/external/snowstrippersxturnabout.jpg" alt="Get Lost preview">
-                    </a>
-                </div>
-                <div class="card-bottom">
-                    <p style="color: rgb(0, 255, 60); font-style: italic;">Photography, 2024</p>
-                </div>
-            </article>
+    <div class="mosaic">
 
-            <article class="portfolio-card">
-                <div>
-                    <h2>Invisible City</h2>
-                    <a href="/portfolio/invisiblecity/index.html">
-                        <img src="/portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="Get Lost preview">
-                    </a>
-                </div>
-                <div class="card-bottom">
-                    <p style="color: rgb(0, 255, 60); font-style: italic;">Photography, 2024</p>
-                </div>
-            </article>
+      <div class="mosaic-item">
+        <a href="/portfolio/getlost/index.html">
+          <img src="/public/external/snowstrippersxturnabout.jpg" alt="Get Lost">
+        </a>
+        <div class="mosaic-caption">
+          <div class="title">Get Lost</div>
+          <div class="desc">Photography, 2024</div>
+        </div>
+      </div>
 
-            <article class="portfolio-card">
-                <div>
-                    <h2>Minds Eye</h2>
-                    <a href="/portfolio/mindseye/index.html">
-                        <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Get Lost preview">
-                    </a>
-                </div>
-                 <div class="card-bottom">
-                    <p style="color: rgb(0, 255, 60); font-style: italic;">Photography, 2024</p>
-                </div>
-            </article>
+      <div class="mosaic-item">
+        <img src="/public/external/skindogs.png" alt="Skin Dogs">
+        <div class="mosaic-caption">
+          <div class="title">Skin Dogs</div>
+          <div class="desc">The movie Kids. My pill tower. and this Dog I drew, that I love a lot</div>
+        </div>
+      </div>
 
-            <article class="portfolio-card">
-                <div>
-                    <h2>Jewerly Work</h2>
-                    <p>Object-focused documentation and wearable forms.</p>
-                    <a href="/portfolio/jewerlywork/index.html">View project</a>
-                </div>
-            </article>
+      <div class="mosaic-item">
+        <a href="/portfolio/invisiblecity/index.html">
+          <img src="/portfolio/invisiblecity/Invisible city/almostcaught.jpg" alt="Invisible City">
+        </a>
+        <div class="mosaic-caption">
+          <div class="title">Invisible City</div>
+          <div class="desc">Photography, 2024</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+        <img src="/public/external/KAtheric.jpg" alt="KAtheric">
+        <div class="mosaic-caption">
+          <div class="title">KAtheric</div>
+          <div class="desc">an image of a church I took off a balcony. I see this church every day in the distance driving home. a view of commute</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+        <a href="/portfolio/mindseye/index.html">
+          <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Minds Eye">
+        </a>
+        <div class="mosaic-caption">
+          <div class="title">Minds Eye</div>
+          <div class="desc">Photography, 2024</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+        <img src="/public/external/quick shit.gif" alt="Quick shit">
+        <div class="mosaic-caption">
+          <div class="title">Quick shit</div>
+          <div class="desc">quick piece i made took like 10 mins</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+        <img src="/public/external/tattoo.jpg" alt="Tramp Stamp Tattoo">
+        <div class="mosaic-caption">
+          <div class="title">Tramp Stamp Tattoo</div>
+          <div class="desc">i designed a tramp stamp, then drew this back and overlayed it. I luv the color on this one</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+        <img src="/archive/unsorted/artsaleflyer.jpg" alt="Art Sale Flyer">
+        <div class="mosaic-caption">
+          <div class="title">Art Sale Flyer</div>
+          <div class="desc">flyer i made. collabed with eviee. moved to skate park and people actually showed up — everyone was looking at my paintings and it made me feel seen</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+        <img src="/public/external/victoryroyale.jpg" alt="Victory Royale">
+        <div class="mosaic-caption">
+          <div class="title">victoryroyale</div>
+          <div class="desc">wyatt bathroom selfie. dude will say big things coming then od. holiday shake at tolly ho. facebook market and weed rainbowdash</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+          <a href="/portfolio/bag/index.html">
+            <img src="/portfolio/bag/bag_white_bg.png" alt="Bag">
+          </a>
+          <div class="mosaic-caption">
+            <div class="title">Bag</div>
+            <div class="desc">Fiber, 2024 — Working on it</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+          <a href="/portfolio/myhead/myhead.txt">
+            <img src="/portfolio/myhead/Myhead1.5.png" alt="My Head">
+          </a>
+          <div class="mosaic-caption">
+            <div class="title">My Head</div>
+            <div class="desc">Fiber, 2024 — Working on it</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/areyouproudsilk.jpg" alt="Are you proud of me">
+          <div class="mosaic-caption">
+            <div class="title">Are you proud of me</div>
+            <div class="desc">Fiber, 2024</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/fiber sacns_0006.jpg" alt="Fiber Scan 03">
+          <div class="mosaic-caption">
+            <div class="title">Fiber Scan 03</div>
+            <div class="desc">Fiber, 2024</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/party weave_0002.jpg" alt="Fiber Scan 04">
+          <div class="mosaic-caption">
+            <div class="title">Fiber Scan 04</div>
+            <div class="desc">Fiber, 2024</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/rosestreet.jpg" alt="Rose Street">
+          <div class="mosaic-caption">
+            <div class="title">Rose Street</div>
+            <div class="desc">Photography, 2024</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/Blackberry.jpg" alt="Blackberry">
+          <div class="mosaic-caption">
+            <div class="title">Blackberry</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
 
 
-            <div style="height: 100px;"></div>
-        </section>
-        <h1>Fiber</h1>
-        <section class="portfolio-grid" aria-label="Portfolio projects">
-            <article class="portfolio-card">
-                <div>
-                    <h2>Bag</h2>
-                    <p>Working on it</p>
-                    <a href="/portfolio/bag/index.html">
-                        <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Get Lost preview">
-                    </a>
-                </div>
-                 <div class="card-bottom">
-                    <p style="color: rgb(0, 255, 60); font-style: italic;">Fiber, 2024</p>
-                </div>
-            </article>
-
-            <article class="portfolio-card">
-                <div>
-                    <h2>My Head</h2>
-                    <p>Working on it</p>
-                    <a href="/portfolio/myhead/myhead.txt">
-                        <img src="/portfolio/mindseye/Minds Eye/DSC_0639.jpg" alt="Get Lost preview">
-                    </a>
-                </div>
-                 <div class="card-bottom">
-                    <p style="color: rgb(0, 255, 60); font-style: italic;">Fiber, 2024</p>
-                </div>
-            </article>
-            <div style="height: 100px;"></div>
-        </section>
-
-        <div class="container2" id="portfolio-links">
-            <h1>Links</h1>
-
-            <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/archive/index.html">Archive Website V 2</a></p>
-
-            <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/alexie_plaid2.jpg" alt="Alexie Plaid 2">
+          <div class="mosaic-caption">
+            <div class="title">Alexie Plaid 2</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
 
 
-        
-    </main>
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/alexie_plaid_IMG_9772.jpg" alt="Alexie Plaid IMG 9772">
+          <div class="mosaic-caption">
+            <div class="title">Alexie Plaid IMG 9772</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
 
-    
-    <div style="height: 100px;"></div>
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/alexy_white_shoot_IMG_9223.JPG" alt="Alexy White Shoot IMG 9223">
+          <div class="mosaic-caption">
+            <div class="title">Alexy White Shoot IMG 9223</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/jack_IMG_9899-1.jpg" alt="Jack IMG 9899 1">
+          <div class="mosaic-caption">
+            <div class="title">Jack IMG 9899 1</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/jack_ruby_alexa_.jpg" alt="Jack Ruby Alexa">
+          <div class="mosaic-caption">
+            <div class="title">Jack Ruby Alexa</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/object_0022.jpg" alt="Object 0022">
+          <div class="mosaic-caption">
+            <div class="title">Object 0022</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/object_0100.jpg" alt="Object 0100">
+          <div class="mosaic-caption">
+            <div class="title">Object 0100</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/objecy_150-1.jpg" alt="Objecy 150 1">
+          <div class="mosaic-caption">
+            <div class="title">Objecy 150 1</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/remi_sess_4211.JPG" alt="Remi Sess 4211">
+          <div class="mosaic-caption">
+            <div class="title">Remi Sess 4211</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/remi_sess_4231.JPG" alt="Remi Sess 4231">
+          <div class="mosaic-caption">
+            <div class="title">Remi Sess 4231</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/remi_sess_475.JPG" alt="Remi Sess 475">
+          <div class="mosaic-caption">
+            <div class="title">Remi Sess 475</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
+
+      <div class="mosaic-item">
+            <img src="/portfolio/Photography/ruby_grey_9665.jpg" alt="Ruby Grey 9665">
+          <div class="mosaic-caption">
+            <div class="title">Ruby Grey 9665</div>
+            <div class="desc">Photography</div>
+        </div>
+      </div>
 
     </div>
-      <div id="portfolio" class="gallery-item"></div>
-    
 
-    <div class="gallery">
-      
-  <br><br>
-
-      <div class="gallery-item">
-        <img src="/public/external/skindogs.png" alt="Art Piece 1">
-        <p2>Skin Dogs</p2>
-        <p>The movie Kids</p>
-        <p>My pill tower</p><p>and this Dog I drew, that I love a lot</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/KAtheric.jpg" alt="Art Piece 2">
-        <p2>KAtheric</p2>
-        <p>an image of a church I took off a balcony. 
-          <p>I see this church every day in the distance driving home.</p>
-  <p>a view of commute</p> 
-           <p>the mega choc I just had on my laptop, idk. Inverted picture of an actor, I don't remember her name.</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/quick shit.gif" alt="Art Piece 3">
-        <p2>Quick shit</p2>
-        <p>quick peace i made took like 10 mins</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/tattoo.jpg" alt="Art Piece 4">
-        <p2>Tramp Stamp Tattoo</p2>
-        <p>i desgined a tramp stamp, then drew this back and overlayed it. I luv the color on this one</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/artsaleflyer.jpg" alt="Art Piece 4">
-        <p2>Art Piece 4</p2>
-        <p>i have no idea whats happening. flyer i made. collabed with eviee. yeah its sucked at first then we moved to skate park 
-          and people actully showed up mostly eviee friends but it was really fun everyone was 
-          looking at my paintings and it made me feel seen bc otherwise my art just sits in my room unenjoyed and sad.</p>
-      </div>
-      <div class="gallery-item">
-        <img src="/public/external/victoryroyale.jpg" alt="Art Piece 4">
-        <p2>victoryroyale</p2>
-        <p>we got the wyatt bathroom selfie</p>
-        <p>
-        <p>dude will say big things coming then od
-        </p>
-        <p>our holiday shake at tolly ho</p>
-        <p>facebook market and weed rainbowdash</p>
-      </div>
-      <!-- Add more gallery items as needed -->
+    <div class="page-links">
+      <p><a href="/archive/index.html">Archive Website V 2</a></p>
+      <p><a style="color:#00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
     </div>
-        <div style="height: 100px;"></div>
+
     <a href="/index.html" class="back-button">Back to Top</a>
-  </div>
 </body>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
