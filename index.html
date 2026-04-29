@@ -20,13 +20,12 @@
             color: #ff00ff;
         }
 
-        /* ── GIF HEADER ── */
         .family {
             width: 100%;
+            max-width: 1400px;
             height: 100px;
             overflow: hidden;
         }
-
         /* ── NAV ── */
         .navbar {
             width: 100%;
@@ -43,8 +42,7 @@
             text-align: center;
             padding: 50px 0px 50px;
         }
-
-        .welcome a,
+.welcome a,
         .welcome a:visited,
         .welcome a:hover,
         .welcome a:active {
@@ -80,6 +78,11 @@
             background: #70ff8d;
             color: #000000;
             outline: none;
+        }
+
+        .nav-links a.active {
+            background: #70ff8d;
+            color: #000000;
         }
 
         /* ── INTRO ── */
@@ -174,21 +177,7 @@
             margin-top: 6px;
         }
 
-        /* ── INSTRUCTIONS ── */
-        .instructions {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #111;
-            border: 1px solid #333;
-            color: #888;
-            padding: 8px 16px;
-            font-size: 12px;
-            z-index: 5000;
-            max-width: 90vw;
-            text-align: center;
-        }
+
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
@@ -222,6 +211,7 @@
         <nav class="nav-links" aria-label="Main navigation">
             <a href="/about.html">About Me</a>
             <a href="/portfolio.html">Portfolio</a>
+            <a href="/web-design.html">Web Design</a>
             <a href="/cv.html">CV</a>
             <a href="/contact.html">Contact</a>
             <a href="/archive/index.html">Archive</a>
@@ -363,6 +353,17 @@
             .catch(() => {
                 counterEl.textContent = '[ error ]';
             });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('.nav-links a');
+            const currentUrl = window.location.href;
+
+            links.forEach(link => {
+                if (link.href === currentUrl) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 
 </body>

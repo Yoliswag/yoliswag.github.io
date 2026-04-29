@@ -1,0 +1,13 @@
+## Stitch Instructions
+
+Get the images and code for the following Stitch project's screens:
+
+## Project
+Title: Artist Portfolio Page
+ID: 4726244261909359949
+
+## Screens:
+1. Artist Portfolio Landing Page
+    ID: d3f3abb524574904a2ccf81fea483678
+
+Use a utility like `curl -L` to download the hosted URLs.

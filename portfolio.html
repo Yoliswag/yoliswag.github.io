@@ -20,19 +20,28 @@
             color: #ff00ff;
         }
 
+
         .family {
+             width: 100%;
+             height: 100px;
+             overflow: hidden;
+        }
+        
+        .navbar {
             width: 100%;
             max-width: 1400px;
-            height: 100px;
-            overflow: hidden;
+            border-bottom: 1px solid #f9ff48;
+            padding-bottom: 22px;
+            margin-bottom: 18px;
+            font-family: "Courier New", Courier, monospace;
         }
 
         .welcome {
             font-size: 60px;
             color: red;
             font-weight: bold;
-            text-align: left;
-            padding: 50px 0 50px;
+            text-align: center;
+            padding: 50px 0px 50px;
         }
 
         .welcome a,
@@ -41,14 +50,6 @@
         .welcome a:active {
             color: red;
             text-decoration: none;
-        }
-
-        .navbar {
-            width: 100%;
-            max-width: 1400px;
-            border-bottom: 1px solid rgb(249, 255, 72);
-            padding-bottom: 22px;
-            margin-bottom: 24px;
         }
 
         .nav-links {
@@ -62,14 +63,16 @@
             padding: 0 20px;
         }
 
-        .nav-links a,
-        .nav-links a:visited {
+        .nav-links a {
             color: #000000;
             text-decoration: none;
             border: 1px solid #0b76ff;
             padding: 10px 16px;
             border-radius: 0;
-            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a:visited {
+            color: #000000;
         }
 
         .nav-links a:hover,
@@ -78,11 +81,18 @@
             color: #000000;
             outline: none;
         }
+        .nav-links a.active {
+            background: #70ff8d;
+            color: #000000;
+
+        }
+
 
   .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns */
     gap: 20px;
+        padding: 20px;
   }
 
   .gallery-item {
@@ -220,15 +230,14 @@
         }
 
         h1 {
-            font-size: 2.4rem;
             color: #ff00ff;
             text-shadow: 2px 2px 5px #236823;
-            margin-bottom: 12px;
+            font-size: 38px;
         }
 
         .intro {
             font-size: 1.2rem;
-            margin-bottom: 26px;
+            margin-bottom: 40px;
             color: #8bd8ff;
         }
 
@@ -240,9 +249,9 @@
         }
 
         .portfolio-card {
-            border: 1px solid #1f1f1f;
+
             padding: 20px;
-            background: #1f1f1f;
+
             min-height: 120px;
             flex-direction: column;
             justify-content: space-between;
@@ -287,6 +296,7 @@
 
         .upcoming-dropdown {
             max-width: 460px;
+
             border: 1px solid #ff00ff;
             background: #050505;
         }
@@ -323,6 +333,13 @@
             color: #70ff8d;
             outline: none;
         }
+                h2 {
+            color: #ff00ff;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0 0 14px 0;
+        }
 
         @media (max-width: 768px) {
             .welcome {
@@ -345,10 +362,11 @@
     <img class="family" src="/play/photos/family.gif" alt="Overlay Image">
 
     <div class="navbar">
-        <div class="welcome" style="text-align: center;"><a href="/index.html">Yolitzy.com</a></div>
+       <div class="welcome"><a href="/index.html">Yolitzy.com</a></div>
         <nav class="nav-links" aria-label="Main navigation">
             <a href="/about.html">About Me</a>
             <a href="/portfolio.html">Portfolio</a>
+            <a href="/web-design.html">Web Design</a>
             <a href="/cv.html">CV</a>
             <a href="/contact.html">Contact</a>
             <a href="/archive/index.html">Archive</a>
@@ -358,31 +376,8 @@
     <main class="page-wrap">
         <p class="intro" style="text-align: center;">Selected series and visual experiments.</p>
 
-        <div class="container2" id="portfolio-links">
-      <h1>Links</h1>
-
-      <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/archive/index.html">Archive Website V 2</a></p>
-
-      <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
-
-
-      <br>
-            <details class="upcoming-dropdown">
-                <summary>Posted Soon <span style="font-size: 12px; vertical-align: middle">&#x25BE;</span></summary>
-                <ul class="upcoming-list">
-                    <li><a href="/portfolio/myhead/myhead.txt">My head</a></li>
-                    <li><a href="/portfolio/bag/bag.txt">My Bag</a></li>
-                    <li><a href="/portfolio/jewerlywork/index.html">Jewerly Work</a></li>
-                    <li><a href="/real/index.html">Real</a></li>
-                    <li><a href="/portfolio/jewerlywork/index.html">Nauv</a></li>
-                    <li><a href="/portfolio/jewerlywork/index.html">Objects</a></li>
-                </ul>
-            </details>
-
-
-
-    </div>
-        <h1>Projects</h1>
+        
+        <h1>Photography Projects</h1>
         <section class="portfolio-grid" aria-label="Portfolio projects">
             <article class="portfolio-card">
                 <div>
@@ -422,6 +417,19 @@
 
             <article class="portfolio-card">
                 <div>
+                    <h2>Jewerly Work</h2>
+                    <p>Object-focused documentation and wearable forms.</p>
+                    <a href="/portfolio/jewerlywork/index.html">View project</a>
+                </div>
+            </article>
+
+
+            <div style="height: 100px;"></div>
+        </section>
+        <h1>Fiber</h1>
+        <section class="portfolio-grid" aria-label="Portfolio projects">
+            <article class="portfolio-card">
+                <div>
                     <h2>Bag</h2>
                     <p>Working on it</p>
                     <a href="/portfolio/bag/index.html">
@@ -445,37 +453,18 @@
                     <p style="color: rgb(0, 255, 60); font-style: italic;">Fiber, 2024</p>
                 </div>
             </article>
-
-            <article class="portfolio-card">
-                <div>
-                    <h2>Jewerly Work</h2>
-                    <p>Object-focused documentation and wearable forms.</p>
-                    <a href="/portfolio/jewerlywork/index.html">View project</a>
-                </div>
-            </article>
-
-            <article class="portfolio-card">
-                <div>
-                    <h2>Photography Archive</h2>
-                    <p>Core image archive and source material for larger projects.</p>
-                    <a href="/portfolio/Photography/">Open archive</a>
-                </div>
-            </article>
-
-            <article class="portfolio-card">
-                <div>
-                    <h2>Real</h2>
-                    <p>Writing experiment separate world inside the site connected to this portfolio.</p>
-                    <a href="/real/index.html">View project</a>
-                </div>
-            </article>
-    
             <div style="height: 100px;"></div>
         </section>
-            <div class="contact-card" id="contact">
-                <h1>Contact</h1>
-                <p>Email for collaborations and commissions: <a href="mailto:contact@yolitzy.com" style="color:rgb(255, 229, 243);">contact@yolitzy.com</a></p>
-            </div>
+
+        <div class="container2" id="portfolio-links">
+            <h1>Links</h1>
+
+            <p style="margin-left: 40px;"><a style="color: #e5ff00;" href="/archive/index.html">Archive Website V 2</a></p>
+
+            <p style="margin-left: 40px;"><a style="color: #00aeff;" href="/play/familia/index.html">dont u love your familia</a></p>
+
+
+        
     </main>
 
     
@@ -536,4 +525,16 @@
     <a href="/index.html" class="back-button">Back to Top</a>
   </div>
 </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('.nav-links a');
+            const currentUrl = window.location.href;
+
+            links.forEach(link => {
+                if (link.href === currentUrl) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </html>

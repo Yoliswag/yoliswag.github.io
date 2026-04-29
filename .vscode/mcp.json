@@ -10,6 +10,14 @@
 				"--local-timezone=America/New_York"
 			],
 			"type": "stdio"
+		},
+		"stitch": {
+		"url": "https://stitch.googleapis.com/mcp",
+		"type": "http",
+			"headers": {
+        		"Accept": "application/json",
+        		"X-Goog-Api-Key": ""
+				}
 		}
 	},
 	"inputs": []

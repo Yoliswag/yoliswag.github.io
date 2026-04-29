@@ -125,6 +125,10 @@
                 padding: 8px 14px;
             }
         }
+        .nav-links a.active {
+    background: #70ff8d;
+    color: #000000;
+}
     </style>
 </head>
 <body>
@@ -135,6 +139,7 @@
         <nav class="nav-links" aria-label="Main navigation">
             <a href="/about.html">About Me</a>
             <a href="/portfolio.html">Portfolio</a>
+            <a href="/web-design.html">Web Design</a>
             <a href="/cv.html">CV</a>
             <a href="/contact.html">Contact</a>
             <a href="/archive/index.html">Archive</a>
@@ -145,8 +150,21 @@
         <h1>Contact</h1>
         <p>
             For collaborations, commissions, or questions, email:
-            <a class="contact-link" href="mailto:hello@yolitzy.com">hello@yolitzy.com</a>
+            <a class="contact-link" href="mailto:hello@yolitzy.com">contact@yolitzy.com</a>
         </p>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('.nav-links a');
+            const currentUrl = window.location.href;
+
+            links.forEach(link => {
+                if (link.href === currentUrl) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
