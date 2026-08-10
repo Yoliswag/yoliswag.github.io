@@ -12,38 +12,32 @@
         body {
             margin: 0;
             padding: 20px;
-            background: #000000;
+            background: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
             font-family: "Courier New", Courier, monospace;
-            color: #ff00ff;
+            color: #000000;
         }
 
+        /* ── NAV ── */
         .navbar {
-            max-width: 100%;
             width: 100%;
             max-width: 1400px;
-            border-bottom: 1px solid rgb(249, 255, 72);
-            padding-bottom: 22px;
-            margin-bottom: 18px;
+
         }
 
         .welcome {
             font-size: 60px;
-            color: red;
             font-weight: bold;
             text-align: center;
-            padding: 50px 0 50px;
+            padding: 50px 0px 50px;
         }
-
         .welcome a,
         .welcome a:visited,
         .welcome a:hover,
         .welcome a:active {
-            color: red;
+            color: #ff00ff;
             text-decoration: none;
         }
 
@@ -51,20 +45,22 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background: #0b76ff;
+            opacity: 0.8;
             gap: 14px;
             font-size: 18px;
             font-weight: bold;
             padding: 0 20px;
         }
 
-        .nav-links a,
-        .nav-links a:visited {
+        .nav-links a {
             color: #000000;
             text-decoration: none;
-            border: 1px solid #0b76ff;
             padding: 10px 16px;
             border-radius: 0;
+        }
+
+        .nav-links a:visited {
+            color: #000000;
         }
 
         .nav-links a:hover,
@@ -129,7 +125,7 @@
     </style>
 </head>
 <body>
-<img class="family" src="/play/photos/family.gif" alt="Overlay Image">
+
     <div class="navbar">
         <div class="welcome"><a href="/index.html">Yolitzy.com</a></div>
         <nav class="nav-links" aria-label="Main navigation">

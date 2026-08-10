@@ -12,32 +12,23 @@
         body {
             margin: 0;
             padding: 20px;
-            background: #000000;
+            background: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             font-family: "Courier New", Courier, monospace;
-            color: #ff00ff;
+            color: #000000;
         }
 
-        .family {
-            width: 100%;
-            max-width: 1400px;
-            height: 100px;
-            overflow: hidden;
-        }
         /* ── NAV ── */
         .navbar {
             width: 100%;
             max-width: 1400px;
-            border-bottom: 1px solid rgb(249, 255, 72);
-            padding-bottom: 22px;
-            margin-bottom: 18px;
+
         }
 
         .welcome {
             font-size: 60px;
-            color: red;
             font-weight: bold;
             text-align: center;
             padding: 50px 0px 50px;
@@ -46,7 +37,7 @@
         .welcome a:visited,
         .welcome a:hover,
         .welcome a:active {
-            color: red;
+            color: #ff00ff;
             text-decoration: none;
         }
 
@@ -54,7 +45,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background: #0b76ff;
+            opacity: 0.8;
             gap: 14px;
             font-size: 18px;
             font-weight: bold;
@@ -64,7 +55,6 @@
         .nav-links a {
             color: #000000;
             text-decoration: none;
-            border: 1px solid #0b76ff;
             padding: 10px 16px;
             border-radius: 0;
         }
@@ -93,7 +83,6 @@
             color: #ff00ff;
             padding: 60px 60px 40px;
             line-height: 1.8;
-            border-bottom: 1px solid #333;
         }
 
         /* ── RECENT WORK ── */
@@ -101,12 +90,11 @@
             width: 100%;
             max-width: 1400px;
             font-size: 13px;
-            color: #f9ff48;
+            color: #000000;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 30px 60px 14px;
-            border-bottom: 1px solid #f9ff48;
-            margin-bottom: 0;
+            padding: 30px 60px 14px; 
+            font-weight: 400;
         }
 
         /* ── GALLERY ── */
@@ -164,7 +152,7 @@
             text-align: center;
             padding: 40px 0 20px;
             font-size: 13px;
-            color: #f9ff48;
+            color: #000000;
             letter-spacing: 0.15em;
             border-top: 1px solid #333;
             margin-top: 40px;
@@ -204,8 +192,6 @@
 </head>
 <body>
 
-    <img class="family" src="/play/photos/family.gif" alt="Overlay Image">
-
     <div class="navbar">
         <div class="welcome"><a href="/index.html">Yolitzy.com</a></div>
         <nav class="nav-links" aria-label="Main navigation">
@@ -219,8 +205,7 @@
     <!-- INTRO -->
     <div class="intro-section">
         <!-- replace this with your actual intro -->
-        photographer, web maker, illustrator.<br>
-        based in Kentucky. making work about...<br>
+        Photographer, Editor, Graphic Designer, Web Designer and illustrator based in Lexington, Kentucky<br>
     </div>
 
     <!-- RECENT WORK LABEL -->
@@ -228,16 +213,15 @@
 
     <!-- GALLERY (6 newest images) -->
     <div class="gallery-container" id="gallery">
-        <div class="image-wrapper" data-index="0" style="aspect-ratio: 3872/2592; min-height: 133px;"><img src="archive/unsorted/bedgirl.jpg" alt="" class="gallery-item" loading="eager"></div>
-        <div class="image-wrapper" data-index="1" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli_1_.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        <div class="image-wrapper" data-index="2" style="aspect-ratio: 2592/3872; min-height: 200px;"><img src="archive/unsorted/party weave_0004.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        <div class="image-wrapper" data-index="3" style="aspect-ratio: 2000/3000; min-height: 200px;"><img src="portfolio/Photography/DSC_0022.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        <div class="image-wrapper" data-index="4" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli5-915e.jpg" alt="" class="gallery-item" loading="lazy"></div>
-        <div class="image-wrapper" data-index="5" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli_3_smiley.jpg" alt="" class="gallery-item" loading="lazy"></div>
+        <div class="image-wrapper" data-index="0" style="aspect-ratio: 3872/2592; min-height: 133px;"><img src="archive/unsorted/bedgirl.jpg" alt="" class="gallery-item" loading="lazy" decoding="async" fetchpriority="low"></div>
+        <div class="image-wrapper" data-index="1" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli_1_.jpg" alt="" class="gallery-item" loading="lazy" decoding="async" fetchpriority="low"></div>
+        <div class="image-wrapper" data-index="2" style="aspect-ratio: 2592/3872; min-height: 200px;"><img src="archive/unsorted/party weave_0004.jpg" alt="" class="gallery-item" loading="lazy" decoding="async" fetchpriority="low"></div>
+        <div class="image-wrapper" data-index="4" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli5-915e.jpg" alt="" class="gallery-item" loading="lazy" decoding="async" fetchpriority="low"></div>
+        <div class="image-wrapper" data-index="5" style="aspect-ratio: 1500/1000; min-height: 133px;"><img src="archive/unsorted/yoli_3_smiley.jpg" alt="" class="gallery-item" loading="lazy" decoding="async" fetchpriority="low"></div>
     </div>
 
     <div style="width:100%; max-width:1400px; text-align:right; padding: 12px 0;">
-        <a href="/portfolio.html" style="color:#f9ff48; font-size:13px; letter-spacing:0.08em;">all work →</a>
+        <a href="/portfolio.html" style="color:#000000; font-size:13px; letter-spacing:0.08em;">all work →</a>
     </div>
 
     <!-- HIT COUNTER -->
@@ -320,7 +304,10 @@
             const img = wrapper.querySelector('.gallery-item');
 
             wrapper.addEventListener('click', () => {
-                fullscreenImg.src = img.src;
+                // Prefer the 1200px optimized JPG for fullscreen when available
+                const original = img.getAttribute('data-original') || img.src;
+                const name = original.split('/').pop().replace(/\.[^.]+$/, '');
+                fullscreenImg.src = `archive/unsorted/optimized/${name}-1200.jpg`;
                 fullscreenOverlay.classList.add('active');
             });
         });
@@ -331,6 +318,43 @@
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') fullscreenOverlay.classList.remove('active');
+        });
+
+        // Enhance gallery images to use optimized responsive sources
+        function enhanceImages() {
+            wrappers.forEach((wrapper) => {
+                if (wrapper.querySelector('picture')) return; // already enhanced
+                const img = wrapper.querySelector('.gallery-item');
+                const originalSrc = img.getAttribute('src');
+                img.setAttribute('data-original', originalSrc);
+                const filename = originalSrc.split('/').pop();
+                const basename = filename.replace(/\.[^.]+$/, '');
+
+                const picture = document.createElement('picture');
+                const sourceWebp = document.createElement('source');
+                sourceWebp.type = 'image/webp';
+                sourceWebp.srcset = `archive/unsorted/optimized/${basename}-800.webp 800w, archive/unsorted/optimized/${basename}-1200.webp 1200w`;
+                sourceWebp.sizes = '(max-width: 1024px) 50vw, 33vw';
+
+                // set img fallback targets
+                img.src = `archive/unsorted/optimized/${basename}-800.jpg`;
+                img.srcset = `archive/unsorted/optimized/${basename}-800.jpg 800w, archive/unsorted/optimized/${basename}-1200.jpg 1200w`;
+                img.sizes = '(max-width: 1024px) 50vw, 33vw';
+
+                picture.appendChild(sourceWebp);
+                picture.appendChild(img.cloneNode(true));
+
+                // replace existing img with picture
+                wrapper.removeChild(img);
+                wrapper.appendChild(picture);
+            });
+        }
+
+        // Run enhance after initial layout and when images load
+        enhanceImages();
+        wrappers.forEach((wrapper) => {
+            const picImg = wrapper.querySelector('.gallery-item');
+            picImg.addEventListener('load', layoutImages, { once: true });
         });
 
         // ── HIT COUNTER ──
